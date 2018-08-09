@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Stock_out">
+	<typeAlias alias="Stock_outObject" type="com.java.plyd.service.Stock_out" />
+
+	<resultMap id="Stock_outResultMap" class="Stock_outObject">
+		<result property="stock_out_id" column="stock_out_id" />
+		<result property="stock_out_date" column="stock_out_date" />
+		<result property="fromwarehouse_id" column="fromwarehouse_id" />
+		<result property="towarehouse_id" column="towarehouse_id" />
+		<result property="customer_id" column="customer_id" />
+		<result property="enddate" column="stock_out_date" />
+		<result property="vr_no" column="vr_no" />
+		<result property="remark" column="remark" />
+		<result property="createUserId" column="created_user_id" />
+		<result property="modifiedUserId" column="modified_user_id" />
+		<result property="createDate" column="created_date" />
+		<result property="modifiedDate" column="modified_date" />
+		<result property="flag" column="flag"/>
+		
+	</resultMap>
+
+	<insert id="insertStock_out" parameterClass="Stock_outObject">
+		INSERT INTO stock_out
+		(stock_out_date,fromwarehouse_id,towarehouse_id,customer_id,vr_no,remark,created_user_id,modified_user_id,created_date,modified_date,flag) VALUES
+		(#stock_out_date#,#fromwarehouse_id#,#towarehouse_id#,#customer_id#,#vr_no#,#remark#,#createUserId#,#modifiedUserId#,Now(),Now(),#flag#);
+		
+		<selectKey resultClass="java.lang.Integer" keyProperty="stock_out_id">
+	select last_insert_id() as stock_out_id
+	</selectKey>
+		
+		
+	</insert>
+	
+	
+	
+	<delete id="deleteStock_out" parameterClass="java.lang.Integer">
+		UPDATE stock_out
+		SET
+		flag=0
+		WHERE stock_out_id=#value#;
+	</delete>
+	
+	<update id="updateStock_out" parameterClass="Stock_outObject">
+		UPDATE stock_out
+		SET
+		stock_out_date=#stock_out_date#,fromwarehouse_id=#fromwarehouse_id#,towarehouse_id=#towarehouse_id#,customer_id=#customer_id#,vr_no=#vr_no#,remark=#remark#,modified_user_id=#modifiedUserId#,
+		modified_date=Now(),flag=#flag#
+		WHERE
+		stock_out_id=#stock_out_id#;
+	</update>
+	
+	<select id="selectAllStock_out" resultMap="Stock_outResultMap">
+		SELECT * FROM stock_out;
+	</select>
+	
+	<select id="selectAllforadmin" 	resultMap="Stock_outResultMap">
+		SELECT * FROM stock_out;
+	</select>
+	
+	<select id="selectStock_out" parameterClass="java.lang.Integer"
+		resultMap="Stock_outResultMap">
+		SELECT * FROM stock_out WHERE stock_out_id=#value#;
+	</select>
+	<select id="selectAllByDate" parameterClass="Stock_outObject"
+		resultMap="Stock_outResultMap">
+		SELECT * FROM stock_out WHERE stock_out_date BETWEEN #stock_out_date# AND #enddate# ;
+	</select>
+	<select id="selectAllByDaily" parameterClass="Stock_outObject"
+		resultMap="Stock_outResultMap">
+		SELECT * FROM stock_out WHERE stock_out_date=#stock_out_date# ;
+	</select>
+	<select id="selectAllByDailyMerchandise" parameterClass="Stock_outObject"
+		resultMap="Stock_outResultMap">
+		SELECT * FROM stock_out WHERE stock_out_date=#stock_out_date# ;
+	</select>
+	
+	
+</sqlMap>    

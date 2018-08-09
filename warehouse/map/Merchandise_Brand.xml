@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Merchandise_Brand">
+	
+	<typeAlias alias="Merchandise_BrandObject" type="com.java.plyd.service.Merchandise_Brand" />
+	<resultMap id="Merchandise_BrandResultMap" class="Merchandise_BrandObject">
+
+		<result property="merchandise_brand_id" column="merchandise_brand_id" />
+		<result property="brand_id" column="brand_id" />
+		<result property="merchandise_id" column="merchandise_id" />
+
+	</resultMap>
+
+	<insert id="insertMerchandise_Brand" parameterClass="Merchandise_BrandObject">
+		INSERT INTO merchandise_brand
+		(brand_id,merchandise_id) VALUES
+		(#brand_id#,#merchandise_id#);
+	</insert>
+
+	<delete id="deleteMerchandise_Brand" parameterClass="java.lang.Integer">
+		DELETE FROM merchandise_brand
+		WHERE merchandise_brand_id=#value#;
+	</delete>
+
+	<update id="updateMerchandise_Brand" parameterClass="Merchandise_BrandObject">
+		UPDATE merchandise_brand
+		SET
+		brand_id=#brand_id#,merchandise_id=#merchandise_id#
+		WHERE
+		merchandise_brand_id=#merchandise_brand_id#;
+	</update>
+
+	<select id="selectAllMerchandise_Brand" resultMap="Merchandise_BrandResultMap">
+		SELECT * FROM merchandise_brand;
+	</select>
+
+</sqlMap>    

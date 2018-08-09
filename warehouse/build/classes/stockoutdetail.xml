@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="StockoutDetail">
+	<typeAlias alias="StockoutDetailObject" type="com.java.plyd.service.StockoutDetail" />
+
+	<resultMap id="StockoutDetailResultMap" class="StockoutDetailObject">
+		
+	    <result property="stockoutdetail_id" column="stock_out_detail_id" />
+	    <result property="stockoutid" column="stock_out_id" />
+	    <result property="merchandise_id" column="merchandise_id"/>
+		<result property="qty" column="qty" />
+		<result property="subunit" column="sub_unit" />
+		<result property="voucherno" column="voucherno" />
+		<result property="remark" column="remark" />
+		<result property="created_user_id" column="created_user_id"/>
+		<result property="modified_user_id" column="modified_user_id"/>
+		<result property="created_date" column="created_date"/>
+		<result property="modified_date" column="modified_date"/>
+		<result property="flag" column="flag"/>
+		
+	</resultMap>
+
+	<insert id="insertStockoutDetail" parameterClass="StockoutDetailObject">
+		INSERT INTO stock_out_detail
+		(stock_out_id,merchandise_id,qty,sub_unit,voucherno,remark,created_user_id,modified_user_id,created_date,modified_date,flag) VALUES
+		(#stockoutid#,#merchandise_id#,#qty#,#subunit#,#voucherno#,#remark#,#created_user_id#,#modified_user_id#,Now(),Now(),#flag#);
+	</insert>
+
+	<delete id="deleteStockoutDetail" parameterClass="java.lang.Integer">
+		UPDATE stock_out_detail
+		SET
+		flag=0
+		WHERE stock_out_detail_id=#value#;
+	</delete>
+
+	<update id="updateStockoutDetail" parameterClass="StockoutDetailObject">
+		UPDATE stock_out_detail
+		SET
+	   merchandise_id=#merchandise_id#,qty=#qty#,sub_unit=#subunit#,voucherno=#voucherno#,remark=#remark#,modified_user_id=#modified_user_id#,modified_date=Now(),flag=#flag#
+		WHERE
+		stock_out_detail_id=#stockoutdetail_id#;
+	</update>
+	
+	<select id="selectAllStockoutDetail" 	resultMap="StockoutDetailResultMap" parameterClass="java.lang.Integer">
+		SELECT * FROM stock_out_detail ;
+	</select>
+	<select id="selectAllforadmin" 	resultMap="StockoutDetailResultMap">
+		SELECT * FROM stock_out_detail;
+	</select>
+	
+	<select id="selectStockoutDetail" parameterClass="java.lang.Integer"
+		resultMap="StockoutDetailResultMap">
+		SELECT * FROM stock_out_detail WHERE stock_out_detail_id=#value#;
+	</select>
+	
+    <select id="selectAllStock_OutDetailVou" parameterClass="java.lang.Integer"
+		resultMap="StockoutDetailResultMap">
+		SELECT * FROM stock_out_detail WHERE stock_out_id=#value#;
+	</select>
+	<select id="selectStock_outSummerchandise" parameterClass="java.lang.Integer" 
+	    resultMap="StockoutDetailResultMap">
+
+		SELECT * FROM stock_out_detail WHERE merchandise_id=#value#;
+		
+	   </select>
+	   
+	   <select id="selectOrder" resultMap="StockoutDetailResultMap">
+	   
+	   SELECT * FROM stock_out_detail ORDER BY qty DESC;
+	   
+	   </select>
+	
+</sqlMap>    

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Merchandise">
+	<typeAlias alias="MerchandiseObject" type="com.java.plyd.service.Merchandise" />
+
+	<resultMap id="MerchandiseResultMap" class="MerchandiseObject">
+		
+	    <result property="merchandise_id" column="merchandise_id" />
+	    <result property="name" column="name" />
+		<result property="unit_price" column="unit_price" />
+		<result property="brand_id" column="brand_id" />
+		<result property="sub_unit_id" column="sub_unit_id" />
+		<result property="sub_category_id" column="sub_category_id" />
+		<result property="created_user_id" column="created_user_id" />	
+		<result property="modified_user_id" column="modified_user_id" />
+		<result property="created_date" column="created_date" />
+		<result property="modified_date" column="modified_date" />
+		<result property="flag" column="flag" />
+		<result property="convertion_unit_id" column="convertion_unit_id" />
+		<result property="convertion_value" column="convertion_value" />
+	</resultMap>
+
+	<insert id="insertMerchandise" parameterClass="MerchandiseObject">
+		INSERT INTO merchandise
+		(name,unit_price,brand_id,sub_unit_id,sub_category_id,created_user_id,modified_user_id,created_date,modified_date,flag,convertion_unit_id,convertion_value) VALUES
+		(#name#,#unit_price#,#brand_id#,#sub_unit_id#,#sub_category_id#,#created_user_id#,#modified_user_id#,Now(),Now(),1,#convertion_unit_id#,#convertion_value#);
+		<selectKey resultClass="java.lang.Integer" keyProperty="merchandise_id">
+		    select last_insert_id()
+		</selectKey>
+	</insert>
+	<update id="updateMerchandise" parameterClass="MerchandiseObject">
+		UPDATE merchandise
+		SET
+		name=#name#,unit_price=#unit_price#,brand_id=#brand_id#,sub_unit_id=#sub_unit_id#,sub_category_id=#sub_category_id#,modified_user_id=#modified_user_id#,modified_date=Now(),flag=#flag#,convertion_unit_id=#convertion_unit_id#,convertion_value=#convertion_value#
+		WHERE
+		merchandise_id=#merchandise_id#;
+	</update>
+	<select id="selectAll" 	resultMap="MerchandiseResultMap">
+		SELECT * FROM merchandise;
+	</select>
+	
+	<select id="selectMerchandise" parameterClass="java.lang.Integer"
+		resultMap="MerchandiseResultMap">
+		SELECT * FROM merchandise WHERE merchandise_id=#merchandise_id#;
+	</select>
+	<select id="SearchbyUser" 	resultMap="MerchandiseResultMap">
+		SELECT * FROM merchandise WHERE name like '%';
+	</select>
+	
+	<delete id="deleteMerchandise" parameterClass="java.lang.Integer">
+		UPDATE merchandise
+		SET
+		flag=0
+		WHERE
+		merchandise_id=#value#;
+	</delete>
+</sqlMap>    

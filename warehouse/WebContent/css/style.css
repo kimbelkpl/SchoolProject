@@ -1,0 +1,232 @@
+body{
+	background-color: darkgrey;
+}
+/*for overwrite panel's border-radius and border-color of panel*/
+.panel1{
+	border-radius:0px;
+}
+.panel{
+	border-color: darkgrey !important;
+}
+/*end for overwrite margin bottom of panel*/
+
+.modal-dialog, .modal-content{
+	border-radius:10px;
+}
+.p10{
+	padding: 10px;
+}
+.p-header-btn{
+	padding: 5px; 
+	margin-right: 4px; 
+	box-shadow: 2px 2px 2px black;
+}
+.b-each-div{
+	border:3px solid lightgray;
+	background: white;	
+}
+.l-non{
+	list-style-type: none;
+}
+.l-non li a:hover{
+	text-decoration: none;
+	color: blue;
+}
+.ptb{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.w3-myfont {
+  font-weight: bold;
+  font-size: 23px;
+}
+#loadFile{
+	display: none;
+}
+ .imgProfile{
+ 	width:100%;
+ 	height:50%;
+ }
+ .form-control1{ 
+ 	color:black;
+ 	border: none;
+ 	box-shadow:none;
+ 	border-bottom: 2px solid black;
+ 	width:100%;
+ 	height: 34px;
+	padding: 6px 12px;
+	font-size: 17px;
+	background-color: white;
+ }
+ 
+ .form-control1:focus{ 
+ 	border: none;
+ 	box-shadow:none;
+ 	border-bottom: 2px solid #ff00ff;
+ 	width:100%;
+ 	height: 34px;
+	padding: 6px 12px;
+	font-size: 17px;
+ }
+ .divStyle{
+	border-style:solid;
+	border-color: #000;
+	background-color: white;
+	border-radius:15px;
+	box-shadow:0 10px 8px black;
+	}
+ h3{
+ 	font-size: 18px;
+ }
+ 
+ .tableLogin{width:80%;}
+
+ #example{
+ 	width:97%;
+ 	overflow:auto;
+ }
+ #example tbody tr td{
+ 	word-break:break-all;
+ }
+  #example thead tr th{
+ 	word-break:break-all;
+ }
+ #example tbody tr:hover{
+ 	background-color: skyblue;
+ 	cursor: pointer;
+ }
+ .row #ChangePassword{
+ 	cursor: cell;
+ }
+ .right{
+ 	text-align: right;
+ }
+ .break{
+ 	word-break:break-all;
+ }
+ .control-level{
+ 		text-align: right;
+ }
+ div.dataTables_wrapper div.dataTables_filter input{
+	background-image:url('../images/searchIcon.png');
+	background-position:0px 0px;
+	background-size:20px 23px;
+	background-repeat:no-repeat;
+	padding: 0px 0px 0px 25px;
+	border:1px solid #000000;
+	margin-bottom:12px;
+}
+ div.dataTables_wrapper div.dataTables_filter input:focus{
+	background-image:url('../images/searchIcon.png');
+	background-position:0px 0px;
+	background-size:20px 23px;
+	background-repeat:no-repeat;
+	padding: 0px 0px 0px 25px;
+	border:1px solid skyblue;
+	margin-bottom:12px;
+	box-shadow:0 0 8px skyblue;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    color: #333 !important;
+    border: 1px solid #979797;
+    background: linear-gradient(to bottom, skyblue 0%, skyblue 100%) repeat scroll 0% 0% transparent;
+}
+input:focus{
+		border:1px solid skyblue;
+	box-shadow:0 0 8px skyblue;
+}
+.scroll{overflow:auto;}
+/*For SubCategory Form*/
+ /*for droplist style*/
+ .droplist{
+ 	height:100px;
+ 	overflow-y:scroll;
+ }
+ .droplist li:hover{
+ 	background-color: skyblue;
+ 	cursor: pointer;
+ }
+ /*end for droplist style*/
+ 
+ /*for Add new brand button*/
+ .addBrandSub{
+ 	background-color: blue;
+ 	color:white;
+ }
+ .addBrandSub:hover{
+ 	background-color: lightgray;
+ 	color: black;
+ }
+ /*end for Add new brand button*/
+ #newBrandDiv{
+ 	display: none;
+ }
+ #newSubCategoryDiv{
+  display:none;
+ }
+ #newBrandDiv1, #newSubCategoryDiv1{
+ 	display: none;
+ }
+ 
+#myDropdown li:hover{
+	background-color: lightgreen;
+}
+ /*end for SubCategory Form*/
+ 
+ /*for dropdown autocomplement*/
+ .form-control2{
+ 	height: 34px;
+padding: 6px 12px;
+font-size: 14px;
+line-height: 1.42857;
+color: #555;
+background-color: #FFF;
+background-image: none;
+border: 1px solid #CCC;
+box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+	width: 90%;
+}
+
+/*for showing "no matching data is found......."*/
+.noMatchingSentence{
+	display: none;
+}
+/*end for showing "no matching data is found......."*/
+
+.combobox{
+	padding-left: 10px;
+}
+
+/*for dropdown button*/
+.btn6{
+	line-height: 1.42857;
+	color: black;
+	background-color: #gray;
+	background-image: none;
+	border: 1px solid #CCC;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+	transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+	height:34px;
+	width: 9%;
+	padding-top: 4px;
+	padding-bottom: 1px;
+}
+button .caret{
+	margin-left:-1px !important;
+}
+/*end for dropdown button*/
+
+.menu{
+	width: 88%;
+}
+.dropdown-menu-center{
+	left:50% !important;
+	right:auto !important;
+	text-align:left !important;
+	transform:translate(-50%,0) !important;
+}
+ /*end for dropdown autocomplement*/
+ .displayNone{
+ 	display: none;
+ }

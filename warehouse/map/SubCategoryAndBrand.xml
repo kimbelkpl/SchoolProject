@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="SubCategoryAndBrand">
+	
+	<typeAlias alias="SubCategoryAndBrandObject" type="com.java.plyd.service.SubCategoryAndBrand" />
+
+	<resultMap id="SubCategoryAndBrandResultMap" class="SubCategoryAndBrandObject">
+
+		<result property="sub_category_and_brand_id" column="sub_category_and_brand_id" />
+		<result property="sub_category_id" column="sub_category_id" />
+		<result property="brand_id" column="brand_id" />
+		<result property="created_date" column="created_date" />
+ 
+	</resultMap>
+
+	<insert id="insertSubCategoryAndBrand" parameterClass="SubCategoryAndBrandObject">
+		INSERT INTO sub_category_and_brand
+		(sub_category_id,brand_id,created_date) VALUES
+		(#sub_category_id#,#brand_id#,Now());
+	</insert>
+
+	<delete id="deleteSubCategoryAndBrand" parameterClass="java.lang.Integer">
+		DELETE from sub_category_and_brand where sub_category_id=#value#;
+	</delete>
+
+	<select id="selectSubCategoryAndBrandBySubCategoryId" parameterClass="java.lang.Integer"
+		resultMap="SubCategoryAndBrandResultMap">
+		SELECT * FROM sub_category_and_brand WHERE sub_category_id=#value#;
+	</select>
+	
+	<delete id="deleteSubCategoryAndBrand1" parameterClass="java.lang.Integer">
+		DELETE from sub_category_and_brand where brand_id=#value#;
+	</delete>
+
+	<select id="selectSubCategoryAndBrandByBrandId" parameterClass="java.lang.Integer"
+		resultMap="SubCategoryAndBrandResultMap">
+		SELECT * FROM sub_category_and_brand WHERE brand_id=#value#;
+	</select>
+	<select id="selectAll" 	resultMap="SubCategoryAndBrandResultMap">
+		SELECT * FROM sub_category_and_brand;
+	</select>
+	
+</sqlMap>    

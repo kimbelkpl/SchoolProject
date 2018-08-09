@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Sub_category">
+	<typeAlias alias="Sub_categoryObject" type="com.java.plyd.service.Sub_category" />
+
+	<resultMap id="Sub_categoryResultMap" class="Sub_categoryObject">
+		
+	    <result property="sub_category_id" column="sub_category_id" />
+	    <result property="name" column="name" />
+		<result property="remark" column="remark" />
+		<result property="category_id" column="category_id" />
+		<result property="created_user_id" column="created_user_id"/>
+		<result property="modified_user_id" column="modified_user_id"/>
+		<result property="created_date" column="created_date"/>
+		<result property="modified_date" column="modified_date"/>
+		<result property="flag" column="flag"/>
+		
+	</resultMap>
+
+	<insert id="insertSub_category" parameterClass="Sub_categoryObject">
+		INSERT INTO sub_category
+		(name,remark,category_id,created_user_id,modified_user_id,created_date,modified_date,flag) VALUES
+		(#name#,#remark#,#category_id#,#created_user_id#,#modified_user_id#,Now(),Now(),#flag#);
+		<selectKey resultClass="java.lang.Integer" keyProperty="sub_category_id">
+		    select last_insert_id()
+		</selectKey>
+	</insert>
+
+	<delete id="deleteSub_category" parameterClass="java.lang.Integer">
+		UPDATE sub_category
+		SET
+		flag=0
+		WHERE sub_category_id=#value#;
+	</delete>
+	<delete id="deleteSub_categoryByCategoryId" parameterClass="java.lang.Integer">
+		UPDATE sub_category
+		SET
+		flag=0
+		WHERE category_id=#value#;
+	</delete>
+
+	<update id="updateSub_category" parameterClass="Sub_categoryObject">
+		UPDATE sub_category
+		SET
+		name=#name#,remark=#remark#,category_id=#category_id#,modified_user_id=#modified_user_id#,modified_date=Now(),flag=#flag#
+		WHERE
+		sub_category_id=#sub_category_id#;
+	</update>
+
+	<select id="selectAllSub_category" 	resultMap="Sub_categoryResultMap" parameterClass="java.lang.Integer">
+		SELECT * FROM sub_category WHERE flag=1 ORDER BY name;
+	</select>
+	
+	<select id="selectSub_category" parameterClass="java.lang.Integer"
+		resultMap="Sub_categoryResultMap">
+		SELECT * FROM sub_category WHERE sub_category_id=#value#;
+	</select>
+	<select id="selectAllSub_categoryforadmin" 	resultMap="Sub_categoryResultMap" >
+		SELECT * FROM sub_category;
+	</select>
+	<select id="selectAllBycid" parameterClass="java.lang.Integer"
+		resultMap="Sub_categoryResultMap">
+		SELECT * FROM sub_category WHERE category_id=#value# and flag=1;
+	</select>
+</sqlMap>    

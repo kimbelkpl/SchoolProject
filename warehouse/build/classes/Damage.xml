@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Damage">
+	<typeAlias alias="DamageObject" type="com.java.plyd.service.Damage" />
+
+	<resultMap id="DamageResultMap" class="DamageObject">
+		
+	    <result property="damage_id" column="damage_id" />
+	    <result property="damage_date" column="damage_date" />
+	    <result property="merchandise_id" column="merchandise_id"/>
+		<result property="merchandise" column="merchandise" />
+		<result property="qty" column="qty" />
+		<result property="subunit" column="sub_unit" />
+		<result property="remark" column="remark" />
+		<result property="created_user_id" column="created_user_id"/>
+		<result property="modified_user_id" column="modified_user_id"/>
+		<result property="created_date" column="created_date"/>
+		<result property="modified_date" column="modified_date"/>
+		<result property="flag" column="flag"/>
+		
+	</resultMap>
+
+	<insert id="insertDamage" parameterClass="DamageObject">
+		INSERT INTO damage
+		(damage_date,merchandise_id,merchandise,qty,sub_unit,remark,created_user_id,modified_user_id,created_date,modified_date,flag) VALUES
+		(#damage_date#,#merchandise_id#,#merchandise#,#qty#,#subunit#,#remark#,#created_user_id#,#modified_user_id#,Now(),Now(),#flag#);
+	</insert>
+
+	<delete id="deleteDamage" parameterClass="java.lang.Integer">
+		UPDATE damage
+		SET
+		flag=0
+		WHERE damage_id=#value#;
+	</delete>
+
+	<update id="updateDamage" parameterClass="DamageObject">
+		UPDATE damage
+		SET
+	   damage_date=#damage_date#,merchandise_id=#merchandise_id#, merchandise=#merchandise#,qty=#qty#,sub_unit=#subunit#,remark=#remark#,modified_user_id=#modified_user_id#,modified_date=Now(),flag=#flag#
+		WHERE
+		damage_id=#damage_id#;
+	</update>
+	
+	<select id="selectAllDamage" 	resultMap="DamageResultMap" parameterClass="java.lang.Integer">
+		SELECT * FROM damage;
+	</select>
+	
+	<select id="selectDamage" parameterClass="java.lang.Integer"
+		resultMap="DamageResultMap">
+		SELECT * FROM damage WHERE damage_id=#value#;
+	</select>
+</sqlMap>    

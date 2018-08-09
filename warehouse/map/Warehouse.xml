@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Warehouse">
+	<typeAlias alias="WarehouseObject" type="com.java.plyd.service.Warehouse" />
+
+	<resultMap id="WarehouseResultMap" class="WarehouseObject">
+		<result property="warehouse_id" column="warehouse_id" />
+		<result property="wareName" column="name" />
+		<result property="wareAddress" column="address" />
+		<result property="warePhone" column="phone_no" />
+		<result property="wareRemark" column="remark" />
+		<result property="wareCreatedID" column="created_user_id" />
+		<result property="wareModifiedID" column="modified_user_id" />
+		<result property="wareCreatedDate" column="created_date"></result>
+		<result property="wareModifiedDate" column="modified_date"></result>
+		<result property="wareflag" column="flag"></result>
+	</resultMap>
+
+	<insert id="insertWarehouse" parameterClass="WarehouseObject" >
+		INSERT IGNORE INTO warehouse
+		(name,address,phone_no,remark,created_user_id,modified_user_id,created_date,modified_date,flag) VALUES
+		(#wareName#,#wareAddress#,#warePhone#,#wareRemark#,#wareCreatedID#,#wareModifiedID#,now(),now(),1);
+		<selectKey resultClass="java.lang.Integer" keyProperty="warehouse_id">
+		    select last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<update id="updateWarehouse" parameterClass="WarehouseObject">
+		UPDATE warehouse
+		SET
+		name=#wareName#,address=#wareAddress#,phone_no=#warePhone#,remark=#wareRemark#,modified_user_id=#wareModifiedID#,modified_date=now(),flag=#wareflag#
+				WHERE
+		warehouse_id=#id#;
+	</update>
+	
+	<!-- <delete id="deleteWarehouse" parameterClass="java.lang.Integer">
+		DELETE FROM warehouse
+		WHERE warehouse_id=#value#;
+	</delete> -->
+	<update id="deleteWarehouse" parameterClass="WarehouseObject">
+		UPDATE warehouse
+		SET
+		flag=#wareflag#
+		WHERE
+		warehouse_id=#id#;
+	</update>
+	<select id="selectAllWarehouse" 	resultMap="WarehouseResultMap">
+		SELECT * FROM warehouse;
+	</select>
+	
+	<select id="selectWarehouse" parameterClass="java.lang.Integer"
+		resultMap="WarehouseResultMap">
+		SELECT * FROM warehouse WHERE warehouse_id=#value#;
+	</select>
+	
+	<select id="selectwarehouse" parameterClass="java.lang.Integer"
+		resultMap="WarehouseResultMap">
+		SELECT * FROM warehouse WHERE warehouse_id=#value#;
+	</select>
+	
+</sqlMap>    

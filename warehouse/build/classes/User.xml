@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="User">
+	
+	<typeAlias alias="UserObject" type="com.java.plyd.service.User" />
+
+	<resultMap id="UserResultMap" class="UserObject">
+
+		<result property="user_id" column="user_id" />
+		<result property="user_level_id" column="user_level_id" />
+		<result property="name" column="name" />
+		<result property="password" column="password" />
+		<result property="created_user_id" column="created_user_id"/>
+		<result property="modified_user_id" column="modified_user_id"/>
+		<result property="created_date" column="created_date"/>
+		<result property="modified_date" column="modified_date"/>
+		<result property="flag" column="flag"/>
+ 
+	</resultMap>
+
+	<insert id="insertUser" parameterClass="UserObject">
+		INSERT INTO user
+		(user_level_id,name,password,created_user_id,modified_user_id,created_date,modified_date,flag) VALUES
+		(#user_level_id#,#name#,#password#,#created_user_id#,#modified_user_id#,Now(),Now(),#flag#);
+	</insert>
+
+	<delete id="deleteUser" parameterClass="java.lang.Integer">
+		UPDATE user
+		SET
+		flag=0
+		WHERE user_id=#value#;
+	</delete>
+
+	<update id="updateUser" parameterClass="UserObject">
+		UPDATE user
+		SET
+		user_level_id=#user_level_id#,name=#name#,modified_user_id=#modified_user_id#,modified_date=Now(),flag=#flag#
+		WHERE
+		user_id=#user_id#;
+	</update>
+	<update id="changePassword" parameterClass="UserObject">
+		UPDATE user
+		SET
+		password=#password#
+		WHERE
+		user_id=#user_id#;
+	</update>
+
+	<select id="selectAllUser" resultMap="UserResultMap" parameterClass="java.lang.Integer">
+		SELECT * FROM user;
+	</select>
+	<select id="selectUser" parameterClass="java.lang.Integer"
+		resultMap="UserResultMap">
+		SELECT * FROM user WHERE user_id=#value#;
+	</select>
+	<select id="selectAllByulid" resultMap="UserResultMap" parameterClass="java.lang.Integer">
+		SELECT * FROM user where user_level_id=#value# and flag=1;
+	</select>
+</sqlMap>    

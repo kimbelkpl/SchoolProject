@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Stock_in">
+	<typeAlias alias="Stock_inObject" type="com.java.plyd.service.Stock_in" />
+
+	<resultMap id="Stock_inResultMap" class="Stock_inObject">
+		<result property="stockInId" column="stock_in_id" />
+		<result property="conarridate" column="container_arrival_date" />
+		<result property="stockIndate" column="stock_in_date" />
+		<result property="supId" column="supplier_id" />
+		<result property="vr_no" column="vr_no" />
+		<result property="warId" column="warehouse_id" />
+		<result property="remark" column="remark" />
+		<result property="enddate" column="stock_in_date" />
+	    <result property="createUserId" column="created_user_id" />
+		<result property="modifiedUserId" column="modified_user_id" />
+		<result property="createDate" column="created_date" />
+		<result property="modifiedDate" column="modified_date" />
+		<result property="flag" column="flag"/>
+		
+	</resultMap>
+
+	<insert id="insertStock_in" parameterClass="Stock_inObject">
+		INSERT INTO stock_in
+		(container_arrival_date,stock_in_date,supplier_id,vr_no,warehouse_id,remark,created_user_id,modified_user_id,created_date,modified_date,flag) VALUES
+		(#conarridate#,#stockIndate#,#supId#,#vr_no#,#warId#,#remark#,#createUserId#,#modifiedUserId#,Now(),Now(),#flag#);
+		
+		<selectKey resultClass="java.lang.Integer" keyProperty="stockInId">
+		select last_insert_id() as stock_in_id
+		</selectKey>
+	</insert>
+
+	<delete id="deleteStock_in" parameterClass="java.lang.Integer">
+		UPDATE stock_in
+		SET
+		flag=0
+		WHERE stock_in_id=#value#;
+	</delete>
+
+	<update id="updateStock_in" parameterClass="Stock_inObject">
+		UPDATE stock_in
+		SET
+		container_arrival_date=#conarridate#,stock_in_date=#stockIndate#,supplier_id=#supId#,vr_no=#vr_no#,warehouse_id=#warId#,remark=#remark#,modified_user_id=#modifiedUserId#,
+		modified_date=Now(),flag=#flag#
+		WHERE
+		stock_in_id=#stockInId#;
+	</update>
+
+	<select id="selectAllStock_in" 	resultMap="Stock_inResultMap">
+		SELECT * FROM stock_in;
+	</select>
+	<select id="selectAllforadmin" 	resultMap="Stock_inResultMap">
+		SELECT * FROM stock_in;
+	</select>
+	<select id="selectStock_in" parameterClass="java.lang.Integer"
+		resultMap="Stock_inResultMap">
+		SELECT * FROM stock_in WHERE stock_in_id=#value#;
+	</select>
+	<select id="selectAllByDate" parameterClass="Stock_inObject"
+		resultMap="Stock_inResultMap">
+		SELECT * FROM stock_in WHERE stock_in_date BETWEEN #stockIndate# AND #enddate# ;
+	</select>
+	<select id="selectAllByDaily" parameterClass="Stock_inObject"
+		resultMap="Stock_inResultMap">
+		SELECT * FROM stock_in WHERE stock_in_date = #stockIndate# ;
+	</select>
+	<select id="selectAllByDailySumMer" parameterClass="Stock_inObject"
+		resultMap="Stock_inResultMap">
+		SELECT * FROM stock_in WHERE stock_in_date = #stockIndate# ;
+	</select>
+	
+
+	
+</sqlMap>    

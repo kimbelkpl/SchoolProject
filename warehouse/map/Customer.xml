@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Customer">
+	<typeAlias alias="CustomerObject" type="com.java.plyd.service.Customer" />
+
+	<resultMap id="CustomerResultMap" class="CustomerObject">
+		<result property="customer_id" column="customer_id" />
+		<result property="name" column="name" />
+		<result property="address" column="address" />
+		<result property="phone_no" column="phone_no" />
+		<result property="email" column="email" />
+		<result property="remark" column="remark" />
+	    <result property="created_user_id" column="created_user_id" />
+		<result property="modified_user_id" column="modified_user_id" />
+		<result property="created_date" column="created_date" />
+		<result property="modified_date" column="modified_date" />
+		<result property="flag" column="flag" />
+	</resultMap>
+
+	<insert id="insertCustomer" parameterClass="CustomerObject">
+		INSERT INTO customer
+		(name,address,phone_no,email,remark,created_user_id,modified_user_id,created_date,modified_date,flag) VALUES
+		(#name#,#address#,#phone_no#,#email#,#remark#,#created_user_id#,#modified_user_id#,now(),now(),#flag#);
+	</insert>
+
+	<delete id="deleteCustomer" parameterClass="java.lang.Integer">
+		UPDATE customer
+		SET
+		flag=0
+		WHERE customer_id=#value#;
+	</delete>
+
+	<update id="updateCustomer" parameterClass="CustomerObject">
+		UPDATE customer
+		SET
+		name=#name#,address=#address#,phone_no=#phone_no#,email=#email#,remark=#remark#,modified_user_id=#modified_user_id#,modified_date=now(),flag=#flag#
+		WHERE
+		customer_id=#customer_id#;
+	</update>
+
+	<select id="selectAllCustomer" 	resultMap="CustomerResultMap">
+		SELECT * FROM customer;
+	</select>
+	<select id="selectAllCustomerOn" 	resultMap="CustomerResultMap">
+		SELECT * FROM customer WHERE flag=1;
+	</select>
+	<select id="selectCustomer" parameterClass="java.lang.Integer"
+		resultMap="CustomerResultMap">
+		SELECT * FROM customer WHERE customer_id=#value#;
+	</select>
+	
+</sqlMap>    

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Supplier">
+	<typeAlias alias="SupplierObject" type="com.java.plyd.service.Supplier" />
+
+	<resultMap id="SupplierResultMap" class="SupplierObject">
+		<result property="supplier_id" column="supplier_id" />
+		<result property="name" column="name" />
+		<result property="address" column="address" />
+		<result property="phone_no" column="phone_no" />
+		<result property="email" column="email" />
+		<result property="remark" column="remark" />
+		<result property="created_user_id" column="created_user_id" />
+		<result property="modified_user_id" column="modified_user_id" />
+		<result property="created_date" column="created_date" />
+		<result property="modified_date" column="modified_date" />
+		<result property="flag" column="flag" />
+	
+	</resultMap>
+
+	<insert id="insertSupplier" parameterClass="SupplierObject">
+		INSERT INTO supplier
+		(name,address,phone_no,email,remark,created_user_id,modified_user_id,created_date,modified_date,flag) VALUES
+		(#name#,#address#,#phone_no#,#email#,#remark#,#created_user_id#,#modified_user_id#,now(),now(),#flag#);
+	</insert>
+
+	<delete id="deleteSupplier" parameterClass="java.lang.Integer">
+		UPDATE supplier
+		SET
+		flag=0
+		WHERE supplier_id=#value#;
+	</delete>
+
+	<update id="updateSupplier" parameterClass="SupplierObject">
+		UPDATE supplier
+		SET
+		name=#name#,address=#address#,phone_no=#phone_no#,email=#email#,remark=#remark#,modified_user_id=#modified_user_id#,modified_date=now(),flag=#flag#
+		WHERE
+		supplier_id=#supplier_id#;
+	</update>
+
+	<select id="selectAllSupplier" 	resultMap="SupplierResultMap">
+		SELECT * FROM supplier;
+	</select>
+	<select id="selectAllSupplierOn" 	resultMap="SupplierResultMap">
+		SELECT * FROM supplier WHERE flag=1;
+	</select>
+	<select id="selectSupplier" parameterClass="java.lang.Integer"
+		resultMap="SupplierResultMap">
+		SELECT * FROM supplier WHERE supplier_id=#value#;
+	</select>
+	
+</sqlMap>    

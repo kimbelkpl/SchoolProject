@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Subunit_Merchandise">
+	
+	<typeAlias alias="Subunit_MerchandiseObject" type="com.java.plyd.service.Subunit_Merchandise" />
+
+	<resultMap id="Subunit_MerchandiseResultMap" class="Subunit_MerchandiseObject">
+
+		<result property="subunit_merchandise_id" column="subunit_merchandise_id" />
+		<result property="sub_unit_id" column="sub_unit_id" />
+		<result property="merchandise_id" column="merchandise_id" />
+
+	</resultMap>
+
+	<insert id="insertSubunit_Merchandise" parameterClass="Subunit_MerchandiseObject">
+		INSERT INTO subunit_merchandise
+		(sub_unit_id,merchandise_id) VALUES
+		(#sub_unit_id#,#merchandise_id#);
+	</insert>
+
+	<delete id="deleteSubunit_Merchandise" parameterClass="java.lang.Integer">
+		DELETE FROM subunit_subcategory
+		WHERE subunit_merchandise_id=#value#;
+	</delete>
+
+	<update id="updateSubunit_Merchandise" parameterClass="Subunit_MerchandiseObject">
+		UPDATE subunit_merchandise
+		SET
+		sub_unit_id=#sub_unit_id#,merchandise_id=#merchandise_id#
+		WHERE
+		subunit_merchandise_id=#subunit_merchandise_id#;
+	</update>
+
+	<select id="selectAll" resultMap="Subunit_MerchandiseResultMap">
+		SELECT *,1 FROM subunit_merchandise;
+	</select>
+	
+</sqlMap>    

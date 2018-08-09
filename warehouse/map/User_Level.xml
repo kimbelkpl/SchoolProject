@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="User_Level">
+	<typeAlias alias="User_LevelObject" type="com.java.plyd.service.User_Level" />
+
+	<resultMap id="User_LevelResultMap" class="User_LevelObject">
+		
+	    <result property="user_level_id" column="user_level_id" />
+	    <result property="name" column="name" />
+		<result property="remark" column="remark" />
+		<result property="created_user_id" column="created_user_id" />
+		<result property="modified_user_id" column="modified_user_id" />
+		<result property="created_date" column="created_date" />
+		<result property="modified_date" column="modified_date" />
+		<result property="flag" column="flag" />
+	</resultMap>
+
+	<insert id="insertUser_Level" parameterClass="User_LevelObject">
+		INSERT INTO user_level
+		(name,remark,created_user_id,modified_user_id,created_date,modified_date,flag) VALUES
+		(#name#,#remark#,#created_user_id#,#modified_user_id#,now(),now(),#flag#);
+	</insert>
+
+	<delete id="deleteUser_Level" parameterClass="java.lang.Integer">
+		UPDATE user_level
+		SET
+		flag=0
+		WHERE user_level_id=#value#;
+	</delete>
+	<update id="updateUser_Level" parameterClass="User_LevelObject">
+		UPDATE user_level
+		SET
+		name=#name#,remark=#remark#,modified_user_id=#modified_user_id#,modified_date=now(),flag=#flag#
+		WHERE
+		user_level_id=#user_level_id#;
+	</update>
+
+	<select id="selectAll" 	resultMap="User_LevelResultMap" parameterClass="java.lang.Integer">
+		SELECT * FROM user_level WHERE flag=1 ORDER BY name;
+	</select>
+	
+	<select id="selectUser_Level" parameterClass="java.lang.Integer"
+		resultMap="User_LevelResultMap">
+		SELECT * FROM user_level WHERE user_level_id=#value#;
+	</select>
+	<select id="selectAllforadmin" 	resultMap="User_LevelResultMap">
+		SELECT * FROM user_level;
+	</select>
+</sqlMap>    

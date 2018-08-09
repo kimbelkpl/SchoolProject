@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:faces="http://www.springframework.org/schema/faces"
+	xmlns:int-security="http://www.springframework.org/schema/integration/security"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:sec="http://www.springframework.org/schema/security"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/integration/security http://www.springframework.org/schema/integration/security/spring-integration-security-2.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/faces http://www.springframework.org/schema/faces/spring-faces-2.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+	<context:component-scan base-package="com.java.plyd" />
+
+	<tx:annotation-driven transaction-manager="TransactionManager" />
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/warehouse_dbttt" />
+		<property name="username" value="root" />
+		<property name="password" value="wutyitheint" />
+		<!-- <property name="url" value="jdbc:mysql://myawsinstance.c58ai3sz3ola.ap-southeast-1.rds.amazonaws.com:3306/jewellarysample" 
+			/> <property name="username" value="pearlyadana" /> <property name="password" 
+			value="pearl#yadana#15#aws" /> -->
+	</bean>
+
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation">
+			<value>classpath:SqlMapConfig.xml</value>
+		</property>
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="CategoryDAOManager" class="com.java.plyd.persistence.CategoryDAOManager">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="Sub_categoryDOManager" class="com.java.plyd.persistence.Sub_categoryDOManager">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="BrandDAOManager" class="com.java.plyd.persistence.BrandDAOManager">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="UserDAOManager" class="com.java.plyd.persistence.UserDAOManager">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="User_LevelDAOManager" class="com.java.plyd.persistence.User_LevelDAOManager">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="SubCategoryAndBrandDAOManager" class="com.java.plyd.persistence.SubCategoryAndBrandDAOManager">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="CustomerDAOManager" class="com.java.plyd.persistence.CustomerDAOManager">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="SupplierDAOManager" class="com.java.plyd.persistence.SupplierDAOManager">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="WarehouseDAOManager" class="com.java.plyd.persistence.WarehouseDAOManager">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	
+	<bean id="BasicunitDAOManager" class="com.java.plyd.persistence.BasicunitDAOManager">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="SubUnitDAOmanager" class="com.java.plyd.persistence.SubUnitDAOmanager">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="MerchandiseDAOManager" class="com.java.plyd.persistence.MerchandiseDAOManager">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="Stock_BalanceDAOManager" class="com.java.plyd.persistence.Stock_BalanceDAOManager">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="Subunit_MerchandiseDAOManager" class="com.java.plyd.persistence.Subunit_MerchandiseDAOManager">
+	  <property name="sqlMapClient" ref="sqlMapClient"/>
+	</bean>
+	<bean id="Merchandise_BrandDAOManager" class="com.java.plyd.persistence.Merchandise_BrandDAOManager">
+	  <property name="sqlMapClient" ref="sqlMapClient"/>
+	</bean>
+	<bean id="Stock_InDetailDAOManager" class="com.java.plyd.persistence.Stock_InDetailDAOManager">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="Stock_inDAOManager" class="com.java.plyd.persistence.Stock_inDAOManager">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="StockoutdetailDAOManager" class="com.java.plyd.persistence.StockoutdetailDAOManager">
+	  <property name="sqlMapClient" ref="sqlMapClient"/>
+	</bean>
+	<bean id="Stock_outDAOManager" class="com.java.plyd.persistence.Stock_outDAOManager">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="DamageDAOManager" class="com.java.plyd.persistence.DamageDAOManager">
+	  <property name="sqlMapClient" ref="sqlMapClient"/>
+	</bean>
+</beans>

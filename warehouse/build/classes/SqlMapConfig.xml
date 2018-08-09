@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL MAP Config 2.0//EN" "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+	<settings useStatementNamespaces="true"/>
+          <sqlMap resource="Category.xml"></sqlMap>
+          <sqlMap resource="Sub_category.xml"></sqlMap>
+          <sqlMap resource="Brand.xml"></sqlMap>
+          <sqlMap resource="User.xml"></sqlMap>
+          <sqlMap resource="User_Level.xml"></sqlMap>
+          <sqlMap resource="SubCategoryAndBrand.xml"></sqlMap>
+          <sqlMap resource="Customer.xml"></sqlMap>
+          <sqlMap resource="Supplier.xml"></sqlMap>
+          <sqlMap resource="Warehouse.xml"></sqlMap>
+          <sqlMap resource="Basicunit.xml"></sqlMap>
+          <sqlMap resource="SubUnit.xml"></sqlMap>
+          <sqlMap resource="Merchandise.xml"></sqlMap>
+          <sqlMap resource="Stock_Balance.xml"></sqlMap>
+          <sqlMap resource="Stock_In.xml"></sqlMap>
+          <sqlMap resource="stockindetail.xml"></sqlMap>
+          <sqlMap resource="Subunit_Merchandise.xml" />
+          <sqlMap resource="Merchandise_Brand.xml" />
+          <sqlMap resource="Stock_out.xml" />
+          <sqlMap resource="stockoutdetail.xml" />
+          <sqlMap resource="Damage.xml" />
+</sqlMapConfig>

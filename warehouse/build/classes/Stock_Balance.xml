@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Stock_Balance">
+	<typeAlias alias="Stock_BalanceObject" type="com.java.plyd.service.Stock_Balance" />
+	
+	<resultMap id="Stock_BalancetResultMap" class="Stock_BalanceObject">
+	
+		<result property="stock_balance_id" column="stock_balance_id" />
+			<result property="merchandise_id" column="merchandise_id" />
+		<result property="warehouse_id" column="warehouse_id" />
+		<result property="qty" column="qty" />
+			<result property="remark" column="remark" />
+		
+
+	</resultMap>
+
+	<insert id="insertStock_Balance" parameterClass="Stock_BalanceObject">
+		INSERT INTO stock_balance
+		(merchandise_id,warehouse_id,qty,remark) VALUES
+		(#merchandise_id#,#warehouse_id#,#qty#,#remark#);
+	</insert>
+
+	<delete id="deleteStock_Balance" parameterClass="java.lang.Integer">
+		DELETE FROM stock_balance
+		WHERE stock_balance_id=#value#;
+	</delete>
+
+	<update id="updateStock_Balance" parameterClass="Stock_BalanceObject">
+		UPDATE stock_balance
+		SET
+	qty=#qty#
+		WHERE
+		stock_balance_id=#stock_balance_id#;
+	</update>
+
+	<select id="selectAllStock_Balance" resultMap="Stock_BalancetResultMap">
+		SELECT * FROM stock_balance;
+	</select>
+	<select id="selectStock_Balance" parameterClass="java.lang.Integer"
+		resultMap="Stock_BalancetResultMap">
+		SELECT * FROM stock_balance WHERE stock_balance_id=#value#;
+	</select>
+	
+	<select id="selectStock_BalanceByWarehouseId" parameterClass="java.lang.Integer"
+	   resultMap="Stock_BalancetResultMap">
+	   SELECT * FROM stock_balance WHERE warehouse_id=#value#;
+	   
+	   </select>
+  <select id="selectStock_BalanceBymerchandise" parameterClass="java.lang.Integer" 
+	    resultMap="Stock_BalancetResultMap">
+
+	   
+		SELECT *
+		FROM stock_balance
+		WHERE merchandise_id=#value#;
+		
+	   </select> 
+</sqlMap>    

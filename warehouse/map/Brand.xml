@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Brand">
+	<typeAlias alias="BrandObject" type="com.java.plyd.service.Brand" />
+
+	<resultMap id="BrandResultMap" class="BrandObject">
+		<result property="brand_id" column="brand_id" />
+		<result property="name" column="name" />
+		<result property="remark" column="remark" />
+		<result property="created_user_id" column="created_user_id"/>
+		<result property="modified_user_id" column="modified_user_id"/>
+		<result property="created_date" column="created_date"/>
+		<result property="modified_date" column="modified_date"/>
+		<result property="flag" column="flag"/>
+	</resultMap>
+
+	<insert id="insertBrand" parameterClass="BrandObject">
+		INSERT INTO brand
+		(name,remark,created_user_id,modified_user_id,created_date,modified_date,flag) VALUES
+		(#name#,#remark#,#created_user_id#,#modified_user_id#,Now(),Now(),#flag#);
+		<selectKey resultClass="java.lang.Integer" keyProperty="brand_id">
+		    select last_insert_id()
+		</selectKey>
+	</insert>
+
+	<delete id="deleteBrand" parameterClass="java.lang.Integer">
+		UPDATE brand
+		SET
+		flag=0
+		WHERE brand_id=#value#;
+	</delete>
+
+	<update id="updateBrand" parameterClass="BrandObject">
+		UPDATE brand
+		SET
+		name=#name#,remark=#remark#,modified_user_id=#modified_user_id#,modified_date=Now(),flag=#flag#
+		WHERE
+		brand_id=#brand_id#;
+	</update>
+	
+	<select id="selectAllBrand" 	resultMap="BrandResultMap" parameterClass="java.lang.Integer">
+		SELECT * FROM brand WHERE flag=1 ORDER BY name;
+	</select>
+	<select id="selectAllforadmin" 	resultMap="BrandResultMap">
+		SELECT * FROM brand;
+	</select>
+	
+	<select id="selectBrand" parameterClass="java.lang.Integer"
+		resultMap="BrandResultMap">
+		SELECT * FROM brand WHERE brand_id=#value#;
+	</select>
+	
+    
+	
+	
+</sqlMap>    
