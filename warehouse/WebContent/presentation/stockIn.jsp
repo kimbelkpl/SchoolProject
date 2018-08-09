@@ -1332,7 +1332,7 @@ var name_error= document.getElementById("name_error");
             var markup = "<tr><td><center><input type='hidden' name='merid' value='"+merid+"'/>"+merid+"</center></td><td><input type='hidden' name='arrtxtQty' value='"+qty+"'/>" + qty +"</td><td><input type='hidden' name='cbosubunit' value='" + subunit +"'/>" + subunit +"</td><td><input type='hidden' name='txtRemark' value='"+remark+"'/>" + remark+"</td><td><input type='hidden' name='txtVoucherNo' value='"+voucher+"'/>"+voucher +"</td><td><input type='checkbox' name='record'  /></td></tr>";
             $("#return tbody").append(markup);
             retxtQty.style.border = "3px solid  #00e600";
-            name_err.innerHTML ="<div class='cor'>Correct</div>";
+            name_err.innerHTML ="<div class='cor'>Enough!!!</div>";
            // return true;
             }
         });
