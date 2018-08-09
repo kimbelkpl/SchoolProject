@@ -420,7 +420,14 @@ var resecondcombo=document.getElementById("resub").value;
 							<tr>
 			 			        <td><%out.println(stock_in.getConarridate());%></td>
 						        <td><%out.println(stock_in.getStockIndate());%></td>
-						        <td><%out.println(stock_in.getSupId());%></td>
+						        <td><%if(stock_in.getSupId()==0)
+						        	{
+						        	out.println("-");
+						        	}
+						        	else{
+						        		out.println(stock_in.getSupId());
+						        	}%></td>
+						        	
 						        <td><%out.println(stock_in.getVr_no());%></td>
 								<td><%out.println(stock_in.getWarId());%></td>
 								<td><%out.println(stock_in.getRemark());%></td>
@@ -466,7 +473,19 @@ var resecondcombo=document.getElementById("resub").value;
 													  document.forms["edit"]["datePickerConAr"].value=arguments[1];
 													  document.forms["edit"]["datePickerStockin"].value=arguments[2];
 													  document.forms["edit"]["cboWarehouse"].value=arguments[3];
-													  document.forms["edit"]["cboSupplier"].value=arguments[4];
+													  
+													  if(arguments[4]=="0"){
+														  var subunit= document.createElement("option");
+															subunit.text ="-";
+															subunit.value = "-1";
+															document.forms["edit"]["cboSupplier"].add(subunit);
+														  document.forms["edit"]["cboSupplier"].value="-1";
+													  }
+													  else
+														  {														 
+														  document.forms["edit"]["cboSupplier"].value=arguments[4];
+														  }
+													 
 													  document.forms["edit"]["txtVoucherNo"].value=arguments[5];
 													  document.forms["edit"]["txtRemark"].value=arguments[6];
 													  document.forms["edit"]["flag"].value=arguments[7];
@@ -1283,7 +1302,7 @@ var name_error= document.getElementById("name_error");
            			 var markup = "<tr><td><center><input type='hidden' name='merid' value='"+merid+"'/>"+merid+"</center></td><td><input type='hidden' name='arrtxtQty' value='"+qty+"'/>" + qty +"</td><td><input type='hidden' name='cbosubunit' value='" + subunit +"'/>" + subunit +"</td><td><input type='hidden' name='txtRemark' value='"+remark+"'/>" + remark+"</td><td><input type='hidden' name='txtVoucherNo' value='"+voucher+"'/>"+voucher +"</td><td><input type='checkbox' name='record'  /></td></tr>";
            			 $("#table1 tbody").append(markup);
            			 txtQty.style.border = "3px solid #00e600";
-            		 name_error.innerHTML ="<div class='cor'>Enough!!!</div>";
+            		 name_error.innerHTML ="<div class='cor'>Correct</div>";
            
             }
             else if(start>=end){	
@@ -1332,7 +1351,7 @@ var name_error= document.getElementById("name_error");
             var markup = "<tr><td><center><input type='hidden' name='merid' value='"+merid+"'/>"+merid+"</center></td><td><input type='hidden' name='arrtxtQty' value='"+qty+"'/>" + qty +"</td><td><input type='hidden' name='cbosubunit' value='" + subunit +"'/>" + subunit +"</td><td><input type='hidden' name='txtRemark' value='"+remark+"'/>" + remark+"</td><td><input type='hidden' name='txtVoucherNo' value='"+voucher+"'/>"+voucher +"</td><td><input type='checkbox' name='record'  /></td></tr>";
             $("#return tbody").append(markup);
             retxtQty.style.border = "3px solid  #00e600";
-            name_err.innerHTML ="<div class='cor'>Enough!!!</div>";
+            name_err.innerHTML ="<div class='cor'>Correct</div>";
            // return true;
             }
         });
