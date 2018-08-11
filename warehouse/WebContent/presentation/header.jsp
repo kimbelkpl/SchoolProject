@@ -70,13 +70,13 @@ session.setAttribute("uid",uid);
 					<!-- start pannel -->
 					<div class="row">
 						<div class="panel panel-default">
-						 	<div class="panel-body">
+						 	
 						 		<h3><img src="images/dash board.png"> Profile</h3>
 						 		<ul class="l-non">
 						 			<li><a href="/warehouse/UserController?page=userProfile"><span class="glyphicon glyphicon-chevron-right"></span> User Profile</a></li>
 						 			<li><a href=""><span class="glyphicon glyphicon-chevron-right"></span> Company Profile</a></li>
 						 		</ul>
-						 	</div>
+						 	
 						</div>
 					</div>
 					
@@ -84,7 +84,7 @@ session.setAttribute("uid",uid);
 					<!-- start pannel -->
 					<div class="row">
 						<div class="panel panel-default">
-						 	<div class="panel-body">
+						 	
 						 		<h3><img src="images/account.png"> Account</h3>
 						 		<ul class="l-non">
 						 			<li><a href="/warehouse/CustomerController?page=Customer"><span class="glyphicon glyphicon-chevron-right"></span> Customer List</a></li>
@@ -95,7 +95,7 @@ session.setAttribute("uid",uid);
 						 			<li><a href="/warehouse/User_LevelController?page=userlevel"><span class="glyphicon glyphicon-chevron-right"></span> User Level</a></li>
 						 			<%} %>
 						 		</ul>
-						 	</div>
+						 	
 						</div>
 					</div>
 					
@@ -103,7 +103,7 @@ session.setAttribute("uid",uid);
 					<!-- start pannel -->
 					<div class="row">
 						<div class="panel panel-default">
-						 	<div class="panel-body">
+						 	
 						 		<h3><img src="images/inventory.jpg"> Inventory</h3>
 						 		<ul class="l-non">
 						 			<li><a href="/warehouse/CategoryController?page=categoryform"><span class="glyphicon glyphicon-chevron-right"></span> Category</a></li>
@@ -120,7 +120,7 @@ session.setAttribute("uid",uid);
 						 			<li><a href="/warehouse/DamageController?page=damage"><span class="glyphicon glyphicon-chevron-right"></span> Damage</a></li>
 						 			
 						 		</ul>
-						 	</div>
+						 	
 						</div>
 					</div>
 					
@@ -128,13 +128,13 @@ session.setAttribute("uid",uid);
 					<!-- start pannel -->
 					<div class="row">
 						<div class="panel panel-default">
-						 	<div class="panel-body">
+						 	
 						 		<h3><img src="images/warehouse.png"> Building</h3>
 						 		<ul class="l-non">
 						 			<li><a href="/warehouse/WarehouseController?page=warehouseform"><span class="glyphicon glyphicon-chevron-right"></span> Warehouse</a></li>
 						 			<li><a href=""><span class="glyphicon glyphicon-chevron-right"></span> Store</a></li>
 						 		</ul>
-						 	</div>
+						 	
 						</div>
 					</div>
 					
