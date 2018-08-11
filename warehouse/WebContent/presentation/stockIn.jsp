@@ -3,10 +3,11 @@
 <%@page import="com.java.plyd.service.*"%>
 <html>
 <head>
-	<title>StockIn Information</title>
-	<%@ include file="link.jsp" %>
+<title>StockIn Information</title>
+<%@ include file="link.jsp"%>
 <!-- Refresh function -->
-   <script>
+<script>
+var isbtnSubmit=false;
    		function existorNot(){
    			 if(arguments[0]=="2"){
    				document.getElementById("datePickerConArn").value=arguments[1];
@@ -37,8 +38,8 @@
 
    		}
 </script>
-		
-					
+
+
 <!-- Start click event -->
 <!-- For Combobox Event(start) -->
 <!-- Start onchange combobox javascript-->
@@ -66,8 +67,7 @@ function cat(){
 			subcatto+="\'"+subcat.getSub_category_id()+"\',";//inside of subcategory=subcategory id
 			
 			
-		}
-		%>
+		}%>
         var subcatidarr=[<%=subcatid%>];
 	   	var subcatNamearr=[<%=subcatName%>];
 	   	var categoryarr=[<%=cate%>];
@@ -180,10 +180,7 @@ var resecondcombo=document.getElementById("resub").value;
 	   	  for(SubCategoryAndBrand scb:sub_cat_brandList){
 	   		  sub_brand_id+="\'"+scb.getBrand_id()+"\',";
 	   		  sub_sub_cate_id+="\'"+scb.getSub_category_id()+"\',";
-	   	  }
-	   	 
-	     
-	   %>
+	   	  }%>
 	  
 	    var subcatidarr=[<%=subcatid%>];
 	   	var subcatNamearr=[<%=subcatName%>];
@@ -265,7 +262,7 @@ var resecondcombo=document.getElementById("resub").value;
   function  brand(){
 	  var brand=document.getElementById("third").value;
 	  var rebrand=document.getElementById("rethird").value;
-	  <% List<Merchandise> merList = (List<Merchandise>) request.getAttribute("merchandise");
+	  <%List<Merchandise> merList = (List<Merchandise>) request.getAttribute("merchandise");
 	     List<Merchandise_Brand> merbrandList=(List<Merchandise_Brand>) request.getAttribute("merchandise_brand");
 	         
 	         String merbrand_brandid="";
@@ -280,9 +277,7 @@ var resecondcombo=document.getElementById("resub").value;
 	       for(Merchandise  mer:merList){	  
 	        	mername+="\'"+mer.getName()+"\',";
 	        	merid+="\'"+mer.getMerchandise_id()+"\',";
-	        }  
-	       
-	        %> 
+	        }%> 
 	        
 	      var mernamearr=[<%=mername%>];
 	        var meridarr=[<%=merid%>]; 
@@ -357,109 +352,175 @@ var resecondcombo=document.getElementById("resub").value;
 
 <!-- End click event -->
 </head>
-<body class="w3-container w3-light-gray" onload="existorNot('<%out.print(request.getAttribute("exist"));%>','<%out.print(request.getAttribute("date"));%>','<%out.print(request.getAttribute("datein"));%>','<%out.print(request.getAttribute("war"));%>','<%out.print(request.getAttribute("sup"));%>','<%out.print(request.getAttribute("vou"));%>','<%out.print(request.getAttribute("remar"));%>')">
-	<%@include file="header.jsp" %>
+<body class="w3-container w3-light-gray"
+	onload="existorNot('<%out.print(request.getAttribute("exist"));%>','<%out.print(request.getAttribute("date"));%>','<%out.print(request.getAttribute("datein"));%>','<%out.print(request.getAttribute("war"));%>','<%out.print(request.getAttribute("sup"));%>','<%out.print(request.getAttribute("vou"));%>','<%out.print(request.getAttribute("remar"));%>')">
+	<%@include file="header.jsp"%>
 
-<div class="row panel-body p10">
-					<!-- inserting the code for each operation -->
-					<div class="col-sm-9">
-						<div class="row p10">
-							<div class="panel panel-default">
-						  		<div class="panel-heading w3-container w3-light-blue p10">
-						  			<button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew" id="btnAddNew"><span class="glyphicon glyphicon-plus"></span> Add New</button> 
-						  			<button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addReturn" id="btnReturn"><span class="glyphicon glyphicon-plus"></span>Return</button>
-			  						<span class="dropdown">
-			  							<button type="button" class="btn w3-container w3-light-blue p-header-btn dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Tools <span class="caret"></span></button>
-										  <ul class="dropdown-menu p10">
-										    <li class="w3-container w3-text-black w3-hover-blue w3-hover-text-white p10"><span class="glyphicon glyphicon-import"></span> Import Files</li>
-										    <li class="w3-container w3-text-black w3-hover-blue w3-hover-text-white p10"><span class="glyphicon glyphicon-export"></span> Export Files</li>
-										    <li></li>
-										  </ul>
-			  						</span>			  						
-						  		</div>
+	<div class="row panel-body p10">
+		<!-- inserting the code for each operation -->
+		<div class="col-sm-9">
+			<div class="row p10">
+				<div class="panel panel-default">
+					<div class="panel-heading w3-container w3-light-blue p10">
+						<button type="button"
+							class="btn w3-container w3-light-blue p-header-btn"
+							data-toggle="modal" data-target="#addNew" id="btnAddNew">
+							<span class="glyphicon glyphicon-plus"></span> Add New
+						</button>
+						<button type="button"
+							class="btn w3-container w3-light-blue p-header-btn"
+							data-toggle="modal" data-target="#addReturn" id="btnReturn">
+							<span class="glyphicon glyphicon-plus"></span>Return
+						</button>
+						<span class="dropdown">
+							<button type="button"
+								class="btn w3-container w3-light-blue p-header-btn dropdown-toggle"
+								data-toggle="dropdown">
+								<span class="glyphicon glyphicon-cog"></span> Tools <span
+									class="caret"></span>
+							</button>
+							<ul class="dropdown-menu p10">
+								<li
+									class="w3-container w3-text-black w3-hover-blue w3-hover-text-white p10"><span
+									class="glyphicon glyphicon-import"></span> Import Files</li>
+								<li
+									class="w3-container w3-text-black w3-hover-blue w3-hover-text-white p10"><span
+									class="glyphicon glyphicon-export"></span> Export Files</li>
+								<li></li>
+							</ul>
+						</span>
+					</div>
 
-						  		<!--end of Body column -->
-						  		<!--Panel-->
+					<!--end of Body column -->
+					<!--Panel-->
 
 
-                                  <div class="panel-body p10">
-						  			<!-- start of search result table -->
-						  				<style>
-								
-									#search1 tbody tr:hover { background-color: skyblue; cursor:pointer;
-									
-									}
-									</style>
-						  			<table id="search1" class="table table-condensed table-bordered p10">
-						  				<caption class="w3-container w3-text-black w3-myfont">StockIn Information Lists</caption>
-									    <thead class="w3-container w3-light-blue p10">
-									      <tr>
-									        <th>Container Arrival Date</th>
-									        <th>Stock In Date</th>
-									        <th>Supplier</th>
-									        <th>Voucher No</th>
-									         <th>Warehouse</th>
-									        <th>Remark</th>
-									        <th>Flag</th>
-									        <th>Option</th>
-									      </tr>
-									    </thead>
-									    
-									     
-				       <%
-						   	IStock_inService  stock_inService= (IStock_inService) SpringBeanFactory
-							.getBean("Stock_inService");
-							List<Stock_in> stock_inList = stock_inService.selectAll();
-									IUserService userservice=(IUserService)SpringBeanFactory.getBean("UserService");
-						%>
-		
-						<tbody>
-	                	<%
-							for (Stock_in stock_in : stock_inList) {
-						%>					
-							<tr>
-			 			        <td><%out.println(stock_in.getConarridate());%></td>
-						        <td><%out.println(stock_in.getStockIndate());%></td>
-						        <td><%if(stock_in.getSupId()==0)
-						        	{
-						        	out.println("-");
-						        	}
-						        	else{
-						        		out.println(stock_in.getSupId());
-						        	}%></td>
-						        	
-						        <td><%out.println(stock_in.getVr_no());%></td>
-								<td><%out.println(stock_in.getWarId());%></td>
-								<td><%out.println(stock_in.getRemark());%></td>
+					<div class="panel-body p10">
+						<!-- start of search result table -->
+						<style>
+#search1 tbody tr:hover {
+	background-color: skyblue;
+	cursor: pointer;
+}
+</style>
+						<table id="search1"
+							class="table table-condensed table-bordered p10">
+							<caption class="w3-container w3-text-black w3-myfont">StockIn
+								Information Lists</caption>
+							<thead class="w3-container w3-light-blue p10">
+								<tr>
+									<th>Container Arrival Date</th>
+									<th>Stock In Date</th>
+									<th>Supplier</th>
+									<th>Voucher No</th>
+									<th>Warehouse</th>
+									<th>Remark</th>
+									<th>Flag</th>
+									<th>Option</th>
+								</tr>
+							</thead>
+
+
+							<%
+								IStock_inService  stock_inService= (IStock_inService) SpringBeanFactory
+																	.getBean("Stock_inService");
+																	List<Stock_in> stock_inList = stock_inService.selectAll();
+																			IUserService userservice=(IUserService)SpringBeanFactory.getBean("UserService");
+							%>
+
+							<tbody>
 								<%
-									
-								User u2 = userservice.selectUser(stock_in.getCreateUserId());
-								User u1 = userservice.selectUser(stock_in.getModifiedUserId());
+									for (Stock_in stock_in : stock_inList) {
 								%>
-								<%if(stock_in .getFlag()==1){ %>
-								<td> <font color="green">ON</font></td>
-								<%} else { %>
-								<td><font color="red">OFF</font></td>
-								<%} %>
-								
-									        
-									        <td class="dropdown">
-									        	<button class="btn w3-container w3-white w3-text-blue w3-hover-blue w3-hover-text-white ptb dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span>
-									      		</button> 
-									      		<ul class="dropdown-menu">
-												    <li class="w3-container w3-hover-blue p10" onclick="goToView('<%out.print(stock_in.getStockInId());%>')"><span class="glyphicon glyphicon-eye-open"></span> View</li>
-												    <li class="w3-container w3-hover-blue p10" data-toggle="modal" data-target="#rowEd" onclick="stedit('<%out.print(stock_in.getStockInId());%>','<%out.print(stock_in.getConarridate());%>','<%out.print(stock_in.getStockIndate());%>','<%out.print(stock_in.getWarId());%>','<%out.print(stock_in.getSupId());%>','<%out.print(stock_in.getVr_no());%>','<%out.print(stock_in.getRemark());%>','<%out.print(stock_in.getFlag());%>')"><span class="glyphicon glyphicon-edit"></span>
-												    Edit</li>
-												   <%if(stock_in.getFlag()==1){ %>				
-													    <li class="w3-container w3-hover-blue p10" onclick="confirmDelete('<%out.print(stock_in.getStockInId());%>')"> 
-													    	<span class="glyphicon glyphicon-remove-circle"></span> Delete</li>
-												    <%} else { %>
-												    	<li class="w3-container w3-hover-red p10 disabled"> <font color="gray">
-													    	<span class="glyphicon glyphicon-remove-circle"></span> Delete</font></li>
-												    <%} %>
-												    
-												</ul>
-												<script>
+								<tr>
+									<td>
+										<%
+											out.println(stock_in.getConarridate());
+										%>
+									</td>
+									<td>
+										<%
+											out.println(stock_in.getStockIndate());
+										%>
+									</td>
+									<td>
+										<%
+											if(stock_in.getSupId()==0)
+																						        	{
+																						        	out.println("-");
+																						        	}
+																						        	else{
+																						        		out.println(stock_in.getSupId());
+																						        	}
+										%>
+									</td>
+
+									<td>
+										<%
+											out.println(stock_in.getVr_no());
+										%>
+									</td>
+									<td>
+										<%
+											out.println(stock_in.getWarId());
+										%>
+									</td>
+									<td>
+										<%
+											out.println(stock_in.getRemark());
+										%>
+									</td>
+									<%
+										User u2 = userservice.selectUser(stock_in.getCreateUserId());
+																						User u1 = userservice.selectUser(stock_in.getModifiedUserId());
+									%>
+									<%
+										if(stock_in .getFlag()==1){
+									%>
+									<td><font color="green">ON</font></td>
+									<%
+										} else {
+									%>
+									<td><font color="red">OFF</font></td>
+									<%
+										}
+									%>
+
+
+									<td class="dropdown">
+										<button
+											class="btn w3-container w3-white w3-text-blue w3-hover-blue w3-hover-text-white ptb dropdown-toggle"
+											data-toggle="dropdown">
+											<span class="glyphicon glyphicon-cog"></span>
+										</button>
+										<ul class="dropdown-menu">
+											<li class="w3-container w3-hover-blue p10"
+												onclick="goToView('<%out.print(stock_in.getStockInId());%>')"><span
+												class="glyphicon glyphicon-eye-open"></span> View</li>
+											<li class="w3-container w3-hover-blue p10"
+												data-toggle="modal" data-target="#rowEd"
+												onclick="stedit('<%out.print(stock_in.getStockInId());%>','<%out.print(stock_in.getConarridate());%>','<%out.print(stock_in.getStockIndate());%>','<%out.print(stock_in.getWarId());%>','<%out.print(stock_in.getSupId());%>','<%out.print(stock_in.getVr_no());%>','<%out.print(stock_in.getRemark());%>','<%out.print(stock_in.getFlag());%>')"><span
+												class="glyphicon glyphicon-edit"></span> Edit</li>
+											<%
+												if(stock_in.getFlag()==1){
+											%>
+											<li class="w3-container w3-hover-blue p10"
+												onclick="confirmDelete('<%out.print(stock_in.getStockInId());%>')">
+												<span class="glyphicon glyphicon-remove-circle"></span>
+												Delete
+											</li>
+											<%
+												} else {
+											%>
+											<li class="w3-container w3-hover-red p10 disabled"><font
+												color="gray"> <span
+													class="glyphicon glyphicon-remove-circle"></span> Delete
+											</font></li>
+											<%
+												}
+											%>
+
+										</ul> <script>
 													//Go To View
 													function goToView(){
 														//alert(arguments[0]);
@@ -509,38 +570,49 @@ var resecondcombo=document.getElementById("resub").value;
 												
 													
 												</script>
-									        </td>
-									      </tr>
-									         <%} %>
-									    </tbody>
-									 
-									  </table>
-						  			<!-- end of search result table -->
-						  		</div>
-							</div>
-						</div>
+									</td>
+								</tr>
+								<%
+									}
+								%>
+							</tbody>
+
+						</table>
+						<!-- end of search result table -->
 					</div>
-					<!-- end of inserting the code for each operation -->
-<!-- start of Modal for add new the row -->
-					<div class="modal fade" id="addNew" role="dialog">
-					    <div class="modal-body">
-					    
-					      <!-- Modal content-->
-					      	<div class="modal-content">
-					        	<div class="modal-header w3-container w3-light-blue p10">
-					         		<button type="button" class="close" data-dismiss="modal">&times;</button>
-					          		<h4 class="modal-title">Adding new StockIN data</h4>
-					       		</div>
-<script>
+				</div>
+			</div>
+		</div>
+		<!-- end of inserting the code for each operation -->
+		<!-- start of Modal for add new the row -->
+		<div class="modal fade" id="addNew" role="dialog">
+			<div class="modal-body">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header w3-container w3-light-blue p10">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Adding new StockIn data</h4>
+					</div>
+					<script>
 function validate(){
-	var merid=document.getElementsByName("merid");
+	//var merid=document.getElementsByName("merid");
 	var start=document.getElementById("datePickerConArn").value;
     var end=document.getElementById("datePickerStockIn").value;
     if(start>end){	
     	alert("container arrival date must be smaller than the stock in date");
 		return false;
 	}else{
-		if(merid.length>0){
+		if(isbtnSubmit){
+			if(confirm("Are You Sure To INSERT!!")){
+				return true;
+			}else
+				{
+				return false;
+				}
+		}
+		return false;
+		/* if(merid.length>0){
 			if(confirm("Are You Sure To INSERT!!")){
 				return true;
 			}else
@@ -550,50 +622,65 @@ function validate(){
 		}else{
 			alert("Firstly, You need to add data to table!\nClick 'Add Row' Button!");
 			return false;
-		}
+		} */
 	}
 }
+function goaction() {
+	isbtnSubmit=true;
+	/* var value=document.getElementById('txtVoucherNo').value;
+		location.href="/warehouse/Stock_inController?page=submit&txtVoucherNo="+value; */
+		
+}
 </script>
-<form action="/warehouse/Stock_inController" onsubmit="return validate()" name="sample">
-    <div class="container">
- <h2>Stock In</h2><br><br>
-      <div class="row">
-      <div class="col-sm-4"> 
-     
-      <label for="lblConArriDate">Container Arrival Date</label><br>
-      <input type="date" class="form-control" id="datePickerConArn" name="datePickerConArn" required><br>
-      
-      </div>
-      <div class="col-sm-4">
-      <label for="lblStockInDate">Stock In Date</label><br>
-      <input type="date" class="form-control" id="datePickerStockIn" name="datePickerStockIn" required><br>
-      </div>
-      <div class="col-sm-4">
-      <label for="lblWarehouse">Warehouse</label><br>
-      <div class="dropdown">
-      <select class="form-control" id="cboWarehouse" name="cbowh"  onchange="warehouse()">
-      <option disabled selected>Select WareHouse </option>
-      
-      <%List<Warehouse> warehouseList=(List<Warehouse>) request.getAttribute("warehouse");
-        for(Warehouse ware:warehouseList){
-      %>
-      <option value=<%out.print(ware.getId()); %>><%out.println(ware.getWareName()); %></option>
-      <%} %>
-      </select>
-      <!-- Start warehouse onchange -->
-<script>
+					<form action='/warehouse/Stock_inController' onsubmit="return validate()" name="sample">
+						<div class="container">
+							<h2>Stock In</h2>
+							<br> <br>
+							<div class="row">
+								<div class="col-sm-4">
+
+									<label for="lblConArriDate">Container Arrival Date</label><br>
+									<input type="date" class="form-control" id="datePickerConArn"
+										name="datePickerConArn" required><br>
+
+								</div>
+								<div class="col-sm-4">
+									<label for="lblStockInDate">Stock In Date</label><br> <input
+										type="date" class="form-control" id="datePickerStockIn"
+										name="datePickerStockIn" required><br>
+								</div>
+								<div class="col-sm-4">
+									<label for="lblWarehouse">Warehouse</label><br>
+									<div class="dropdown">
+										<select class="form-control" id="cboWarehouse" name="cbowh"
+											onchange="warehouse()" required>
+											<option value="" disabled selected>Select WareHouse</option>
+
+											<%
+												List<Warehouse> warehouseList=(List<Warehouse>) request.getAttribute("warehouse");
+																				        for(Warehouse ware:warehouseList){
+											%>
+											<option value=<%out.print(ware.getId());%>>
+												<%
+													out.println(ware.getWareName());
+												%>
+											</option>
+											<%
+												}
+											%>
+										</select>
+										<!-- Start warehouse onchange -->
+										<script>
 function warehouse(){
 	var ware=document.getElementById("cboWarehouse").value;
 	//alert(ware+"   ware id");
-	 <%
-		String warename="";
+	 <%String warename="";
 	    String wareid="";
 	    
 	    for(Warehouse ware:warehouseList){
 	    	warename+="\'"+ware.getWareName()+"\',";
 	    	wareid+="\'"+ware.getId()+"\',";
-	    }
-	%>
+	    }%>
 	var warenamearr=[<%=warename%>];
 	var wareidarr=[<%=wareid%>];
 	var count=0;
@@ -611,84 +698,109 @@ function warehouse(){
 
 </script>
 
-<!-- Hidden -->
+										<!-- Hidden -->
 
-<input type="hidden" id="hid" name="cboWarehouse" value="<%out.print(request.getAttribute("warid"));%>">
-<input type="hidden" id="merchandise" >
-<input type="hidden" id="supplier" name="supplier">
+										<input type="hidden" id="hid" name="cboWarehouse"
+											value="<%out.print(request.getAttribute("warid"));%>">
+										<input type="hidden" id="merchandise"> <input
+											type="hidden" id="supplier" name="supplier">
 
-<!-- end Warehouse onchang -->	
-      </div>
-      <br><br>
-      </div>
-      </div>
-     
-      
-      
-      
+										<!-- end Warehouse onchang -->
+									</div>
+									<br> <br>
+								</div>
+							</div>
 
-     <!-- Supplier -->
-      <div class="row">
-      <div class="col-sm-4">
-      <label for="lblSupplier">Supplier</label><br>
-      <div class="dropdown">
-      <select class="form-control" id="cboSupplier" onchange="suplier()" name="cboSupplier" required>
-      <option disabled selected>Select Supplier</option>
-      <%List<Supplier> supplierList =(List<Supplier>) request.getAttribute("supplier");
-    	for(Supplier sup:supplierList){
-      %>
-      <option value=<%out.println(sup.getSupplier_id()); %>><%out.println(sup.getName()); %></option>
-      <%} %>
-      </select>
-      </div>
-      </div>
-      <div class="col-sm-4">
-      <label for="lblVNo">Voucher No</label><br>
-      <input type="text" class="form-control" id="txtVoucherNo" name="txtVoucherNo" required><br><br>
-      </div>
-      <div class="col-sm-4">
-      <label for="lblVNo">Remark</label><br>
-      <input type="text" class="form-control" id="txtRemark" name="txtRemark" required><br><br>
-      </div>
-      </div>
-      </div>
-       
-      
-     <div class="container">
-     <div class="row">
-     <div class="col-sm-4">
-      <label for="lblCategory">Category</label><br>
-      <div class="dropdown">
-      <select class="form-control" id="cboCategory" onchange="cat()" name="cboCategory">
-       <option disabled selected>Select Category</option>
-      <% for(Category ca:categoryList){%>
-      <option><%out.println(ca.getName()); %></option>
-      <%}%>
-      </select>
-      </div> <br><br>
-      </div>
 
-<div class="col-sm-4">
-      <label for="lblWarehouse">SubCategory</label><br>
-      <div class="dropdown">
-      <select class="form-control" onchange="secondcat()" name="cboSubCategory"  id="sub">
-      <option disabled selected>Select Sub Category</option>
-      </select>
-      </div> <br><br>
-      </div>
 
-      <div class="col-sm-4">
-      <label for="lblWarehouse">Brand</label><br>
-      <div class="dropdown">
-      <select class="form-control" id="third"  onchange="brand()" name="cboBrand">
-      <option disabled selected>Select Brand</option>
-      </select>
-      </div> <br><br>
-      </div>
-     
-</div>
-<!-- Catch id -->
- <script>
+
+
+							<!-- Supplier -->
+							<div class="row">
+								<div class="col-sm-4">
+									<label for="lblSupplier">Supplier</label><br>
+									<div class="dropdown">
+										<select class="form-control" id="cboSupplier"
+											onchange="suplier()" name="cboSupplier" required>
+											<option value="" disabled selected>Select Supplier</option>
+											<%
+												List<Supplier> supplierList =(List<Supplier>) request.getAttribute("supplier");
+																				    	for(Supplier sup:supplierList){
+											%>
+											<option value=<%out.println(sup.getSupplier_id());%>>
+												<%
+													out.println(sup.getName());
+												%>
+											</option>
+											<%
+												}
+											%>
+										</select>
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<label for="lblVNo">Voucher No</label><br> <input
+										type="text" class="form-control" id="txtVoucherNo"
+										name="txtVoucherNo" required><br> <br>
+								</div>
+								<div class="col-sm-4">
+									<label for="lblVNo">Remark</label><br> <input type="text"
+										class="form-control" id="txtRemark" name="txtRemark" required><br>
+									<br>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="container">
+							<div class="row">
+								<div class="col-sm-4">
+									<label for="lblCategory">Category</label><br>
+									<div class="dropdown">
+										<select class="form-control" id="cboCategory" onchange="cat()"
+											name="cboCategory" required>
+											<option value="" disabled selected>Select Category</option>
+											<%
+												for(Category ca:categoryList){
+											%>
+											<option>
+												<%
+													out.println(ca.getName());
+												%>
+											</option>
+											<%
+												}
+											%>
+										</select>
+									</div>
+									<br> <br>
+								</div>
+
+								<div class="col-sm-4">
+									<label for="lblWarehouse">SubCategory</label><br>
+									<div class="dropdown">
+										<select class="form-control" onchange="secondcat()"
+											name="cboSubCategory" id="sub" required>
+											<option value="" disabled selected>Select Sub Category</option>
+										</select>
+									</div>
+									<br> <br>
+								</div>
+
+								<div class="col-sm-4">
+									<label for="lblWarehouse">Brand</label><br>
+									<div class="dropdown">
+										<select class="form-control" id="third" onchange="brand()"
+											name="cboBrand" required>
+											<option value="" disabled selected>Select Brand</option>
+										</select>
+									</div>
+									<br> <br>
+								</div>
+
+							</div>
+							<!-- Catch id -->
+							<script>
 function mer(){
 		 var mer=document.getElementById("cboMerchandise").value;
 		 
@@ -724,8 +836,7 @@ function mer(){
 		   for(Subunit_Merchandise sub:unit_categoryList){
 			   betsubunit+="\'"+sub.getSub_unit_id()+"\',";
 			   betmerchandise+="\'"+sub.getmerchandise_id()+"\',";
-		   }
-		   %>
+		   }%>
 		   
 		   
   
@@ -780,22 +891,20 @@ function mer(){
 		   	
 		   	//end sub unit
 	} 
-</script> 
-<!-- Catch supplier id -->
+</script>
+							<!-- Catch supplier id -->
 
 
-<script type="text/javascript">
+							<script type="text/javascript">
 function suplier(){
 	var sup=document.getElementById("cboSupplier").value;
 	alert(sup+" from sup id");
-	<%
-		String supname="";
+	<%String supname="";
 		String supid="";
 		for(Supplier su:supplierList){
 			supname+="\'"+su.getName()+"\',";
 			supid+="\'"+su.getSupplier_id()+"\',";
-		}
-	%>
+		}%>
 	var supnamearr=[<%=supname%>];
 	var supidarr=[<%=supid%>];
 	var count=0;
@@ -819,137 +928,163 @@ function suplier(){
 }
 </script>
 
-     <div class="row">
-       <div class="col-sm-4">
-      <label for="lblWarehouse">Merchandise</label><br>
-      <div class="dropdown">
-      <select class="form-control" id="cboMerchandise" onchange="mer()" >
-      <option disabled selected>Select Merchandise</option>
-      </select>
-      </div> <br><br>
-      </div>
+							<div class="row">
+								<div class="col-sm-4">
+									<label for="lblWarehouse">Merchandise</label><br>
+									<div class="dropdown">
+										<select class="form-control" id="cboMerchandise"
+											onchange="mer()" required>
+											<option value="" disabled selected>Select Merchandise</option>
+										</select>
+									</div>
+									<br> <br>
+								</div>
 
-<div class="col-sm-4">
-<label for="lblSubunit">Sub Unit</label><br>
-<select class="form-control" id="cbosubunit" name="cbosubunit" required>
-<option disabled selected>Select Sub Unit</option>
-</select><br>
-</div>
-<div class="col-sm-4">
-      <label for="lblWarehouse">Qty</label><br>
-      <input type="text" class="form-control" id="txtQty" name="txtQty" required>
-      <div id="name_error" class="var_error"></div>
-      <br>
-      </div>
-</div>
-<div class="row">
-     <div class="col-sm-6">
-     <center><input type="button" value="Add Row" id="add-row" class="btn btn-default w3-container w3-light-blue p10" name=""/></center>
-     </div>
-     <div class="col-sm-6">
-     <center><input type="button" value="Remove Row" id="delete-row" class="btn btn-default w3-container w3-light-blue p10" name=""/></center>
-     
-     </div>
-     
-     </div>
-     </div>
-      <br>
-      <br>
+								<div class="col-sm-4">
+									<label for="lblSubunit">Sub Unit</label><br> <select
+										class="form-control" id="cbosubunit" name="cbosubunit"
+										required>
+										<option value="" disabled selected>Select Sub Unit</option>
+									</select><br>
+								</div>
+								<div class="col-sm-4">
+									<label for="lblWarehouse">Qty</label><br> <input
+										type="text" class="form-control" id="txtQty" name="txtQty"
+										required>
+									<div id="name_error" class="var_error"></div>
+									<br>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<center>
+										<input type="submit" value="Add Row" id="add-row"
+											class="btn btn-default w3-container w3-light-blue p10"
+											name="" />
+									</center>
+								</div>
+								<div class="col-sm-6">
+									<center>
+										<input type="button" value="Remove Row" id="delete-row"
+											class="btn btn-default w3-container w3-light-blue p10"
+											name="" />
+									</center>
+
+								</div>
+
+							</div>
+						</div>
+						<br> <br>
 
 
-<!-- table -->
-<div class="container">
-<style>
-#table1 tbody tr{
-transition:all .25s ease-in-out
+						<!-- table -->
+						<div class="container" id="tb1id" style="display: none">
+							<style>
+#table1 tbody tr {
+	transition: all .25s ease-in-out
 }
-#table1 tbody tr:hover { background-color: skyblue; cursor:pointer;
 
+#table1 tbody tr:hover {
+	background-color: skyblue;
+	cursor: pointer;
 }
-.var_error{
-    color: red;
-  }
-.cor{
-  color:blue;
+
+.var_error {
+	color: red;
+}
+
+.cor {
+	color: blue;
 }
 </style>
- <table class="table" border="2" id="table1" >
-      <thead>
-      <tr>
-        <th>Merchandise Id</th>
-       <!--  <th>Merchandise</th> -->
-        <th>Qty</th>
-        <th>Sub Unit</th>
-        <th>Remark</th>
-        <th>Voucher No</th>
-        <th>Option</th>
-       
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
-  </div>
+							<table class="table" border="2" id="table1">
+								<thead>
+									<tr>
+										<th>Merchandise Id</th>
+										<!--  <th>Merchandise</th> -->
+										<th>Qty</th>
+										<th>Sub Unit</th>
+										<th>Remark</th>
+										<th>Voucher No</th>
+										<th>Option</th>
 
-<!--footer modal -->
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
 
-    <div class="modal-footer p10">
-						        	
-    <input type="submit" class="btn btn-default w3-container w3-light-blue p10" name="page" value="submit">
-    <button type="reset" class="btn btn-default w3-container w3-light-blue p10">Cancel</button>
-    <button type="button" class="btn btn-default w3-container w3-light-blue p10" data-dismiss="modal">Close</button>
-	</div>
+						<!--footer modal -->
 
-</div>					      
-</div>
-</div>
-</form>
-<!-- end of the add new of the row --> 
+						<div class="modal-footer p10">
 
-<!-- start of Modal for stock return the row -->
-					<div class="modal fade" id="addReturn" role="dialog">
-					    <div class="modal-body">
-					    
-					      <!-- Modal content-->
-					      	<div class="modal-content">
-					        	<div class="modal-header w3-container w3-light-blue p10">
-					         		<button type="button" class="close" data-dismiss="modal">&times;</button>
-					          		<h4 class="modal-title">Adding Stock Return data</h4>
-					       		</div>
+							<input type="submit" disabled="disabled" id="btnsubmit" name="page"
+								class="btn btn-default w3-container w3-light-blue p10" onclick="goaction()" value="submit">
+							<button type="reset"
+								class="btn btn-default w3-container w3-light-blue p10">Cancel</button>
+							<button type="button"
+								class="btn btn-default w3-container w3-light-blue p10"
+								data-dismiss="modal">Close</button>
+						</div>
+				</div>
+			</div>
+		</div>
+		</form>
+		<!-- end of the add new of the row -->
 
-<form action="/warehouse/Stock_inController" onsubmit="return validate()" name="sample">
-    <div class="container">
- <h2>Stock Return</h2><br><br>
-      <div class="row">
-      <div class="col-sm-4">
-      <label for="lblStockInDate">Stock In Date</label><br>
-      <input type="date" class="form-control" id="redatePickerStockIn" name="redatePickerStockIn" required><br>
-      </div>
-      <div class="col-sm-4">
-      <label for="lblWarehouse">Warehouse</label><br>
-      <div class="dropdown">
-      <select class="form-control" id="recboWarehouse" name="recbowh"  onchange="rewarehouse()">
-      <option disabled selected>Select WareHouse </option>
-      
-      <%
-        for(Warehouse ware:warehouseList){
-      %>
-      <option value=<%out.print(ware.getId()); %>><%out.println(ware.getWareName()); %></option>
-      <%} %>
-      </select>
-      <!-- Start warehouse onchange -->
-<script>
+		<!-- start of Modal for stock return the row -->
+		<div class="modal fade" id="addReturn" role="dialog">
+			<div class="modal-body">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header w3-container w3-light-blue p10">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Adding Stock Return data</h4>
+					</div>
+
+					<form action="/warehouse/Stock_inController"
+						onsubmit="return validate()" name="sample">
+						<div class="container">
+							<h2>Stock Return</h2>
+							<br> <br>
+							<div class="row">
+								<div class="col-sm-4">
+									<label for="lblStockInDate">Stock In Date</label><br> <input
+										type="date" class="form-control" id="redatePickerStockIn"
+										name="redatePickerStockIn" required><br>
+								</div>
+								<div class="col-sm-4">
+									<label for="lblWarehouse">Warehouse</label><br>
+									<div class="dropdown">
+										<select class="form-control" id="recboWarehouse"
+											name="recbowh" onchange="rewarehouse()">
+											<option disabled selected>Select WareHouse</option>
+
+											<%
+												for(Warehouse ware:warehouseList){
+											%>
+											<option value=<%out.print(ware.getId());%>>
+												<%
+													out.println(ware.getWareName());
+												%>
+											</option>
+											<%
+												}
+											%>
+										</select>
+										<!-- Start warehouse onchange -->
+										<script>
 function rewarehouse(){
 	var ware=document.getElementById("recboWarehouse").value;
-	 <%
-		String warehousename="";
+	 <%String warehousename="";
 	    String warehouseid="";
 	    
 	    for(Warehouse ware:warehouseList){
 	    	warehousename+="\'"+ware.getWareName()+"\',";
 	    	warehouseid+="\'"+ware.getId()+"\',";
-	    }
-	%>
+	    }%>
 	var warenamearr=[<%=warehousename%>];
 	var wareidarr=[<%=warehouseid%>];
 	var count=0;
@@ -968,84 +1103,108 @@ function rewarehouse(){
 }
 </script>
 
-<!-- Hidden -->
+										<!-- Hidden -->
 
-<input type="hidden" id="rehid" name="recboWarehouse" value="<%out.print(request.getAttribute("warid"));%>">
-<input type="hidden" id="remerchandise" >
-<input type="hidden" id="supplier" name="supplier">
+										<input type="hidden" id="rehid" name="recboWarehouse"
+											value="<%out.print(request.getAttribute("warid"));%>">
+										<input type="hidden" id="remerchandise"> <input
+											type="hidden" id="supplier" name="supplier">
 
-<!-- end Warehouse onchange -->	
-      </div>
-      <br><br>
-      </div>
-      <div class="col-sm-4">
-      <label for="lblSupplier">Supplier</label><br>
-      <div class="dropdown">
-      <select class="form-control" id="recboSupplier" onchange="suplier()" name="recboSupplier" required>
-      <option disabled selected>Select Supplier</option>
-      <%
-    	for(Supplier sup:supplierList){
-      %>
-      <option value=<%out.print(sup.getSupplier_id()); %>><%out.println(sup.getName()); %></option>
-      <%} %>
-      </select>
-      </div>
-      </div>
-      </div>
-     
-      
-      
-      
+										<!-- end Warehouse onchange -->
+									</div>
+									<br> <br>
+								</div>
+								<div class="col-sm-4">
+									<label for="lblSupplier">Supplier</label><br>
+									<div class="dropdown">
+										<select class="form-control" id="recboSupplier"
+											onchange="suplier()" name="recboSupplier" required>
+											<option disabled selected>Select Supplier</option>
+											<%
+												for(Supplier sup:supplierList){
+											%>
+											<option value=<%out.print(sup.getSupplier_id());%>>
+												<%
+													out.println(sup.getName());
+												%>
+											</option>
+											<%
+												}
+											%>
+										</select>
+									</div>
+								</div>
+							</div>
 
-     <!-- Supplier -->
-      <div class="row">
-      <div class="col-sm-4">
-      <label for="lblVNo">Voucher No</label><br>
-      <input type="text" class="form-control" id="retxtVoucherNo" name="retxtVoucherNo" required><br><br>
-      </div>
-      <div class="col-sm-4">
-      <label for="lblVNo">Remark</label><br>
-      <input type="text" class="form-control"  id="retxtRemark" name="retxtRemark" value="Return Stock" required><br><br>
-      </div>
-      </div>
-      </div>
-       
-      
-     <div class="container">
-     <div class="row">
-     <div class="col-sm-4">
-      <label for="lblCategory">Category</label><br>
-      <div class="dropdown">
-      <select class="form-control" id="recboCategory" onchange="cat()" name="cboCategory">
-       <option disabled selected>Select Category</option>
-      <% for(Category ca:categoryList){%>
-      <option><%out.println(ca.getName()); %></option>
-      <%}%>
-      </select>
-      </div> <br><br>
-      </div>
 
-<div class="col-sm-4">
-      <label for="lblWarehouse">SubCategory</label><br>
-      <div class="dropdown">
-      <select class="form-control" onchange="secondcat()" name="cboSubCategory"  id="resub">
-      <option disabled selected>Select Sub Category</option>
-      </select>
-      </div> <br><br>
-      </div>
 
-      <div class="col-sm-4">
-      <label for="lblWarehouse">Brand</label><br>
-      <div class="dropdown">
-      <select class="form-control" id="rethird"  onchange="brand()" name="cboBrand">
-      <option disabled selected>Select Brand</option>
-      </select>
-      </div> <br><br>
-      </div>
-     
-</div>
-<!-- Catch id -->
- <script>
+
+
+							<!-- Supplier -->
+							<div class="row">
+								<div class="col-sm-4">
+									<label for="lblVNo">Voucher No</label><br> <input
+										type="text" class="form-control" id="retxtVoucherNo"
+										name="retxtVoucherNo" required><br> <br>
+								</div>
+								<div class="col-sm-4">
+									<label for="lblVNo">Remark</label><br> <input type="text"
+										class="form-control" id="retxtRemark" name="retxtRemark"
+										value="Return Stock" required><br> <br>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="container">
+							<div class="row">
+								<div class="col-sm-4">
+									<label for="lblCategory">Category</label><br>
+									<div class="dropdown">
+										<select class="form-control" id="recboCategory"
+											onchange="cat()" name="cboCategory">
+											<option disabled selected>Select Category</option>
+											<%
+												for(Category ca:categoryList){
+											%>
+											<option>
+												<%
+													out.println(ca.getName());
+												%>
+											</option>
+											<%
+												}
+											%>
+										</select>
+									</div>
+									<br> <br>
+								</div>
+
+								<div class="col-sm-4">
+									<label for="lblWarehouse">SubCategory</label><br>
+									<div class="dropdown">
+										<select class="form-control" onchange="secondcat()"
+											name="cboSubCategory" id="resub">
+											<option disabled selected>Select Sub Category</option>
+										</select>
+									</div>
+									<br> <br>
+								</div>
+
+								<div class="col-sm-4">
+									<label for="lblWarehouse">Brand</label><br>
+									<div class="dropdown">
+										<select class="form-control" id="rethird" onchange="brand()"
+											name="cboBrand">
+											<option disabled selected>Select Brand</option>
+										</select>
+									</div>
+									<br> <br>
+								</div>
+
+							</div>
+							<!-- Catch id -->
+							<script>
 function meri(){
 		 var mer=document.getElementById("recboMerchandise").value;
 		 var merchannamearr=[<%=mername%>];
@@ -1107,19 +1266,17 @@ function meri(){
 		   	
 		   	//end sub unit
 	} 
-</script> 
-<!-- Catch supplier id -->
-<script type="text/javascript">
+</script>
+							<!-- Catch supplier id -->
+							<script type="text/javascript">
 function suplier(){
 	var sup=document.getElementById("cboSupplier").value;
-	<%
-		String suppliername="";
+	<%String suppliername="";
 		String supplierid="";
 		for(Supplier su:supplierList){
 			suppliername+="\'"+su.getName()+"\',";
 			supplierid+="\'"+su.getSupplier_id()+"\',";
-		}
-	%>
+		}%>
 	var supnamearr=[<%=suppliername%>];
 	var supidarr=[<%=supplierid%>];
 	var count=0;
@@ -1136,151 +1293,190 @@ function suplier(){
 }
 </script>
 
-     <div class="row">
-       <div class="col-sm-4">
-      <label for="lblWarehouse">Merchandise</label><br>
-      <div class="dropdown">
-      <select class="form-control" id="recboMerchandise" onchange="meri()" >
-      <option disabled selected>Select Merchandise</option>
-      </select>
-      </div> <br><br>
-      </div>
+							<div class="row">
+								<div class="col-sm-4">
+									<label for="lblWarehouse">Merchandise</label><br>
+									<div class="dropdown">
+										<select class="form-control" id="recboMerchandise"
+											onchange="meri()">
+											<option disabled selected>Select Merchandise</option>
+										</select>
+									</div>
+									<br> <br>
+								</div>
 
-<div class="col-sm-4">
-<label for="lblSubunit">Sub Unit</label><br>
-<select class="form-control" name="recbosubunit" id="recbosubunit" required>
-<option disabled selected>Select Basic Unit</option>
-</select><br>
-</div>
-<div class="col-sm-4">
-      <label for="lblWarehouse">Qty</label><br>
-      <input type="text" class="form-control" id="retxtQty" name="txtQty" required>
-      <div id="name_err" class="var_error"></div>
-      <br>
-      </div>
-</div>
-<div class="row">
-     <div class="col-sm-6">
-     <center><input type="button" value="Add Row" id="add-return" class="btn btn-default w3-container w3-light-blue p10" name=""/></center>
-     </div>
-     <div class="col-sm-6">
-     <center><input type="button" value="Remove Row" id="delete-return" class="btn btn-default w3-container w3-light-blue p10" name=""/></center>
-     
-     </div>
-     
-     </div>
-     </div>
-      <br>
-      <br>
+								<div class="col-sm-4">
+									<label for="lblSubunit">Sub Unit</label><br> <select
+										class="form-control" name="recbosubunit" id="recbosubunit"
+										required>
+										<option disabled selected>Select Basic Unit</option>
+									</select><br>
+								</div>
+								<div class="col-sm-4">
+									<label for="lblWarehouse">Qty</label><br> <input
+										type="text" class="form-control" id="retxtQty" name="txtQty"
+										required>
+									<div id="name_err" class="var_error"></div>
+									<br>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<center>
+										<input type="button" value="Add Row" id="add-return"
+											class="btn btn-default w3-container w3-light-blue p10"
+											name="" />
+									</center>
+								</div>
+								<div class="col-sm-6">
+									<center>
+										<input type="button" value="Remove Row" id="delete-return"
+											class="btn btn-default w3-container w3-light-blue p10"
+											name="" />
+									</center>
+
+								</div>
+
+							</div>
+						</div>
+						<br> <br>
 
 
-<!-- table -->
-<div class="container">
-<style>
-#table1 tbody tr{
-transition:all .25s ease-in-out
+						<!-- table -->
+						<div class="container">
+							<style>
+#table1 tbody tr {
+	transition: all .25s ease-in-out
 }
-#table1 tbody tr:hover { background-color: skyblue; cursor:pointer;
 
+#table1 tbody tr:hover {
+	background-color: skyblue;
+	cursor: pointer;
 }
 
-.var_error{
-    color: red;
-  }
-.cor{
-  color:#00e600;
-  font-size:20px;
+.var_error {
+	color: red;
+}
+
+.cor {
+	color: #00e600;
+	font-size: 20px;
 }
 </style>
- <table class="table" border="2" id="return" >
-      <thead>
-      <tr>
-        <th>Merchandise Id</th>
-        <!-- <th>Merchandise</th> -->
-        <th>Qty</th>
-        <th>Sub Unit</th>
-        <th>Remark</th>
-        <th>Voucher No</th>
-        <th>Option</th>
-       
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
-  </div>
+							<table class="table" border="2" id="return">
+								<thead>
+									<tr>
+										<th>Merchandise Id</th>
+										<!-- <th>Merchandise</th> -->
+										<th>Qty</th>
+										<th>Sub Unit</th>
+										<th>Remark</th>
+										<th>Voucher No</th>
+										<th>Option</th>
 
-<!--footer modal -->
-
-    <div class="modal-footer p10">
-						        	
-    <input type="submit" class="btn btn-default w3-container w3-light-blue p10" name="page" value="Return">
-    <button type="reset" class="btn btn-default w3-container w3-light-blue p10">Cancel</button>
-    <button type="button" class="btn btn-default w3-container w3-light-blue p10" data-dismiss="modal">Close</button>
-	</div>
-
-</div>					      
-</div>
-</div>
-</form>
-<!-- end of the add new of the row --> 
-
-					
-
-					<div class="col-sm-3 p10">
-						<!-- first notification panel 1 -->
-						<div class="row">
-							<div class="panel panel-default">
-						  		<div class="panel-heading w3-container w3-light-blue p10">Panel Heading</div>
-						  		<div class="panel-body">Panel Content</div>
-							</div>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
 						</div>
-						<!-- end of first notification panel 1 -->
-						<!-- first notification panel 2 -->
-						<div class="row">
-							<div class="panel panel-default">
-						  		<div class="panel-heading w3-container w3-light-blue p10">Panel Heading</div>
-						  		<div class="panel-body">Panel Content</div>
-							</div>
+
+						<!--footer modal -->
+
+						<div class="modal-footer p10">
+
+							<input type="submit"
+								class="btn btn-default w3-container w3-light-blue p10"
+								name="page" value="Return">
+							<button type="reset"
+								class="btn btn-default w3-container w3-light-blue p10">Cancel</button>
+							<button type="button"
+								class="btn btn-default w3-container w3-light-blue p10"
+								data-dismiss="modal">Close</button>
 						</div>
-						<!-- end of first notification panel 2 -->
-						<!-- first notification panel 3 -->
-						<div class="row">
-							<div class="panel panel-default">
-						  		<div class="panel-heading w3-container w3-light-blue p10">Panel Heading</div>
-						  		<div class="panel-body">Panel Content</div>
-							</div>
-						</div>
-						<!-- end of first notification panel 3 -->
-					</div>
 				</div>
-				<!-- end of the body part of the body column -->
 			</div>
 		</div>
-		<!-- end of 3 column dividing -->
-	</div>	
-<!-- Start add function -->
-<script src="jquery.js"></script>
-<script type="text/javascript">
-<%
-	String vou="";
+		</form>
+		<!-- end of the add new of the row -->
+
+
+
+		<div class="col-sm-3 p10">
+			<!-- first notification panel 1 -->
+			<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-heading w3-container w3-light-blue p10">Panel
+						Heading</div>
+					<div class="panel-body">Panel Content</div>
+				</div>
+			</div>
+			<!-- end of first notification panel 1 -->
+			<!-- first notification panel 2 -->
+			<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-heading w3-container w3-light-blue p10">Panel
+						Heading</div>
+					<div class="panel-body">Panel Content</div>
+				</div>
+			</div>
+			<!-- end of first notification panel 2 -->
+			<!-- first notification panel 3 -->
+			<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-heading w3-container w3-light-blue p10">Panel
+						Heading</div>
+					<div class="panel-body">Panel Content</div>
+				</div>
+			</div>
+			<!-- end of first notification panel 3 -->
+		</div>
+	</div>
+	<!-- end of the body part of the body column -->
+	</div>
+	</div>
+	<!-- end of 3 column dividing -->
+	</div>
+	<!-- Start add function -->
+	<script src="jquery.js"></script>
+	<script type="text/javascript">
+<%String vou="";
  	for(Stock_in stin:stock_inList){
  		vou+="\'"+stin.getVr_no()+"\',";
- 	}
-%>
+ 	}%>
 var name_error= document.getElementById("name_error");
+var isappear=0;
     $(document).ready(function(){
         $("#add-row").click(function(){
-        	var voucherarr=[<%=vou%>];
-            var merchandise = $("#cboMerchandise").val();
-            var qty = $("#txtQty").val();
-            var subunit = $("#cbosubunit").val();
-            var remark = $("#txtRemark").val();  
-            var voucher=$("#txtVoucherNo").val();
-            var merid=$("#merchandise").val();
-            
-            var start=document.getElementById("datePickerConArn").value;
+        	
+        	var start=document.getElementById("datePickerConArn").value;
             var end=document.getElementById("datePickerStockIn").value;
+            
+            var brand=document.getElementById("third").value;
+            var subcategory=document.getElementById("sub").value;
+            var category=document.getElementById("cboCategory").value;
+            var supplier=document.getElementById("cboSupplier").value;
+            var warehouse=document.getElementById("cboWarehouse").value;
+            
+        	var voucherarr=[<%=vou%>];
+        	 var subunit = $("#cbosubunit").val();
+        	
+             var remark = $("#txtRemark").val(); 
+             
+             var voucher=$("#txtVoucherNo").val();
+            
+             var merid=$("#cboMerchandise").val();
+         
+            var qty = $("#txtQty").val();
+           
+            
+            if(qty=="" | voucher=="" | subunit==null | remark=="" | merid==null |
+            	start=="" | end=="" | brand=="" | subcategory=="" | category=="" |
+            	supplier=="" | warehouse==""){
+            	
+            }
+            else{
+            	
             for(var i=0;i<voucherarr.length;i++){
             	if(voucher==voucherarr[i]){ 	
             		var eqvou=voucherarr[i];
@@ -1296,18 +1492,29 @@ var name_error= document.getElementById("name_error");
       	    }
             else if(eqvou==voucher){
             	alert("There is an existing voucher no in Stock In");
+            	//$("#txtVoucherNo").focus();
+            	document.getElementById('txtVoucherNo').focus();
             }
        
             else if(start<=end && eqvou!=voucher){
+            	
+            	if(isappear===0){
+            		document.getElementById('tb1id').style.display='block';
+            		
+            	}
+            	isappear=1;
            			 var markup = "<tr><td><center><input type='hidden' name='merid' value='"+merid+"'/>"+merid+"</center></td><td><input type='hidden' name='arrtxtQty' value='"+qty+"'/>" + qty +"</td><td><input type='hidden' name='cbosubunit' value='" + subunit +"'/>" + subunit +"</td><td><input type='hidden' name='txtRemark' value='"+remark+"'/>" + remark+"</td><td><input type='hidden' name='txtVoucherNo' value='"+voucher+"'/>"+voucher +"</td><td><input type='checkbox' name='record'  /></td></tr>";
            			 $("#table1 tbody").append(markup);
            			 txtQty.style.border = "3px solid #00e600";
-            		 name_error.innerHTML ="<div class='cor'>Correct</div>";
+            		 name_error.innerHTML ="<div class='cor'>Enough!!! </div>";
+            		 document.getElementById("btnsubmit").disabled=false;
+            		 isbtnSubmit=false;
            
             }
             else if(start>=end){	
             		alert("container arrival date must be smaller than the stock in date");
    					//$('#date_error').modal('show');
+            }
             }
             
            
@@ -1322,255 +1529,307 @@ var name_error= document.getElementById("name_error");
                    
                 }
             	
-            
-            }); 
-        });
-    });     
-</script>
-<!--  End add function-->
-
-<!-- Return add function -->
-<script type="text/javascript">
-var name_error= document.getElementById("name_error");
-    $(document).ready(function(){
-        $("#add-return").click(function(){
-            var merchandise = $("#recboMerchandise").val();
-            var qty = $("#retxtQty").val();
-            var subunit = $("#recbosubunit").val();
-            var remark = $("#retxtRemark").val();  
-            var voucher=$("#retxtVoucherNo").val();
-            var merid=$("#remerchandise").val();
-            
-            if(isNaN(qty)||qty<1){
-            	retxtQty.style.border = "3px solid red";
-                name_err.textContent = "Please re-enter quantity";
-                return false; 
-      	    	document.getElementById("retxtQty").value=null;
-      	    }
-            else{
-            var markup = "<tr><td><center><input type='hidden' name='merid' value='"+merid+"'/>"+merid+"</center></td><td><input type='hidden' name='arrtxtQty' value='"+qty+"'/>" + qty +"</td><td><input type='hidden' name='cbosubunit' value='" + subunit +"'/>" + subunit +"</td><td><input type='hidden' name='txtRemark' value='"+remark+"'/>" + remark+"</td><td><input type='hidden' name='txtVoucherNo' value='"+voucher+"'/>"+voucher +"</td><td><input type='checkbox' name='record'  /></td></tr>";
-            $("#return tbody").append(markup);
-            retxtQty.style.border = "3px solid  #00e600";
-            name_err.innerHTML ="<div class='cor'>Correct</div>";
-           // return true;
-            }
-        });
-        
-        // Find and remove selected table rows
-        $("#delete-return").click(function(){
-      	  
-            $("#return tbody").find('input[name="record"]').each(function(){
-            	if($(this).is(":checked")){
-                    $(this).parents("tr").remove();
-                   
-                }
             	
             
             }); 
+            
+          var merid=document.getElementsByName("merid");
+        	
+        	 if(merid.length>0){
+        		 document.getElementById('tb1id').style.display='block';
+             	document.getElementById("btnsubmit").disabled=false;
+        			
+        		}else{
+        			document.getElementById('tb1id').style.display='none';
+                	document.getElementById("btnsubmit").disabled=true;
+                	isappear=0;
+        		} 
+            
+            	
         });
     });     
 </script>
-<!--  End Return add function -->
+	<!--  End add function-->
 
-<!-- Start Stock In Edit modal box -->
-<div class="modal fade" id="rowEd" role="dialog">
-					    <div class="modal-dialog">
-					    
-					      <!-- Modal content-->
-					      	<div class="modal-content">
-					        	<div class="modal-header w3-container w3-light-blue ">
-					         		<button type="button" class="close" data-dismiss="modal">&times;</button>
-					          		<h4 class="modal-title">Edit Stock in data</h4>
-					       		</div>
-					       
-						       <!--  <div class="modal-body p10">
+	<!-- Return add function -->
+	<script type="text/javascript">
+		var name_error = document.getElementById("name_error");
+		$(document)
+				.ready(
+						function() {
+							$("#add-return")
+									.click(
+											function() {
+												var merchandise = $(
+														"#recboMerchandise")
+														.val();
+												var qty = $("#retxtQty").val();
+												var subunit = $("#recbosubunit")
+														.val();
+												var remark = $("#retxtRemark")
+														.val();
+												var voucher = $(
+														"#retxtVoucherNo")
+														.val();
+												var merid = $("#remerchandise")
+														.val();
+
+												if (isNaN(qty) || qty < 1) {
+													retxtQty.style.border = "3px solid red";
+													name_err.textContent = "Please re-enter quantity";
+													return false;
+													document
+															.getElementById("retxtQty").value = null;
+												} else {
+													var markup = "_$ta_$ta_$ta_$ta_$ta_$tag____$ta_$ta_$tag____$tag________________________________________________"
+															+ merid
+															+ "_$ta_$ta_$tag____$tag_________________________________________________$tag_____$ta_$ta_$tag____$tag_________________________________________________$tag_____$tag_$ta_$ta_$tag____$tag_________________________________________________$tag_____$tag_$ta_$ta_$ta_$tag____$tag_________________________________________________$tag_____$tag_$ta_$tag__________________________________________________"
+															+ qty
+															+ "_$ta_$ta_$tag____$tag_________________________________________________$tag_____$tag_$ta_$tag___________________________________________________$tag_$ta_$ta_$tag____$tag_________________________________________________$tag_____$tag_$ta_$tag___________________________________________________$tag_$ta_$ta_$ta_$tag____$tag_________________________________________________$tag_____$tag_$ta_$tag___________________________________________________$tag_$ta_$tag__________________________________________________________"
+															+ subunit
+															+ "_$ta_$ta_$tag____$tag_________________________________________________$ta"
+	</script>
+	<!--  End Return add function -->
+
+	<!-- Start Stock In Edit modal box -->
+	<div class="modal fade" id="rowEd" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header w3-container w3-light-blue ">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Edit Stock in data</h4>
+				</div>
+
+				<!--  <div class="modal-body p10">
 						          	<p>Stock In Edit</p>
 						        </div> -->
 
-								<form action="/warehouse/Stock_inController" name="edit">
-								<input type="hidden" name="stockid" value="<%out.print(session.getAttribute("stockidses"));%>">
-	<div class="container">
+				<form action="/warehouse/Stock_inController" name="edit">
+					<input type="hidden" name="stockid"
+						value="<%out.print(session.getAttribute("stockidses"));%>">
+					<div class="container">
 
-<div class="row">
-<style>
-
-	td{
-		text-align: left;
-        padding: 5px;
-	    padding-left: 60px;
+						<div class="row">
+							<style>
+td {
+	text-align: left;
+	padding: 5px;
+	padding-left: 60px;
 }
 </style>
-<table >
-<input type="hidden" class="form-control" id="stock_in_detail_id" name="stock_in_id">
- <tbody align="right">
- 
-		<tr>
-	<td><b>Container Arrival Date:</b></td>
-	<td><input type="text" class="form-control" id="merchandise_name" name="datePickerConAr"></td>
-	</tr>
+							<table>
+								<input type="hidden" class="form-control"
+									id="stock_in_detail_id" name="stock_in_id">
+								<tbody align="right">
 
-		<tr>
-	<td><b>Stock In Date:</b></td>
-	<td><input type="text" class="form-control" id="qty" name="datePickerStockin"></td>
-	</tr>
-		<tr>
-	<td><b>Warehose Name:</b></td>
-	
-	  <td><select class="form-control" id="cboWarehouse" name="cbowh"  onchange="warehouse()">
-      <option disabled selected>Select WareHouse </option>
-      <%for (Warehouse w:warehouseList) {%>
-      <option value=<%out.print(w.getId()); %>><%out.print(w.getWareName()); %></option>
-      <%} %></select></td>
-	</tr>
-		<tr>
-	<td><b>Suppler Name:</b></td>
-	<td> <select class="form-control" id="cboSupplier" onchange="suplier()" name="cboSupplier" required>
-      <option disabled selected>Select Supplier</option>
-      <%
-      	List<Supplier> supplierList1=(List<Supplier>)request.getAttribute("supplierList1");
-    	for(Supplier sup:supplierList1){
-      %>
-      
-      <!-- third check error -->
-      
-      <option value=<%out.print(sup.getSupplier_id()); %>><%out.println(sup.getName()); %></option>
-      <%} %>
-      </select></td>
-	</tr>
-	<tr>
-	<td><b>Voucher No:</b></td>
-	<td><input type="text" class="form-control" id="Remark" name="txtVoucherNo"></td>
-	</tr>
-	<tr>
-	<td><b>Remark:</b></td>
-	<td><input type="text" class="form-control" id="txtRemark" name="txtRemark"></td>
-	</tr>
-	<tr>
-	
-	<td>Flag:</td>
-<td> 	<input type="hidden" name="flag" id="flag" />
-    <input type="radio" value="1" name="txtFlag" id="idtxtFlag1"/><font color="green">ON</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<input type="radio" value="0" name="txtFlag" id="idtxtFlag2"/><font color="red">OFF</font></td>
-	</tr>
-	
-	
-</tbody>
-</table>
-</div>
+									<tr>
+										<td><b>Container Arrival Date:</b></td>
+										<td><input type="text" class="form-control"
+											id="merchandise_name" name="datePickerConAr"></td>
+									</tr>
 
-     </div>
-      <br>
-      <br>
+									<tr>
+										<td><b>Stock In Date:</b></td>
+										<td><input type="text" class="form-control" id="qty"
+											name="datePickerStockin"></td>
+									</tr>
+									<tr>
+										<td><b>Warehose Name:</b></td>
+
+										<td><select class="form-control" id="cboWarehouse"
+											name="cbowh" onchange="warehouse()">
+												<option disabled selected>Select WareHouse</option>
+												<%
+													for (Warehouse w : warehouseList) {
+												%>
+												<option value=<%out.print(w.getId());%>>
+													<%
+														out.print(w.getWareName());
+													%>
+												</option>
+												<%
+													}
+												%>
+										</select></td>
+									</tr>
+									<tr>
+										<td><b>Suppler Name:</b></td>
+										<td><select class="form-control" id="cboSupplier"
+											onchange="suplier()" name="cboSupplier" required>
+												<option disabled selected>Select Supplier</option>
+												<%
+													List<Supplier> supplierList1 = (List<Supplier>) request
+															.getAttribute("supplierList1");
+													for (Supplier sup : supplierList1) {
+												%>
+
+												<!-- third check error -->
+
+												<option value=<%out.print(sup.getSupplier_id());%>>
+													<%
+														out.println(sup.getName());
+													%>
+												</option>
+												<%
+													}
+												%>
+										</select></td>
+									</tr>
+									<tr>
+										<td><b>Voucher No:</b></td>
+										<td><input type="text" class="form-control" id="Remark"
+											name="txtVoucherNo"></td>
+									</tr>
+									<tr>
+										<td><b>Remark:</b></td>
+										<td><input type="text" class="form-control"
+											id="txtRemark" name="txtRemark"></td>
+									</tr>
+									<tr>
+
+										<td>Flag:</td>
+										<td><input type="hidden" name="flag" id="flag" /> <input
+											type="radio" value="1" name="txtFlag" id="idtxtFlag1" /><font
+											color="green">ON</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
+											type="radio" value="0" name="txtFlag" id="idtxtFlag2" /><font
+											color="red">OFF</font></td>
+									</tr>
 
 
-
- 
-
-<!--footer modal -->
-
-    <div class="modal-footer p10">
-						        	
-    <input type="submit" name="page" value="Edit" class="btn btn-default w3-container w3-light-blue p10" >
-    <button type="reset" class="btn btn-default w3-container w3-light-blue p10">Cancel</button>
-    <button type="button" class="btn btn-default w3-container w3-light-blue p10" data-dismiss="modal">Close</button>
-	</div>
-</form>
-</div>					      
-</div>
-</div>
-<!-- End Stock In Edit modal box -->
-
-<!-- Logout modal box -->
-<div id="myModal1" class="modal fade" role="dialog">
-	<div class="modal-dialog" style="width:400px;">
-	<!-- Modal content-->
-		<div class="modal-content">
-			<div class="modal-header">
-			<div class="control-label col-sm-5"></div>
-			<div class="control-label col-sm-2">
-				<h4 class="modal-title">Profile</h4>
-			</div>
-			<div class="control-label col-sm-4"></div>
-			<div class="control-label col-sm-1">
-					<button type="button" class="close" data-dismiss="modal"><font color="red">&times;</font></button>
-			</div>
-			</div>
-			<div class="modal-body">
-				<form class="form-horizontal" method="get" role="form" action="/warehouse/UserController">
-					<div class="form-group">
-						<div class="control-label col-sm-3"></div>
-						<div class="control-label col-sm-6">
-						<img class="imgprofile" alt="Profile" src="<%=request.getContextPath()%>/images/profile.jpg">
+								</tbody>
+							</table>
 						</div>
-						<div class="control-label col-sm-3"></div>
+
 					</div>
-					<div class="form-group">
-						<div class="control-label col-sm-3"></div>
-						<label class="control-label col-sm-3" for="email">Username:</label>
-							<div class="col-sm-3">
-								<label class="control-label"><%out.print(uname);%></label>
-							</div>
-						<div class="control-label col-sm-3"></div>
+					<br> <br>
+
+
+
+
+
+					<!--footer modal -->
+
+					<div class="modal-footer p10">
+
+						<input type="submit" name="page" value="Edit"
+							class="btn btn-default w3-container w3-light-blue p10">
+						<button type="reset"
+							class="btn btn-default w3-container w3-light-blue p10">Cancel</button>
+						<button type="button"
+							class="btn btn-default w3-container w3-light-blue p10"
+							data-dismiss="modal">Close</button>
 					</div>
-					<%
-					IUser_LevelService userlevelservicej = (IUser_LevelService) SpringBeanFactory
-					.getBean("User_LevelService");
-					IUserService userservicej = (IUserService) SpringBeanFactory
-					.getBean("UserService");
-						User uj=userservicej.selectUser(uid);	
-						int lvid=uj.getUser_level_id();
-						User_Level userj=userlevelservicej.selectUser_Level(lvid);
-						String levelname=userj.getName();
-					%>
-					<div class="form-group">
-						<div class="control-label col-sm-3"></div>
-						<label class="control-label col-sm-3" for="pwd">Level:</label>
-						<div class="col-sm-3">
-							<label class="control-label"><%out.print(levelname); %></label>
-						</div>
-						<div class="control-label col-sm-3"></div>
-					</div>
-					<div class="form-group">
-					<div class="control-label col-sm-5"></div>
-					<div class="col-sm-2">
-							<input class="btn btn-info" type="submit" value="logout" name="page"/>
-					</div>
-					<div class="control-label col-sm-5"></div>
-				</div>
-			</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</form>
 			</div>
 		</div>
 	</div>
-</div>
+	<!-- End Stock In Edit modal box -->
 
-<!-- Modal box for date error -->
+	<!-- Logout modal box -->
+	<div id="myModal1" class="modal fade" role="dialog">
+		<div class="modal-dialog" style="width: 400px;">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="control-label col-sm-5"></div>
+					<div class="control-label col-sm-2">
+						<h4 class="modal-title">Profile</h4>
+					</div>
+					<div class="control-label col-sm-4"></div>
+					<div class="control-label col-sm-1">
+						<button type="button" class="close" data-dismiss="modal">
+							<font color="red">&times;</font>
+						</button>
+					</div>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal" method="get" role="form"
+						action="/warehouse/UserController">
+						<div class="form-group">
+							<div class="control-label col-sm-3"></div>
+							<div class="control-label col-sm-6">
+								<img class="imgprofile" alt="Profile"
+									src="<%=request.getContextPath()%>/images/profile.jpg">
+							</div>
+							<div class="control-label col-sm-3"></div>
+						</div>
+						<div class="form-group">
+							<div class="control-label col-sm-3"></div>
+							<label class="control-label col-sm-3" for="email">Username:</label>
+							<div class="col-sm-3">
+								<label class="control-label"> <%
+ 	out.print(uname);
+ %>
+								</label>
+							</div>
+							<div class="control-label col-sm-3"></div>
+						</div>
+						<%
+							IUser_LevelService userlevelservicej = (IUser_LevelService) SpringBeanFactory
+									.getBean("User_LevelService");
+							IUserService userservicej = (IUserService) SpringBeanFactory
+									.getBean("UserService");
+							User uj = userservicej.selectUser(uid);
+							int lvid = uj.getUser_level_id();
+							User_Level userj = userlevelservicej.selectUser_Level(lvid);
+							String levelname = userj.getName();
+						%>
+						<div class="form-group">
+							<div class="control-label col-sm-3"></div>
+							<label class="control-label col-sm-3" for="pwd">Level:</label>
+							<div class="col-sm-3">
+								<label class="control-label"> <%
+ 	out.print(levelname);
+ %>
+								</label>
+							</div>
+							<div class="control-label col-sm-3"></div>
+						</div>
+						<div class="form-group">
+							<div class="control-label col-sm-5"></div>
+							<div class="col-sm-2">
+								<input class="btn btn-info" type="submit" value="logout"
+									name="page" />
+							</div>
+							<div class="control-label col-sm-5"></div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-					<!-- Start Stock In Edit modal box -->
-<div class="modal fade" id="date_error" role="dialog">
-              <div class="modal-dialog">
-              
-                <!-- Modal content-->
-                  <div class="modal-content">
-                    <div class="modal-header w3-container w3-light-blue ">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Error Message</h4>
-                    </div>
-                 
-                    <div class="modal-body p10">
-                        <p color='red'>Start date must be greater than the end date.</p>
-                    </div>
-<!--footer modal -->
- <div class="modal-footer p10">
-    <button type="button" class="btn btn-default w3-container w3-light-blue p10" data-dismiss="modal">Close</button>
-  </div>
+	<!-- Modal box for date error -->
 
-</div>                
-</div>
+	<!-- Start Stock In Edit modal box -->
+	<div class="modal fade" id="date_error" role="dialog">
+		<div class="modal-dialog">
 
-<!-- end of the add new of the row --> 
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header w3-container w3-light-blue ">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Error Message</h4>
+				</div>
 
+				<div class="modal-body p10">
+					<p color='red'>Start date must be greater than the end date.</p>
+				</div>
+				<!--footer modal -->
+				<div class="modal-footer p10">
+					<button type="button"
+						class="btn btn-default w3-container w3-light-blue p10"
+						data-dismiss="modal">Close</button>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- end of the add new of the row -->
 </body>
 </html>

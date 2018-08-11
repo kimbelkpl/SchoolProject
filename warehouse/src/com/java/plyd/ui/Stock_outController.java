@@ -77,6 +77,7 @@ public class Stock_outController extends HttpServlet {
 		String page = null;
 		String param = request.getParameter("page");
 		System.out.println(param + "Page");
+		Boolean isEqual=false;
 		String ex="";
 		int j=0;
 		String name="";
@@ -237,8 +238,18 @@ public class Stock_outController extends HttpServlet {
 							  stockbal.setQty(newbal);
 							  stockbal.setStock_balance_id(balid);
 							  balanceservice.edit(stockbal);
+							  isEqual=true;
 						  }
 					  }
+					  
+					  if(!isEqual){
+							System.out.println(warid+"   to stock balance");
+							   stockbal.setWarehouse_id(warid);
+							   stockbal.setMerchandise_id(zmerid);
+							   stockbal.setQty(zqtybal);
+							   stockbal.setRemark(remark[i]);
+							   balanceservice.entry(stockbal);
+						}
 					
 				  	}
 				  
@@ -260,7 +271,7 @@ public class Stock_outController extends HttpServlet {
 				
 					
 						//refresh
-						List<Stock_out> stockoutlist=stock_outService.selectAll();
+						//List<Stock_out> stockoutlist=stock_outService.selectAll();
 						
 						if(j==1){
 							ex="1";
@@ -384,18 +395,28 @@ public class Stock_outController extends HttpServlet {
 				   int zmerid=Integer.parseInt(merid[i]);
 				   int zqtybal=Integer.parseInt(qtybal[i]);
 				   List<Stock_Balance> balList=balanceservice.selectAll();
-				   Stock_Balance stockba=new Stock_Balance();
+				   Stock_Balance stockbalforstockin=new Stock_Balance();
 					for(Stock_Balance sb:balList){
 					   if(zmerid==sb.getMerchandise_id() && towareid==sb.getWarehouse_id()){
 						    int balid=sb.getStock_balance_id();
 							int balqty=sb.getQty();
 							int newbal=0;
 						    newbal=zqtybal+balqty;
-						    stockbal.setQty(newbal);
-						    stockbal.setStock_balance_id(balid);
-						    balanceservice.edit(stockbal);
+						    stockbalforstockin.setQty(newbal);
+						    stockbalforstockin.setStock_balance_id(balid);
+						    balanceservice.edit(stockbalforstockin);
+						    isEqual=true;
 					   	  }
 						
+					}
+					
+					if(!isEqual){
+						System.out.println(warid+"   to stock balance");
+						stockbalforstockin.setWarehouse_id(towareid);
+						stockbalforstockin.setMerchandise_id(zmerid);
+						stockbalforstockin.setQty(zqtybal);
+						stockbalforstockin.setRemark(remark[i]);
+						   balanceservice.entry(stockbalforstockin);
 					}
 				}
 				  
@@ -414,7 +435,7 @@ public class Stock_outController extends HttpServlet {
 				        Damage d=new Damage();
 						for(int i=0; i<merchandiseid.length;i++){
 				    	
-				    		 StockoutDetail std=new StockoutDetail();
+				    		 //StockoutDetail std=new StockoutDetail();
 				    	  
 				    		 String zmerchandise=merchandise[i];
 				    		 int zmerchandiseid=Integer.parseInt(merchandiseid[i]);
@@ -464,8 +485,18 @@ public class Stock_outController extends HttpServlet {
 							  stockbal.setQty(newbal);
 							  stockbal.setStock_balance_id(balid);
 							  balanceservice.edit(stockbal);
+							  isEqual=true;
 						  }
 					  }
+					  
+					  if(!isEqual){
+							System.out.println(warid+"   to stock balance");
+							   stockbal.setWarehouse_id(warid);
+							   stockbal.setMerchandise_id(zmerid);
+							   stockbal.setQty(zqtybal);
+							   stockbal.setRemark(remark[i]);
+							   balanceservice.entry(stockbal);
+						}
 					
 				  	}
 					}
@@ -518,8 +549,8 @@ public class Stock_outController extends HttpServlet {
 				List<Brand> bl = brandService.selectAll();
 				List<Merchandise> merchandiseList = manager.selectAll();
 				List<StockoutDetail> stockoutdetaillist=stockoutdetailService.selectAll();
-				List<SubCategoryAndBrand> sub_cat_brandList=sub_category_brandservice.selectAll();
-			    List<Merchandise_Brand> merchandisebrandList=merchandise_brandservice.selectAll();
+				//List<SubCategoryAndBrand> sub_cat_brandList=sub_category_brandservice.selectAll();
+			    //List<Merchandise_Brand> merchandisebrandList=merchandise_brandservice.selectAll();
 			    List<SubCategoryAndBrand> sub_cat_brandList1=sub_category_brandservice.selectAll();
 			    List<Merchandise_Brand> merchandisebrandList1=merchandise_brandservice.selectAll();
 			    List<Stock_out> stock_outList = stock_outService.selectAll();

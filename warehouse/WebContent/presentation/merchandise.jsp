@@ -879,8 +879,8 @@
 				</div>
 				<form>
 					<div class="modal-body p10">
-						<span style="font-size: 2em" id="user"
-								class="glyphicon glyphicon-user"></span><br> 
+						<!-- <span style="font-size: 2em" id="user"
+								class="glyphicon glyphicon-user"></span> --><br> 
 						<div class="row">
 						<div class="col-sm-1"></div>
 						<div class="col-sm-5">
