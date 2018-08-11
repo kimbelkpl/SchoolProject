@@ -69,7 +69,7 @@
 						<div class="row p10">
 							<div class="panel panel-default">
 						  		<div class="panel-heading w3-container w3-light-blue p10">
-						  			<button type="button" id="idAdd" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew" ><span class="glyphicon glyphicon-plus"></span> Add New</button> 
+						  			<button type="button" id="idAdd" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew" ><span class="glyphicon glyphicon-plus"></span> Add New Sub Unit</button> 
 			  						<!-- <button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#search"><span class="glyphicon glyphicon-search"></span> Search</button> -->
 			  						<span class="dropdown">
 			  							<button type="button" class="btn w3-container w3-light-blue p-header-btn dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Tools <span class="caret"></span></button>
@@ -91,9 +91,7 @@
 						<th>Sub Unit Name</th>
 						<th>Basic Unit Name</th>
 						<th>Remark</th>
-					<!--  	<th>Created User</th>
-						<th>Modified User</th>	-->
-						<th>Flag</th>
+						<!-- <th>Flag</th> -->
 						<th>Option</th>
 					</tr>
 				</thead>
@@ -147,11 +145,11 @@
 						User u1 = userservice.selectUser(su.getModified_user_id());
 				%>
 						
-						<% if(su.getFlag()==1){ %>
+						<%-- <% if(su.getFlag()==1){ %>
 							<td><font color="green">ON</font></td>
 						<% }else{ %>
 							<td><font color="red">OFF</font></td>
-						<%}%>							
+						<%}%>	 --%>						
 						
 						<td class="dropdown">
 							<button
@@ -166,7 +164,7 @@
 									'<%out.print(su.getModified_date()); %>','<%out.print(su.getFlag()); %>')"><span class="glyphicon glyphicon-eye-open"></span> View</li>
 								<li class="w3-container w3-hover-blue p10" data-toggle="modal"
 									data-target="#rowEd" id="btnSubmit<%out.print(su.getSub_unit_id()); %>" onclick="submit('<%out.print(su.getSub_unit_id());%>','<%out.print(su.getName());%>',
-												     				'<%out.print(b.getBasic_unit_id());%>','<%out.print(su.getRemark());%>','<%out.print(su.getFlag());%>')"><span class="glyphicon glyphicon-edit"></span>Edit</li>
+												     				'<%out.print(b.getBasic_unit_id());%>','<%out.print(su.getRemark());%>','<%out.print(su.getFlag());%>')"><span class="glyphicon glyphicon-edit"></span> Edit</li>
 			 						<% if(su.getFlag()==1){ %>
 									<li class="w3-container w3-hover-blue p10 "
 									onclick="confirmDelete('<%out.print(su.getSub_unit_id());%>')"><span
@@ -258,27 +256,28 @@
 				bl=basicunitservice.selectAll();
 				%><div class="row">
 				    <div class="col-sm-3"></div>
-				    <div class="col-sm-6">
+				    <div class="col-sm-7">
 						<table>
-							<tr>
-								<td><label for="lblName">Sub unit Name</label></td>
-								<td><input class="u-full-width form-control" type="text"
-										name="txtasName" id="txtasName" required /></td>
-								</tr>
-								<tr>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-								</tr>
-								<tr>
-									<td><label for="lblCategory">Basic unit</label></td>
+						<tr >
+									<td><label for="lblCategory">Basic Unit</label></td>
 									<td><select id="cboBasicUnit" name="cboBasicunit" style="width: 100%;" class="u-full-width form-control">
 											<% for(Basicunit ba:bl){ %>
 											<option value="<% out.print(ba.getBasic_unit_id()); %>">
 												<% out.print(ba.getName()); %>
 											</option>
 											<% } %>
-											<option style="background-color: blue;color:white;" onclick="showNewBasicUnitDiv()">Add new Basic Unit</option>
+											<option style="background-color: blue;color:white;" onclick="showNewBasicUnitDiv()">Add New Basic Unit</option>
 									</select></td>
+								</tr>
+								<tr>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+								</tr>
+								
+							<tr>
+								<td><label for="lblName">Sub Unit</label></td>
+								<td><input class="u-full-width form-control" type="text"
+										name="txtasName" id="txtasName" placeholder="Name" required /></td>
 								</tr>
 								<tr>
 									<td>&nbsp;</td>
@@ -288,7 +287,7 @@
 								<tr>
 									<td><label for="lblRemark">Remark</label></td>
 									<td><input class="u-full-width form-control" type="text"
-										name="txtasRemark" id="txtasRemark" required /></td>
+										name="txtasRemark" id="txtasRemark" placeholder="Remark" required /></td>
 								</tr>
 								<tr>
 									<td>&nbsp;</td>
@@ -316,7 +315,7 @@
 													<label for="lblName">Basic Unit Name</label>
 												</div>
 												<div class="col-sm-4">
-													<input class="u-full-width form-control" type="text" name="txtName1" id="idtxtName1" />
+													<input class="u-full-width form-control" type="text" name="txtName1" id="idtxtName1" placeholder="Name" required/>
 												</div>
 												<div class="col-sm-2"></div>
 											</div><br>
@@ -326,7 +325,7 @@
 													<label for="lblRemark">Remark</label>
 												</div>
 												<div class="col-sm-4">
-													<input class="u-full-width form-control" type="text" name="txtRemark1" id="idtxtRemark1"/>
+													<input class="u-full-width form-control" type="text" name="txtRemark1" id="idtxtRemark1" placeholder="Remark" required/>
 												</div>
 												<div class="col-sm-2"></div>
 											</div><br>
@@ -504,15 +503,6 @@
 									              value=""/></td>
 									        </tr>
 									        <tr>
-									        	<td><label>Enter new name</label></td>
-									        	<td><input class="u-full-width form-control" type="text" name="txtsName" id="idtxtsName"
-									        		value="" required/>
-									            </td>
-									        </tr>
-									        <tr>
-									        <td>&nbsp;</td>
-									        <td>&nbsp;</td>
-									        </tr><tr>
 									        	<td><label>Basic unit</label></td>
 									        	<td><select name="cbosBasicunit" id="idcbosBasicunit" style="width:100%;" class="u-full-width form-control">
 									        			<%
@@ -524,24 +514,34 @@
 														</option>
 														
 												<% } %>
-												<option style="background-color: blue;color:white;" onclick="showNewBasicUnitDiv1()">Add new Basic Unit</option>
+												<option style="background-color: blue;color:white;" onclick="showNewBasicUnitDiv1()">Add New Basic Unit</option>
 									        		</select>
+									            </td>
+									        </tr>
+									        <tr>
+									        <td>&nbsp;</td>
+									        <td>&nbsp;</td>
+									        </tr>
+									        <tr>
+									        	<td><label>Sub Unit Name</label></td>
+									        	<td><input class="u-full-width form-control" type="text" name="txtsName" id="idtxtsName"
+									        		value="" placeholder="Name" required/>
 									            </td>
 									        </tr>
 									        <tr>
 									        <td>&nbsp;</td><td>&nbsp;</td>
 									        </tr>
 									        <tr>
-									        	<td><label>Enter new Remark</label></td>
+									        	<td><label>Remark</label></td>
 									        	<td><input class="u-full-width form-control" type="text" name="txtsRemark" id="idtxtsRemark" 
-									        		value="aa" required/>
+									        		value="aa" placeholder="Remark" required/>
 									        	</td>
 									        </tr>
 									         <tr>
 									        <td>&nbsp;</td><td>&nbsp;</td>
 									        </tr>
 									        <tr>
-									        <td><label>Enter new flag</label></td>
+									        <td><label>Flag</label></td>
 									       <!--  <td><input class="u-full-width form-control" type="text" name="txtsFlag" id="idtxtsFlag"
 									              value="aa" required/></td>-->
 									             <td><input type="radio" name="txtsFlag" id="idtxtsFlag1"
@@ -577,7 +577,7 @@
 													<label for="lblName">Basic Unit Name</label>
 												</div>
 												<div class="col-sm-4">
-													<input class="u-full-width form-control" type="text" name="txtName2" id="idtxtName2" />
+													<input class="u-full-width form-control" type="text" name="txtName2" id="idtxtName2" placeholder="Name" required/>
 												</div>
 												<div class="col-sm-2"></div>
 											</div><br>
@@ -587,7 +587,7 @@
 													<label for="lblRemark">Remark</label>
 												</div>
 												<div class="col-sm-4">
-													<input class="u-full-width form-control" type="text" name="txtRemark2" id="idtxtRemark2"/>
+													<input class="u-full-width form-control" type="text" name="txtRemark2" id="idtxtRemark2" placeholder="Remark" required/>
 												</div>
 												<div class="col-sm-2"></div>
 											</div><br>

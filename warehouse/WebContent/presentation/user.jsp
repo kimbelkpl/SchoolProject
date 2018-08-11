@@ -119,7 +119,7 @@
 						<div class="row p10">
 							<div class="panel panel-default">
 						  		<div class="panel-heading w3-container w3-light-blue p10">
-						  			<button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew" id="btnAddNew"><span class="glyphicon glyphicon-plus"></span> Add New</button> 
+						  			<button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew" id="btnAddNew"><span class="glyphicon glyphicon-plus"></span> Add New User</button> 
 			  						<!-- <button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#search"><span class="glyphicon glyphicon-search"></span> Search</button> -->
 			  						<span class="dropdown">
 			  							<button type="button" class="btn w3-container w3-light-blue p-header-btn dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Tools <span class="caret"></span></button>
@@ -143,7 +143,7 @@
 									      <tr>
 									        <th>User Name</th>
 											<th>User Level Name</th>
-											<th>Flag</th>
+											<!-- <th>Flag</th> -->
 									        <th>Options</th>
 									      </tr>
 									    </thead>
@@ -177,11 +177,11 @@
 												User user2=user_service.selectUser(u.getModified_user_id());
 											%>
 											</td>
-											<%if(u.getFlag()==1){ %>
+											<%-- <%if(u.getFlag()==1){ %>
 											<td> <font color="green">ON</font></td>
 											<%} else { %>
 											<td><font color="red">OFF</font></td>
-											<%} %>
+											<%} %> --%>
 									        <td class="dropdown">
 									        	<button class="btn w3-container w3-white w3-text-blue w3-hover-blue w3-hover-text-white ptb dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span>
 									      		</button>
@@ -302,13 +302,7 @@
 					       		</div>
 					       		<form onsubmit="return validate()" name="sample" action="/warehouse/UserController" method="post">
 						        <div class="modal-body p10">
-						          	<div class="row">
-						          		<div class="col-sm-1"></div>
-						          		<div class="col-sm-4 right"><label for="txtName">Name</label></div>
-						          		<div class="col-sm-5"><input class="u-full-width form-control" type="text" name="txtName" id="txtName" required/></div>
-						          		<div class="col-sm-2"></div>
-						          	</div><br>
-						          	<div class="row">
+						        <div class="row">
 						          		<div class="col-sm-1"></div>
 						          		<div class="col-sm-4 right"><label for="cboUserlevel">User-Level</label></div>
 						          		<div class="col-sm-5">
@@ -337,8 +331,15 @@
 										</script>
 						          	<div class="row">
 						          		<div class="col-sm-1"></div>
+						          		<div class="col-sm-4 right"><label for="txtName">Name</label></div>
+						          		<div class="col-sm-5"><input class="u-full-width form-control" type="text" name="txtName" id="txtName" placeholder="Name" required/></div>
+						          		<div class="col-sm-2"></div>
+						          	</div><br>
+						          	
+						          	<div class="row">
+						          		<div class="col-sm-1"></div>
 						          		<div class="col-sm-4 right"><label for="txtPassword">Password</label></div>
-						          		<div class="col-sm-5"><input onkeyup="passwordStrong(this.value)" class="u-full-width form-control" type="password" name="txtPassword" id="txtPassword1" pattern=".{9,}[a-zA-Z0-9._%+-/!@#$%^&*]+" title="Only number, character and ._%+-/!@#$%^&* .Must contain at least 10 characters" required/></div>
+						          		<div class="col-sm-5"><input onkeyup="passwordStrong(this.value)" class="u-full-width form-control" type="password" name="txtPassword" id="txtPassword1" pattern=".{9,}[a-zA-Z0-9._%+-/!@#$%^&*]+" title="Only number, character and ._%+-/!@#$%^&* .Must contain at least 10 characters" placeholder="Password" required/></div>
 						          		<div class="col-sm-2"></div>
 						          	</div><br>
 						          	<!-- script for password or not  // progress bar-->
@@ -397,7 +398,7 @@
 						          	<div class="row">
 						          		<div class="col-sm-1"></div>
 						          		<div class="col-sm-4 right"><label for="txtPassword">Confirm Password</label></div>
-						          		<div class="col-sm-5"><input class="u-full-width form-control" type="password" name="txtPassword2" id="txtPassword2" required/></div>
+						          		<div class="col-sm-5"><input class="u-full-width form-control" type="password" name="txtPassword2" id="txtPassword2" placeholder="Confirm Password" required/></div>
 						          		<div class="col-sm-2"></div>
 						          	</div><br>
 						          	<div class="row displayNone" id="newUserLevelDiv">
@@ -410,7 +411,7 @@
 													<label for="lblName">User Level Name</label>
 												</div>
 												<div class="col-sm-4">
-													<input class="u-full-width form-control" type="text" name="txtName1" id="idtxtName1" />
+													<input class="u-full-width form-control" type="text" name="txtName1" id="idtxtName1" placeholder="Name" />
 												</div>
 												<div class="col-sm-2"></div>
 											</div><br>
@@ -420,7 +421,7 @@
 													<label for="lblRemark">Remark</label>
 												</div>
 												<div class="col-sm-4">
-													<input class="u-full-width form-control" type="text" name="txtRemark1" id="idtxtRemark1"/>
+													<input class="u-full-width form-control" type="text" name="txtRemark1" id="idtxtRemark1" placeholder="Remark"/>
 												</div>
 												<div class="col-sm-2"></div>
 											</div><br>
@@ -538,16 +539,9 @@
 					          		<h4 class="modal-title">Showing Each Customer Information</h4>
 					       		</div>
 					       		<form>
-						        <div class="modal-body p10" style="height:430px;">
+						        <div class="modal-body p10" style="height:350px;">
 						          	
-						          		<div class="form-group">
-											<label class="control-label col-sm-6 right" for="username">Username:</label>
-												<div class="col-sm-3">
-													<label class="control-label" id="username"></label>
-												</div>
-											<div class="control-label col-sm-3"></div>
-										</div><br>
-										<div class="form-group">
+						          	<div class="form-group">
 											
 											<label class="control-label col-sm-6 right" for="level">User Level:</label>
 												<div class="col-sm-3">
@@ -555,6 +549,14 @@
 												</div>
 											<div class="control-label col-sm-3"></div>
 										</div><br>
+						          		<div class="form-group">
+											<label class="control-label col-sm-6 right" for="username">Username:</label>
+												<div class="col-sm-3">
+													<label class="control-label" id="username"></label>
+												</div>
+											<div class="control-label col-sm-3"></div>
+										</div><br>
+										
 										<div class="form-group">
 											
 											<label class="control-label col-sm-6 right" for="createdUser">Created User Name:</label>
@@ -663,12 +665,6 @@
 						          	</div><br>
 						          	<div class="row">
 						          		<div class="col-sm-1"></div>
-						          		<div class="col-sm-4 right"><label>Enter new name</label></div>
-						          		<div class="col-sm-5"><input class="u-full-width form-control" type="text" name="txtName" id="idtxtName" value="a" onkeyup="beforeSubmit()" autocomplete="off" required/></div>
-						          		<div class="col-sm-2"></div>
-						          	</div><br>
-						          	<div class="row">
-						          		<div class="col-sm-1"></div>
 						          		<div class="col-sm-4 right"><label>User-Level</label></div>
 						          		<div class="col-sm-5"><input type="text" class="form-control2" name="cbouserlevel" id="idcbouserlevel" onkeyup="filterFunction1()" autocomplete="off" required><button type="button" class="btn6" data-toggle="dropdown" id="btn7"><span class="caret"></span></button>
 												<ul class="dropdown-menu dropdown-menu-center menu dropdown-content droplist">
@@ -691,6 +687,13 @@
 						          	</div><br>
 						          	<div class="row">
 						          		<div class="col-sm-1"></div>
+						          		<div class="col-sm-4 right"><label>User Name</label></div>
+						          		<div class="col-sm-5"><input class="u-full-width form-control" type="text" name="txtName" id="idtxtName" value="a" onkeyup="beforeSubmit()" autocomplete="off" required/></div>
+						          		<div class="col-sm-2"></div>
+						          	</div><br>
+						          	
+						          	<div class="row">
+						          		<div class="col-sm-1"></div>
 						          		<div class="col-sm-4 right"><label>Enter new flag</label></div>
 						          		<div class="col-sm-5"><input type="radio" value="1" name="txtFlag" id="idtxtFlag1" onclick="beforeSubmit(this.value)"/><font color="green">ON</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									          	<input type="radio" value="0" name="txtFlag" id="idtxtFlag2" onclick="beforeSubmit(this.value)"/><font color="red">OFF</font></div>
@@ -706,7 +709,7 @@
 													<label for="lblName">User Level Name</label>
 												</div>
 												<div class="col-sm-4">
-													<input class="u-full-width form-control" type="text" name="txtName1" id="idtxtNameEd" />
+													<input class="u-full-width form-control" type="text" name="txtName1" id="idtxtNameEd" placeholder="Name"/>
 												</div>
 												<div class="col-sm-2"></div>
 											</div><br>
@@ -716,7 +719,7 @@
 													<label for="lblRemark">Remark</label>
 												</div>
 												<div class="col-sm-4">
-													<input class="u-full-width form-control" type="text" name="txtRemark1" id="idtxtRemarkEd"/>
+													<input class="u-full-width form-control" type="text" name="txtRemark1" id="idtxtRemarkEd" placeholder="Remark"/>
 												</div>
 												<div class="col-sm-2"></div>
 											</div><br>

@@ -366,7 +366,7 @@ var resecondcombo=document.getElementById("resub").value;
 						<div class="row p10">
 							<div class="panel panel-default">
 						  		<div class="panel-heading w3-container w3-light-blue p10">
-						  			<button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew" id="btnAddNew"><span class="glyphicon glyphicon-plus"></span> Add New</button> 
+						  			<button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew" id="btnAddNew"><span class="glyphicon glyphicon-plus"></span> Add New Stock In</button> 
 						  			<button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addReturn" id="btnReturn"><span class="glyphicon glyphicon-plus"></span>Return</button>
 			  						<span class="dropdown">
 			  							<button type="button" class="btn w3-container w3-light-blue p-header-btn dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Tools <span class="caret"></span></button>
@@ -400,7 +400,7 @@ var resecondcombo=document.getElementById("resub").value;
 									        <th>Voucher No</th>
 									         <th>Warehouse</th>
 									        <th>Remark</th>
-									        <th>Flag</th>
+									       <!--  <th>Flag</th> -->
 									        <th>Option</th>
 									      </tr>
 									    </thead>
@@ -429,11 +429,11 @@ var resecondcombo=document.getElementById("resub").value;
 								User u2 = userservice.selectUser(stock_in.getCreateUserId());
 								User u1 = userservice.selectUser(stock_in.getModifiedUserId());
 								%>
-								<%if(stock_in .getFlag()==1){ %>
+								<%-- <%if(stock_in .getFlag()==1){ %>
 								<td> <font color="green">ON</font></td>
 								<%} else { %>
 								<td><font color="red">OFF</font></td>
-								<%} %>
+								<%} %> --%>
 								
 									        
 									        <td class="dropdown">

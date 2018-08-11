@@ -204,7 +204,7 @@ transition:all .25s ease-in-out
 												<th>Qty</th>
 												<th>Sub Unit</th>
 												<th>Remark</th>
-												<th>Flag</th>
+												<!-- <th>Flag</th> -->
 												
 											</tr>
 										</thead>
@@ -312,7 +312,7 @@ transition:all .25s ease-in-out
 													User u2 = userservice.selectUser(stock.getCreated_user_id());
 																																								User u1 = userservice.selectUser(stock.getModified_user_id());
 												%>
-												<%
+												<%-- <%
 													if(stock .getFlag()==1){
 												%>
 												<td><font color="green">ON</font></td>
@@ -322,7 +322,7 @@ transition:all .25s ease-in-out
 												<td><font color="red">OFF</font></td>
 												<%
 													}
-												%>
+												%> --%>
 
 												<%} }%>
 												

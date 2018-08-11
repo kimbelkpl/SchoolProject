@@ -69,7 +69,7 @@
 						<div class="row p10">
 							<div class="panel panel-default">
 						  		<div class="panel-heading w3-container w3-light-blue p10">
-						  			<button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew" id="btnAddNew"><span class="glyphicon glyphicon-plus" id=""></span> Add New</button> 
+						  			<button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew" id="btnAddNew"><span class="glyphicon glyphicon-plus" id=""></span> Add New Category</button> 
 			  						<!-- <button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#search"><span class="glyphicon glyphicon-sear/ch"></span> Search</button> -->
 			  						<span class="dropdown">
 			  							<button type="button" class="btn w3-container w3-light-blue p-header-btn dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Tools <span class="caret"></span></button>
@@ -90,7 +90,7 @@
 									      <tr>
 									        <th>Name</th>
 							        		<th>Remark</th>
-											<th>Flag</th>
+											<!-- <th>Flag</th> -->
 									        <th>Options</th>
 									      </tr>
 									    </thead>
@@ -115,11 +115,11 @@
 												User u1 = user_service.selectUser(ca.getCreated_user_id());
 												User u2 = user_service.selectUser(ca.getModified_user_id());
 											%>
-											<%if(ca.getFlag()==1){ %>
+											<%-- <%if(ca.getFlag()==1){ %>
 											<td> <font color="green">ON</font></td>
 											<%} else { %>
 											<td><font color="red">OFF</font></td>
-											<%} %>
+											<%} %> --%>
 									        <td class="dropdown">
 									        	<button class="btn w3-container w3-white w3-text-blue w3-hover-blue w3-hover-text-white ptb dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span>
 									      		</button>
@@ -193,14 +193,14 @@
 						          		<table>
 										        <tr>
 										        <td><label for="lblName">Category Name</label></td><td><input
-										              class="u-full-width form-control" type="text" name="txtName" id="txtName" required/></td>
+										              class="u-full-width form-control" type="text" name="txtName" id="txtName" placeholder="Name" required/></td>
 										        </tr>
 										        <tr>
 										        <td>&nbsp;</td><td>&nbsp;</td>
 										        </tr>
 										        <tr>
 										        <td><label for="lblRemark">Remark</label></td><td><input
-										              class="u-full-width form-control" type="text" name="txtRemark" id="txtRemark" required/></td>
+										              class="u-full-width form-control" type="text" name="txtRemark" id="txtRemark" placeholder="Remark" required/></td>
 										        </tr>
 										        <tr>
 										        <td>&nbsp;</td><td>&nbsp;</td>
@@ -266,7 +266,7 @@
 					          		<h4 class="modal-title">Showing Each Category Information</h4>
 					       		</div>
 					       		<form>
-						        <div class="modal-body p10" style="height:430px;">
+						        <div class="modal-body p10" style="height:350px;">
 						          	
 						          		<div class="form-group">
 											<label class="control-label col-sm-6 right" for="categoryname">Category name:</label>
@@ -316,16 +316,13 @@
 											<div class="control-label col-sm-3"></div>
 										</div><br>
 										<div class="form-group">
-											
 											<label class="control-label col-sm-6 right" for="flag">Flag:</label>
 												<div class="col-sm-3">
 													<label class="control-label" id="flag"></label>
 												</div>
 											<div class="control-label col-sm-3"></div>
 										</div>
-										
-						          	
-						        </div>
+								</div>
 						        <div class="modal-footer p10">
 						          	<button type="button" class="btn btn-default w3-container w3-light-blue p10" data-dismiss="modal">Close</button>
 						        </div>

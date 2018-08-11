@@ -297,7 +297,7 @@
 
 						  		<div class="panel-heading w3-container w3-light-blue p10">
 
-						  			<button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew" id="btnAddNew"><span class="glyphicon glyphicon-plus"></span> Add New</button> 
+						  			<button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew" id="btnAddNew"><span class="glyphicon glyphicon-plus"></span> Add New Sub Category</button> 
 
 			  						<!-- <button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#search"><span class="glyphicon glyphicon-search"></span> Search</button> -->
 
@@ -342,7 +342,7 @@
 
 						<th>Remark</th>
 
-						<th>Flag</th>
+						<!-- <th>Flag</th> -->
 
 						<th>Option</th>
 
@@ -439,7 +439,7 @@
 
 				%>
 
-						<%if(sc.getFlag()==1){ %>
+						<%-- <%if(sc.getFlag()==1){ %>
 
 						<td> <font color="green">ON</font></td>
 
@@ -447,7 +447,7 @@
 
 						<td><font color="red">OFF</font></td>
 
-						<%} %>
+						<%} %> --%>
 
 						<td class="dropdown">
 
@@ -489,7 +489,7 @@
 									data-target="#rowEd" id="btnSubmit<%out.print(sc.getSub_category_id());%>" onclick="submit('<%out.print(sc.getSub_category_id());%>','<%out.print(sc.getName());%>',
 
 												     				'<%out.print(c.getName());%>','<%out.print(brand);%>','<%out.print(sc.getRemark());%>','<%out.print(sc.getFlag());%>')"
-												     				 ><span class="glyphicon glyphicon-edit" id="li<%out.print(sc.getSub_category_id());%>"></span>Edit</li>
+												     				 ><span class="glyphicon glyphicon-edit" id="li<%out.print(sc.getSub_category_id());%>"></span> Edit</li>
 								<%if(sc.getFlag()==1){ %>				
 
 									<li class="w3-container w3-hover-blue p10" onclick="confirmDelete('<%out.print(sc.getSub_category_id());%>')"> 
@@ -671,16 +671,6 @@
 							<div class="row">
 								<div class="col-sm-1"></div>
 								<div class="col-sm-4">
-									<label for="lblName">Sub Category Name</label>
-								</div>
-								<div class="col-sm-5">
-									<input class="u-full-width form-control" type="text"name="txtName" id="idtxtName" required />
-								</div>
-								<div class="col-sm-2"></div>
-							</div><br>
-							<div class="row">
-								<div class="col-sm-1"></div>
-								<div class="col-sm-4">
 									<label for="lblCategory">Category</label>
 								</div>
 								<div class="col-sm-5">
@@ -690,11 +680,22 @@
 												<li class="combobox" name="combobox" value="<% out.print(ca.getCategory_id()); %>" onclick="show2(this.innerHTML)"><% out.print(ca.getName()); %></li>
 											<% } %>
 												<li id="noMatchingSentence" class="noMatchingSentence">no matching data found.Click the follwing button.</li>
-												<li class="combobox addBrandSub" onclick="shownewCategoryDiv()">New Category</li>
+												<li class="combobox addBrandSub" onclick="shownewCategoryDiv()">Add New Category</li>
 										</ul>
 								</div>
 								<div class="col-sm-2"></div>
 							</div><br>
+							<div class="row">
+								<div class="col-sm-1"></div>
+								<div class="col-sm-4">
+									<label for="lblName">Sub Category Name</label>
+								</div>
+								<div class="col-sm-5">
+									<input class="u-full-width form-control" type="text"name="txtName" id="idtxtName" placeholder="Name" required />
+								</div>
+								<div class="col-sm-2"></div>
+							</div><br>
+							
 							<script type="text/javascript">
 								function shownewCategoryDiv(){
 									document.getElementById("newCategoryDiv").style.display="block";
@@ -721,7 +722,7 @@
 			  						<li name="combobox1">&nbsp;&nbsp;<input type="checkbox" name="brand" value="<%out.print(b.getBrand_id());%>"/><%out.print(b.getName()); %></li>
 			  						<%} %>
 			  						<li id="noMatchingSentenceForBrand" class="noMatchingSentence">no matching data found.Click the follwing button.</li>
-			  						<li onclick="showNewBrandDiv()" class="addBrandSub">Add new brand</li>
+			  						<li onclick="showNewBrandDiv()" class="addBrandSub">Add New brand</li>
 			  						</ul>
 								</div>
 								<script type="text/javascript">
@@ -742,7 +743,7 @@
 									<label for="lblRemark">Remark</label>
 								</div>
 								<div class="col-sm-5">
-									<input class="u-full-width form-control" type="text" name="txtRemark" id="idtxtRemark" required />
+									<input class="u-full-width form-control" type="text" name="txtRemark" id="idtxtRemark" placeholder="Remark" required />
 								</div>
 								<div class="col-sm-2"></div>
 							</div><br>
@@ -756,7 +757,7 @@
 											<label for="lblName">Brand Name</label>
 										</div>
 										<div class="col-sm-4">
-											<input class="u-full-width form-control" type="text" name="txtName1" id="idtxtName1" />
+											<input class="u-full-width form-control" type="text" name="txtName1" id="idtxtName1" placeholder="Name"/>
 										</div>
 										<div class="col-sm-2"></div>
 									</div><br>
@@ -766,7 +767,7 @@
 											<label for="lblRemark">Remark</label>
 										</div>
 										<div class="col-sm-4">
-											<input class="u-full-width form-control" type="text" name="txtRemark1" id="idtxtRemark1"/>
+											<input class="u-full-width form-control" type="text" name="txtRemark1" id="idtxtRemark1" placeholder="Remark"/>
 										</div>
 										<div class="col-sm-2"></div>
 									</div><br>
@@ -825,7 +826,7 @@
 											<label for="lblName">Category Name</label>
 										</div>
 										<div class="col-sm-4">
-											<input class="u-full-width form-control" type="text" name="txtNameFromSubAdd" id="idtxtNameFromSubAdd" />
+											<input class="u-full-width form-control" type="text" name="txtNameFromSubAdd" id="idtxtNameFromSubAdd" placeholder="Name"/>
 										</div>
 										<div class="col-sm-2"></div>
 									</div><br>
@@ -835,7 +836,7 @@
 											<label for="lblRemark">Remark</label>
 										</div>
 										<div class="col-sm-4">
-											<input class="u-full-width form-control" type="text" name="txtRemarkFromSubAdd" id="idtxtRemarkFromSubAdd"/>
+											<input class="u-full-width form-control" type="text" name="txtRemarkFromSubAdd" id="idtxtRemarkFromSubAdd" placeholder="Remark"/>
 										</div>
 										<div class="col-sm-2"></div>
 									</div><br>
@@ -928,7 +929,7 @@
 	          		<h4 class="modal-title">Showing Each Sub Category Information</h4>
 	       		</div>
 	       		<form>
-		        <div class="modal-body p10" style="height:430px;">
+		        <div class="modal-body p10" style="height:410px;">
 		          	
 		          		<div class="form-group">
 							<label class="control-label col-sm-6 right" for="subcategoryname">Sub Category name:</label>
@@ -1102,16 +1103,6 @@
 							<div class="row">
 								<div class="col-sm-1"></div>
 								<div class="col-sm-4">
-									<label for="lblName">Sub Category Name</label>
-								</div>
-								<div class="col-sm-5">
-									<input class="u-full-width form-control" type="text" name="txtName" id="idtxtName2" onkeyup="beforeSubmit()" required />
-								</div>
-								<div class="col-sm-2"></div>
-							</div><br>
-							<div class="row">
-								<div class="col-sm-1"></div>
-								<div class="col-sm-4">
 									<label for="lblCategory">Category</label>
 								</div>
 								<div class="col-sm-5">
@@ -1136,6 +1127,17 @@
 									}
 								</script>
 							</div><br>
+							<div class="row">
+								<div class="col-sm-1"></div>
+								<div class="col-sm-4">
+									<label for="lblName">Sub Category Name</label>
+								</div>
+								<div class="col-sm-5">
+									<input class="u-full-width form-control" type="text" name="txtName" id="idtxtName2" onkeyup="beforeSubmit()" required />
+								</div>
+								<div class="col-sm-2"></div>
+							</div><br>
+							
 							<div class="row">
 								<div class="col-sm-1"></div>
 								<div class="col-sm-4">

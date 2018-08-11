@@ -162,7 +162,7 @@
 						<div class="row p10">
 							<div class="panel panel-default">
 						  		<div class="panel-heading w3-container w3-light-blue p10">
-						  			<button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew" id="btnAddNew"><span class="glyphicon glyphicon-plus"></span> Add New</button> 
+						  			<button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew" id="btnAddNew"><span class="glyphicon glyphicon-plus"></span> Add New Brand</button> 
 			  						<!-- <button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#search"><span class="glyphicon glyphicon-search"></span> Search</button> -->
 			  						<span class="dropdown">
 			  							<button type="button" class="btn w3-container w3-light-blue p-header-btn dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Tools <span class="caret"></span></button>
@@ -182,7 +182,7 @@
 									      <tr>
 									        <th>Name</th>
 							        		<th>Remark</th>
-											<th>Flag</th>
+											<!-- <th>Flag</th> -->
 									        <th>Options</th>
 									      </tr>
 									    </thead>
@@ -205,11 +205,11 @@
 													User u2 = userservice.selectUser(b.getCreated_user_id());
 													User u1 = userservice.selectUser(b.getModified_user_id());
 											%>
-											<%if(b .getFlag()==1){ %>
+											<%-- <%if(b .getFlag()==1){ %>
 											<td> <font color="green">ON</font></td>
 											<%} else { %>
 											<td><font color="red">OFF</font></td>
-											<%} %>
+											<%} %> --%>
 											<%System.out.print(b.getFlag());%>
 											<%ISubCategoryAndBrandService subandbrandService=(ISubCategoryAndBrandService)SpringBeanFactory.getBean("SubCategoryAndBrandService");
 											  List<SubCategoryAndBrand> sadl=subandbrandService.selectSubCategoryAndBrandByBrandId(b.getBrand_id());
@@ -333,7 +333,7 @@
 									<label for="lblName">Brand Name</label>
 								</div>
 								<div class="col-sm-5">
-									<input class="u-full-width form-control" type="text"name="txtName" id="idtxtName" required />
+									<input class="u-full-width form-control" type="text"name="txtName" id="idtxtName" placeholder="Name" required />
 								</div>
 								<div class="col-sm-2"></div>
 							</div><br>
@@ -372,7 +372,7 @@
 									<label for="lblRemark">Remark</label>
 								</div>
 								<div class="col-sm-5">
-									<input class="u-full-width form-control" type="text" name="txtRemark" id="idtxtRemark" required />
+									<input class="u-full-width form-control" type="text" name="txtRemark" id="idtxtRemark" placeholder="Remark" required />
 								</div>
 								<div class="col-sm-2"></div>
 							</div><br>
@@ -386,7 +386,7 @@
 											<label for="lblName">SubCategory Name</label>
 										</div>
 										<div class="col-sm-4">
-											<input class="u-full-width form-control" type="text" name="txtName1" id="idtxtName1" />
+											<input class="u-full-width form-control" type="text" name="txtName1" id="idtxtName1" placeholder="Name" required/>
 										</div>
 										<div class="col-sm-2"></div>
 									</div><br>
@@ -397,7 +397,7 @@
 										<div class="col-sm-4">
 											<label for="lblCategory">Category</label>
 										</div>
-										<div class="col-sm-4">
+										<div class="col-sm-4" >
 											<select name="cboCategory" id="idcboCategory" style="width: 100%;">
 												<% for(Category ca:cl){ %>
 												<option value="<% out.print(ca.getCategory_id()); %>">
@@ -414,7 +414,7 @@
 											<label for="lblRemark">Remark</label>
 										</div>
 										<div class="col-sm-4">
-											<input class="u-full-width form-control" type="text" name="txtRemark1" id="idtxtRemark1"/>
+											<input class="u-full-width form-control" type="text" name="txtRemark1" id="idtxtRemark1" placeholder="Remark" required/>
 										</div>
 										<div class="col-sm-2"></div>
 									</div><br>
@@ -515,7 +515,7 @@
 					          		<h4 class="modal-title">Showing Each Brand Information</h4>
 					       		</div>
 					       		<form>
-						        <div class="modal-body p10" style="height:430px;">
+						        <div class="modal-body p10" style="height:350px;">
 						          	
 						          		<div class="form-group">
 											<label class="control-label col-sm-6 right" for="brandname">Brand name:</label>
@@ -706,12 +706,12 @@
 								<div class="col-sm-2"></div>
 							</div><br>
 							<div class="row">
-								<div class="col-sm-2"></div>
+								<div class="col-sm-1"></div>
 								<div class="col-sm-4">
 									<label for="lblFlag">Flag</label>
 								</div>
 								<div class="col-sm-5">
-									<input type="radio" name="txtFlag" id="idtxtFlag1" onclick="beforeSubmit(this.value)" value="1"/><font color="green">ON</font>
+									<input type="radio" name="txtFlag" id="idtxtFlag1" onclick="beforeSubmit(this.value)" value="1"/><font color="green">ON</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<input type="radio" name="txtFlag" id="idtxtFlag2" onclick="beforeSubmit(this.value)" value="0"/><font color="red">OFF</font>
 								</div>
 								<div class="col-sm-2"></div>

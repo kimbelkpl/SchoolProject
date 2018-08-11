@@ -46,7 +46,7 @@ function existOrNot(){
 						<div class="row p10">
 							<div class="panel panel-default">
 						  		<div class="panel-heading w3-container w3-light-blue p10">
-						  			<button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew" id="btnAddNew"><span class="glyphicon glyphicon-plus"></span> Add New</button> 
+						  			<button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew" id="btnAddNew"><span class="glyphicon glyphicon-plus"></span>Add New Supplier</button> 
 			  						<!-- <button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#search"><span class="glyphicon glyphicon-search"></span> Search</button> -->
 			  						<span class="dropdown">
 			  							<button type="button" class="btn w3-container w3-light-blue p-header-btn dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Tools <span class="caret"></span></button>
@@ -70,7 +70,7 @@ function existOrNot(){
 									        <th>Phone_No</th>
 									        <th>Email</th>
 							        		<th>Remark</th>
-											<th>Flag</th>
+											<!-- <th>Flag</th> -->
 									        <th>Options</th>
 									      </tr>
 									    </thead>
@@ -105,11 +105,11 @@ function existOrNot(){
 												User u2 = user_service.selectUser(ca.getCreated_user_id());
 												User u1 = user_service.selectUser(ca.getModified_user_id());
 											%>
-									        <% if(ca.getFlag()==1){ %>
+									       <%--  <% if(ca.getFlag()==1){ %>
 									        <td><font color="green">ON</font></td> 
 									        <%} else{ %>
 									        <td><font color="red">OFF</font></td>
-									        <%} %>
+									        <%} %> --%>
 									        <td class="dropdown">
 									        	<button class="btn w3-container w3-white w3-text-blue w3-hover-blue w3-hover-text-white ptb dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span>
 									      		</button> 
@@ -174,35 +174,35 @@ function existOrNot(){
 						          		<table>
 										        <tr>
 										        <td><label for="lblName">Name</label></td><td><input
-										              class="u-full-width form-control" type="text" name="txtName" id="txtName" required/></td>
+										              class="u-full-width form-control" type="text" name="txtName" id="txtName" placeholder="Name" required/></td>
 										        </tr>
 										        <tr>
 										        <td>&nbsp;</td><td>&nbsp;</td>
 										        </tr>
 										        <tr>
 										        <td><label for="lblAddress">Address</label></td><td><input
-										              class="u-full-width form-control" type="text" name="txtAddress" id="txtAddress" required/></td>
+										              class="u-full-width form-control" type="text" name="txtAddress" id="txtAddress" placeholder="Address" required/></td>
 										        </tr>
 										        <tr>
 										        <td>&nbsp;</td><td>&nbsp;</td>
 										        </tr>
 										        <tr>
 										        <td><label for="lblPhoneNo">Phone_No</label></td><td><input
-										              class="u-full-width form-control" type="text" name="txtPhoneNo" pattern="\++[0-9\s]+|[0-9\s]+"  id="txtPhoneNo" required/></td>
+										              class="u-full-width form-control" type="text" name="txtPhoneNo" pattern="\++[0-9\s]+|[0-9\s]+"  id="txtPhoneNo" placeholder="Phone No" required/></td>
 										        </tr>
 										        <tr>
 										        <td>&nbsp;</td><td>&nbsp;</td>
 										        </tr>
 										        <tr>
 										        <td><label for="lblEmail">Email</label></td><td><input
-										              class="u-full-width form-control" type="text" name="txtEmail" pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="txtEmail" required/></td>
+										              class="u-full-width form-control" type="text" name="txtEmail" pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="txtEmail" placeholder="Email" required/></td>
 										        </tr>
 										        <tr>
 										        <td>&nbsp;</td><td>&nbsp;</td>
 										        </tr>
 										        <tr>
 										        <td><label for="lblRemark">Remark</label></td><td><input
-										              class="u-full-width form-control" type="text" name="txtRemark" id="txtRemark" required/></td>
+										              class="u-full-width form-control" type="text" name="txtRemark" id="txtRemark" placeholder="Remark" required/></td>
 										        </tr>
 										        <tr>
 										        <td>&nbsp;</td><td>&nbsp;</td>
@@ -370,7 +370,7 @@ function existOrNot(){
 										              class="u-full-width form-control" type="hidden" name="txtId" value="a" id="idtxtId"/>
 										         </td></tr>
 									       <tr> 
-									       		<td><label for="lblName">Enter New Supplier Name</label></td>
+									       		<td><label for="lblName">Supplier Name</label></td>
 									       		<td><input
 									              class="u-full-width form-control" type="text" name="txtName" id="idtxtName" value="a" required/></td>
 									        </tr>
@@ -378,7 +378,7 @@ function existOrNot(){
 									        <td>&nbsp;</td><td>&nbsp;</td>
 									        </tr>
 									         <tr> 
-									       		<td><label for="lblAddresss">Enter New Supplier Address</label></td>
+									       		<td><label for="lblAddresss">Supplier Address</label></td>
 									       		<td><input
 									              class="u-full-width form-control" type="text" name="txtAddress" id="idtxtAddress" value="a" required/></td>
 									        </tr>
@@ -386,7 +386,7 @@ function existOrNot(){
 									        <td>&nbsp;</td><td>&nbsp;</td>
 									        </tr>
 									        <tr> 
-									       		<td><label for="lblPhoneNo">Enter New Supplier Phone_No</label></td>
+									       		<td><label for="lblPhoneNo">Supplier Phone_No</label></td>
 									       		<td><input
 									              class="u-full-width form-control" type="text" name="txtPhoneNo" pattern="\++[0-9\s]+|[0-9\s]+" id="idtxtPhoneNo" value="a" required/></td>
 									        </tr>
@@ -394,7 +394,7 @@ function existOrNot(){
 									        <td>&nbsp;</td><td>&nbsp;</td>
 									        </tr>
 									         <tr> 
-									       		<td><label for="lblEmail">Enter New Supplier Email</label></td>
+									       		<td><label for="lblEmail">Supplier Email</label></td>
 									       		<td><input
 									              class="u-full-width form-control" type="text" name="txtEmail" id="idtxtEmail"  pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" value="a" required/></td>
 									        </tr>
@@ -402,16 +402,16 @@ function existOrNot(){
 									        <td>&nbsp;</td><td>&nbsp;</td>
 									        </tr>
 									        <tr>
-									        <td><label for="lblRemark">Enter New  Supplier Remark</label></td><td><input
+									        <td><label for="lblRemark">Supplier Remark</label></td><td><input
 									              class="u-full-width form-control" type="text" name="txtRemark" id="idtxtRemark" value="a" required/></td>
 									        </tr>
 									        <tr>
 									        <td>&nbsp;</td><td>&nbsp;</td>
 									        </tr>
 									        <tr>
-									        <td><label for="lblflag">Enter Flag</label></td>
-                                            <td><input type="radio" value="1" name="txtFlag" id="idtxtFlag1" /><font color="green">ON</font>&nbsp;&nbsp;&nbsp;</td>
-									        <td><input type="radio" value="0" name="txtFlag" id="idtxtFlag2" /><font color="red">OFF</font></td>
+									        <td><label for="lblflag">Flag</label></td>
+                                            <td><input type="radio" value="1" name="txtFlag" id="idtxtFlag1" /><font color="green">ON</font>&nbsp;&nbsp;&nbsp;
+                                            <input type="radio" value="0" name="txtFlag" id="idtxtFlag2" /><font color="red">OFF</font></td>
 									        </tr>
 									        <tr>
 									        <td>&nbsp;</td><td>&nbsp;</td>

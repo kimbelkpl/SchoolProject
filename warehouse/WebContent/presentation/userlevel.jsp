@@ -64,7 +64,7 @@
 						<div class="row p10">
 							<div class="panel panel-default">
 						  		<div class="panel-heading w3-container w3-light-blue p10">
-						  			<button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew" id="btnAddNew"><span class="glyphicon glyphicon-plus"></span> Add New</button> 
+						  			<button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew" id="btnAddNew"><span class="glyphicon glyphicon-plus"></span>Add New User Level</button> 
 			  						<!-- <button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#search"><span class="glyphicon glyphicon-search"></span> Search</button> -->
 			  						<span class="dropdown">
 			  							<button type="button" class="btn w3-container w3-light-blue p-header-btn dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Tools <span class="caret"></span></button>
@@ -87,7 +87,7 @@
 					<tr>
 						<th>Name</th>
 						<th>Remark</th>
-						<th>Flag</th>
+						<!-- <th>Flag</th> -->
 						<th>Options</th>
 					</tr>
 				</thead>
@@ -122,11 +122,11 @@
 																	         
 						%>
 						
-						<%if(ul.getFlag()==1){ %>
+						<%-- <%if(ul.getFlag()==1){ %>
 						<td> <font color="green">ON</font></td>
 						<%} else { %>
 						<td><font color="red">OFF</font></td>
-						<%} %>
+						<%} %> --%>
 						<td class="dropdown">
 							<button
 								class="btn w3-container w3-white w3-text-blue w3-hover-blue w3-hover-text-white ptb dropdown-toggle"
@@ -218,7 +218,7 @@
 											<tr>
 												<td><label for="lblName">Remark</label></td>
 												<td><input class="u-full-width form-control"
-													type="text" placeholder="remark" name="txtRemark"
+													type="text" placeholder="remark" name="txtRemark" placeholder="Remark"
 													id="txtRemark" required /></td>
 											</tr>
 											<tr>
@@ -297,7 +297,7 @@
 	          		<h4 class="modal-title">Showing Each User Level Information</h4>
 	       		</div>
 	       		<form>
-		        <div class="modal-body p10" style="height:430px;">
+		        <div class="modal-body p10" style="height:350px;">
 		          	
 		          		<div class="form-group">
 							<label class="control-label col-sm-6 right" for="userlevelname">UserLevelname:</label>
@@ -402,7 +402,7 @@
 										name="txtId" value="a" id="idtxtId" /></td>
 								</tr>
 								<tr>
-									<td><label for="lblName">Enter New Userlevel Name</label></td>
+									<td><label for="lblName">Userlevel Name</label></td>
 									<td><input class="u-full-width form-control" type="text"
 										name="txtName" id="idtxtName" value="a" onkeyup="beforeSubmit()" autocomplete="off" required /></td>
 								</tr>
@@ -411,7 +411,7 @@
 									<td>&nbsp;</td>
 								</tr>
 								<tr>
-									<td><label for="lblRemark">Enter New Remark</label></td>
+									<td><label for="lblRemark">New Remark</label></td>
 									<td><input class="u-full-width form-control" type="text"
 										name="txtRemark" id="idtxtRemark" value="a" onkeyup="beforeSubmit()" autocomplete="off" required /></td>
 								</tr>
@@ -420,7 +420,7 @@
 									<td>&nbsp;</td>
 								</tr>
 								<tr>
-									<td><label for="lblflag">Enter Flag</label></td>
+									<td><label for="lblflag">Flag</label></td>
 									<td><input type="radio" value="1" name="txtFlag" id="idtxtFlag1" onclick="beforeSubmit(this.value)"/><font color="green">ON</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									    <input type="radio" value="0" name="txtFlag" id="idtxtFlag2" onclick="beforeSubmit(this.value)"/><font color="red">OFF</font></td>
 								</tr>

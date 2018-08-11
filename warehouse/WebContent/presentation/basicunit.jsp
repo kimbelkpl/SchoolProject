@@ -43,7 +43,7 @@
 						<div class="row p10">
 							<div class="panel panel-default">
 						  		<div class="panel-heading w3-container w3-light-blue p10">
-						  			<button type="button" id="idAdd" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew"><span class="glyphicon glyphicon-plus"></span> Add New</button> 
+						  			<button type="button" id="idAdd" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew"><span class="glyphicon glyphicon-plus"></span> Add New Base Type</button> 
 			  						<!-- <button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#search"><span class="glyphicon glyphicon-search"></span> Search</button> -->
 			  						<span class="dropdown">
 			  							<button type="button" class="btn w3-container w3-light-blue p-header-btn dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Tools <span class="caret"></span></button>
@@ -64,9 +64,7 @@
 									      <tr>
 									        <th>Name</th>
 							        		<th>Remark</th>
-							        	<!-- 	<th>Created user name</th>
-											<th>Modified user name</th>	 -->
-											<th>Flag</th>
+											<!-- <th>Flag</th> -->
 									        <th>Options</th>
 									      </tr>
 									    </thead>
@@ -96,11 +94,11 @@
 										User u1 = userservice.selectUser(bc.getModified_user_id());
 								%>
 								
-								<% if(bc.getFlag()==1){ %>
+								<%-- <% if(bc.getFlag()==1){ %>
 							<td><font color="green">ON</font></td>
 						<% }else{ %>
 							<td><font color="red">OFF</font></td>
-						<%}%>	
+						<%}%>	 --%>
 								
 								<%System.out.print(bc.getFlag());%>
 									        <td class="dropdown">
@@ -198,14 +196,14 @@
 						          		<table>
 										        <tr>
 										        <td><label for="lblName">Name</label></td><td><input
-										              class="u-full-width form-control" type="text" name="txtabName" id="txtabName" required/></td>
+										              class="u-full-width form-control" type="text" name="txtabName" id="txtabName" placeholder="Name" required/></td>
 										        </tr>
 										        <tr>
 										        <td>&nbsp;</td><td>&nbsp;</td>
 										        </tr>
 										        <tr>
 										        <td><label for="lblRemark">Remark</label></td><td><input
-										              class="u-full-width form-control" type="text" name="txtabRemark" id="txtabRemark" required/></td>
+										              class="u-full-width form-control" type="text" name="txtabRemark" id="txtabRemark" placeholder="Remark" required/></td>
 										        </tr>
 										        <tr>
 										        <td>&nbsp;</td><td>&nbsp;</td>
@@ -344,20 +342,18 @@
 						        <div class="modal-body p10">
 						          	   	<center>
 									        <table>
-									        <tr>
-										        <td></td>
-										        <td><input
+									        <input
 										              class="u-full-width form-control" type="hidden" name="txtbId" value="" id="idtxtbId"/>
-										         </td></tr>
+									        
 									       <tr> 
-									       		<td><label for="lblName">Enter New Base Type Name</label></td><td><input
+									       		<td><label for="lblName">Base Type Name</label></td><td><input
 									              class="u-full-width form-control" type="text" name="txtbName" value="aaa" id="idtxtbName" required/></td>
 									        </tr>
 									        <tr>
 									        <td>&nbsp;</td><td>&nbsp;</td>
 									        </tr>
 									        <tr>
-									        <td><label for="lblRemark">Enter New Remark</label></td><td><input
+									        <td><label for="lblRemark">Remark</label></td><td><input
 									              class="u-full-width form-control" type="text" name="txtbRemark" value="" id="idtxtbRemark" required/></td>
 									        </tr>
 									        <tr>

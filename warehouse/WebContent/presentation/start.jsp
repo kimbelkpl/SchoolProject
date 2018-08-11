@@ -17,7 +17,13 @@
 						  		
 		  		<div class="panel-body p10">
 		  			<!-- start of search result table -->
+		  			<br>
+		  			<br>
+		  			<br>
 		  			<center><h1>Welcome! <%=uname %></h1></center>
+		  			<br>
+		  			<br>
+		  			<br>
 		  		</div>
 			</div>
 		</div>

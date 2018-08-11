@@ -38,7 +38,7 @@
 						<div class="row p10">
 							<div class="panel panel-default">
 						  		<div class="panel-heading w3-container w3-light-blue p10">
-						  			<button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew" id="btnAddNew"><span class="glyphicon glyphicon-plus"></span> Add New</button> 
+						  			<button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew" id="btnAddNew"><span class="glyphicon glyphicon-plus"></span>Add New Merchandise</button> 
 			  						<!-- <button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#search"><span class="glyphicon glyphicon-search"></span> Search</button> -->
 			  						<span class="dropdown">
 			  							<button type="button" class="btn w3-container w3-light-blue p-header-btn dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Tools <span class="caret"></span></button>
@@ -68,7 +68,7 @@
 							<th>Convertion Unit</th>
 							<th>Convertion Value</th>
 							<th>Unit price</th>
-							<th>Flag</th>
+							<!-- <th>Flag</th> -->
 							<th>Options</th>
 						</tr>
 					</thead>
@@ -121,7 +121,7 @@
 								%>
 							</td>
 
-							<%
+							<%-- <%
 							if(m.getFlag()==1){
 						%>
 							<td><font color="green">ON</font></td>
@@ -131,7 +131,7 @@
 							<td><font color="red">OFF</font></td>
 							<%
 							}
-						%>
+						%> --%>
 
 							<td class="dropdown">
 								<button
@@ -230,7 +230,7 @@
 																			}
 																		%>
 																		
-																<option onclick="showNewCateDiv()" class="addBrandSub" id="addcate">Add new Category</option>
+																<option onclick="showNewCateDiv()" class="addBrandSub" id="addcate">Add New Category</option>
 						
 											</select></td>
 											<script type="text/javascript">
@@ -273,7 +273,7 @@
 													<%
 																			}
 																		%>
-																		<option onclick="showNewBasicDiv()" class="addBrandSub" id="addbasic">Add new Base Type</option>
+																		<option onclick="showNewBasicDiv()" class="addBrandSub" id="addbasic">Add New Base Type</option>
 											</select>
 											</td>
 											</tr>
@@ -298,7 +298,7 @@
 											<tr>
 										<td><label for="lblName">Merchandise Name</label></td></tr>
 										<tr>
-										<td><input type="text" id="lblName" name="txtName" class="u-full-width form-control" required /></td>
+										<td><input type="text" id="lblName" name="txtName" class="u-full-width form-control" placeholder="Merchandise Name" required /></td>
 									</tr>
 									<tr>
 										<td>&nbsp;</td>
@@ -371,7 +371,7 @@
 												Value</label></td></tr>
 												<tr>
 										<td><input type="text" id="idConvertionValue"  class="u-full-width form-control" 
-											name="txtConvertionValue" required /></td>
+											name="txtConvertionValue" placeholder="Convertion Value" required /></td>
 										<td><p id="conValueAlert"></p></td>
 									</tr>
 									<tr>
@@ -396,15 +396,15 @@
 							<!-- add new category -->
 						<div class="row" id="newCateDiv" style="display:none;">
 								<div class="col-sm-1"></div>
-								<div class="col-sm-10" style="border-style: solid;border-radius:15px;border-color: skyblue;">
+								<div class="col-sm-10" style="border-style: solid;border-radius:30px;border-color: skyblue;">
 								<center><h4>Add New Category</h4></center>
 									<div class="row">
 										<div class="col-sm-1"></div>
 										<div class="col-sm-5">
-											<label for="lblName">Category Name</label>
+											<label for="lblName">Category</label>
 										</div>
 										<div class="col-sm-5">
-											<input class="u-full-width form-control" type="text" name="txtcate1" id="idtxtcate1" />
+											<input class="u-full-width form-control" type="text" name="txtcate1" id="idtxtcate1" placeholder="Name" required/>
 										</div>
 										<div class="col-sm-1"></div>
 									</div><br>
@@ -414,7 +414,7 @@
 											<label for="lblRemark">Remark</label>
 										</div>
 										<div class="col-sm-5">
-											<input class="u-full-width form-control" type="text" name="txtRemark1" id="idtxtRemark1"/>
+											<input class="u-full-width form-control" type="text" name="txtRemark1" id="idtxtRemark1" placeholder="Remark" required/>
 										</div>
 										<div class="col-sm-1"></div>
 									</div><br>
@@ -457,7 +457,7 @@
 											<label for="lblName">Brand Name</label>
 										</div>
 										<div class="col-sm-5">
-											<input class="u-full-width form-control" type="text" name="txtbrand2" id="idtxtbrand2" />
+											<input class="u-full-width form-control" type="text" name="txtbrand2" id="idtxtbrand2" placeholder="Name" required/>
 										</div>
 										<div class="col-sm-1"></div>
 									</div><br>
@@ -467,7 +467,7 @@
 											<label for="lblRemark">Remark</label>
 										</div>
 										<div class="col-sm-5">
-											<input class="u-full-width form-control" type="text" name="txtRemark6" id="idtxtRemark6"/>
+											<input class="u-full-width form-control" type="text" name="txtRemark6" id="idtxtRemark6" placeholder="Remark" required/>
 										</div>
 										<div class="col-sm-1"></div>
 									</div><br>
@@ -509,10 +509,10 @@
 									<div class="row">
 										<div class="col-sm-1"></div>
 										<div class="col-sm-5">
-											<label for="lblName">Base Type Name</label>
+											<label for="lblName">Base Type</label>
 										</div>
 										<div class="col-sm-5">
-											<input class="u-full-width form-control" type="text" name="txtBasic" id="idtxtBasic" />
+											<input class="u-full-width form-control" type="text" name="txtBasic" id="idtxtBasic" placeholder="Name" required/>
 										</div>
 										<div class="col-sm-1"></div>
 									</div><br>
@@ -522,7 +522,7 @@
 											<label for="lblRemark">Remark</label>
 										</div>
 										<div class="col-sm-5">
-											<input class="u-full-width form-control" type="text" name="txtRemark2" id="idtxtRemark2"/>
+											<input class="u-full-width form-control" type="text" name="txtRemark2" id="idtxtRemark2" placeholder="Remark" required/>
 										</div>
 										<div class="col-sm-5"></div>
 									</div><br>
@@ -566,10 +566,10 @@
 									<div class="row">
 										<div class="col-sm-1"></div>
 										<div class="col-sm-5">
-											<label for="lblName">Sub Unit Name</label>
+											<label for="lblName">Sub Unit</label>
 										</div>
 										<div class="col-sm-5">
-											<input class="u-full-width form-control" type="text" name="txtSubUnit" id="idtxtSubUnit" />
+											<input class="u-full-width form-control" type="text" name="txtSubUnit" id="idtxtSubUnit" placeholder="Name" required/>
 										</div>
 										<div class="col-sm-5"></div>
 									</div><br>
@@ -579,7 +579,7 @@
 											<label for="lblRemark">Remark</label>
 										</div>
 										<div class="col-sm-5">
-											<input class="u-full-width form-control" type="text" name="txtRemark3" id="idtxtRemark3"/>
+											<input class="u-full-width form-control" type="text" name="txtRemark3" id="idtxtRemark3" placeholder="Remark" required/>
 										</div>
 										<div class="col-sm-1"></div>
 									</div><br>
@@ -625,10 +625,10 @@
 										<div class="col-sm-1"></div>
 										<div class="col-sm-5">
 										<input type="hidden" id="idNo" value=" ">
-											<label for="lblName">SubCategory Name</label>
+											<label for="lblName">Sub Category</label>
 										</div>
 										<div class="col-sm-5">
-											<input class="u-full-width form-control" type="text" name="txtsubcate1" id="idtxtsubcate1" />
+											<input class="u-full-width form-control" type="text" name="txtsubcate1" id="idtxtsubcate1" placeholder="Name" required/>
 										</div>
 										<div class="col-sm-1"></div>
 									</div><br>
@@ -639,7 +639,7 @@
 									<label for="brand">Brand</label>
 								</div>
 								<div class="col-sm-5">
-									<div class="col-sm-12 btn btn-default btnDropdown"  data-toggle="dropdown" id="btnDropdown">
+									<div class="col-sm-10 btn btn-default btnDropdown"  data-toggle="dropdown" id="btnDropdown">
 			  					<%IBrandService brand_service = (IBrandService) SpringBeanFactory
 			  							.getBean("BrandService");
 								  List<Brand> bl1=brand_service.selectAll();
@@ -675,7 +675,7 @@
 											<label for="lblRemark">Remark</label>
 										</div>
 										<div class="col-sm-5">
-											<input class="u-full-width form-control" type="text" name="txtRemark4" id="idtxtRemark4"/>
+											<input class="u-full-width form-control" type="text" name="txtRemark4" id="idtxtRemark4" placeholder="Remark" required/>
 										</div>
 										<div class="col-sm-1"></div>
 									</div><br>
@@ -739,7 +739,7 @@
 											<label for="lblName">Brand Name</label>
 										</div>
 										<div class="col-sm-5">
-											<input class="u-full-width form-control" type="text" name="txtbrand1" id="idtxtbrand1" />
+											<input class="u-full-width form-control" type="text" name="txtbrand1" id="idtxtbrand1" placeholder="Name" required/>
 										</div>
 										<div class="col-sm-1"></div>
 									</div><br>
@@ -749,7 +749,7 @@
 											<label for="lblRemark">Remark</label>
 										</div>
 										<div class="col-sm-5">
-											<input class="u-full-width form-control" type="text" name="txtRemark5" id="idtxtRemark5"/>
+											<input class="u-full-width form-control" type="text" name="txtRemark5" id="idtxtRemark5" placeholder="Remark" required/>
 										</div>
 										<div class="col-sm-1"></div>
 									</div><br>
@@ -834,7 +834,7 @@
 										<td><label for="lblUnitPrice">Unit Price</label></td></tr>
 										<tr>
 										<td><input type="text" id="idUnitPrice"  class="u-full-width form-control"  
-											name="txtUnitPrice" required /></td>
+											name="txtUnitPrice" placeholder="Unit Price" required /></td>
 										<td><p id="unitPriceAlert"></p></td>
 									</tr>
 									<tr>
@@ -845,9 +845,6 @@
 								
 							</div>
 						<br>
-
-						
-
 						</div>
 					</div>
 					<div class="modal-footer p10">
@@ -879,38 +876,38 @@
 				</div>
 				<form>
 					<div class="modal-body p10">
-						<span style="font-size: 2em" id="user"
-								class="glyphicon glyphicon-user"></span><br> 
+						<!-- <span style="font-size: 2em" id="user"
+								class="glyphicon glyphicon-user"></span><br>  -->
 						<div class="row">
 						<div class="col-sm-1"></div>
 						<div class="col-sm-5">
-						<p><b>Merchandise Name:</b></p>
-						<p><b>Sub Category:</b></p>
-						<p><b>Brand:</b></p>
-						<p><b>Sub Unit:</b></p>
-						<p><b>Convertion Unit:</b></p>
-						<p><b>Convertion Value:</b></p>
-						<p><b>Unit Price:</b></p>
-						<p><b>Created User Id:</b></p>
-						<p><b>Modified User Id:</b></p>
-						<p><b>Created Date:</b></p>
-						<p><b>Modified Date:</b></p>
+						<p><label>Merchandise Name:</label></p>
+						<p><label>Sub Category:</label></p>
+						<p><label>Brand:</label></p>
+						<p><label>Sub Unit:</label></p>
+						<p><label>Convertion Unit:</label></p>
+						<p><label>Convertion Value:</label></p>
+						<p><label>Unit Price:</label></p>
+						<p><label>Created User Id:</label></p>
+						<p><label>Modified User Id:</label></p>
+						<p><label>Created Date:</label></p>
+						<p><label>Modified Date:</label></p>
 						</div>
 						
 						<div class="col-sm-4">
-						<p id="viewname"></p>
-						<p id="viewsubcategory"></p>
-						<p id="viewbrand"></p>
-						<p id="viewsubunit"></p>
-						<p id="viewconvertionunit"></p>
-						<p id="viewconvertionvalue"></p>
-						<p id="viewunitprice"></p>
-						<p id="viewcreateduserid"></p>
-						<p id="viewmodifieduserid"></p>
-						<p id="viewcreateddate"></p>
-						<p id="viewmodifieddate"></p>
+						<label><p id="viewname"></p></label>
+						<label><p id="viewsubcategory"></label></p>
+						<label><p id="viewbrand"></label></p>
+						<label><p id="viewsubunit"></label></p>
+						<label><p id="viewconvertionunit"></label></p>
+						<label><p id="viewconvertionvalue"></label></p>
+						<label><p id="viewunitprice"></label></p>
+						<label><p id="viewcreateduserid"></label></p>
+						<label><p id="viewmodifieduserid"></label></p>
+						<label><p id="viewcreateddate"></label></p>
+						<label><p id="viewmodifieddate"></label></p>
 						</div>
-						<div class="col-sm-2"></div>
+						<!-- <div class="col-sm-2"></div> -->
 						</div>
 					</div>
 					<div class="modal-footer p10">
@@ -947,7 +944,7 @@
 												name="txtId" id="idtxtid" /></td>
 										</tr>
 										<tr>
-											<td><label for="lblUnitPrice">Enter New Category</label></td>
+											<td><label for="lblUnitPrice">Category</label></td>
 										</tr>
 										<tr>
 											<td><select name="cboCategory" id="idcboCategory" class="u-full-width form-control"
@@ -965,7 +962,7 @@
 										<%
 											}
 										%>
-										<option onclick="showNewCateDiv1()" class="addBrandSub" id="edcater">Add new Category</option>
+										<option onclick="showNewCateDiv1()" class="addBrandSub" id="edcater">Add New Category</option>
 
 										</select></td>
 										
@@ -988,7 +985,7 @@
 											<td>&nbsp;</td>
 										</tr>
 										<tr>
-											<td><label for="lblBrand">Enter New Base Type</label></td>
+											<td><label for="lblBrand">Base Type</label></td>
 										</tr>
 										<tr>	
 											<td><select name="cboBasicUnit" id="idcboBasicUnit" onchange='bunit("edit")' class="u-full-width form-control"
@@ -1005,7 +1002,7 @@
 													<%
 															}
 												%>
-												<option onclick="showNewBasicDiv1()" class="addBrandSub" id="edbasicr" >Add new Base Type</option>
+												<option onclick="showNewBasicDiv1()" class="addBrandSub" id="edbasicr" >Add New Base Type</option>
 											</select></td>
 										</tr>
 										<script type="text/javascript">
@@ -1026,7 +1023,7 @@
 											<td>&nbsp;</td>
 											</tr>
 											<tr>
-										<td><label for="lblName">Enter New Name</label></td></tr>
+										<td><label for="lblName">Name</label></td></tr>
 										<tr>
 										<td><input class="u-full-width form-control" type="text" pattern="^[a-zA-Z]+[a-z A-Z 0-9 -_- -w-]+$"
 											name="txtName" id="idtxtName" /></td>
@@ -1037,33 +1034,34 @@
 									</tr>
 									</table>
 									<!-- add new category -->
-						<div class="row" id="newCateDiv1" style="display:none;">
+						
+						<div class="row" id="newCateDiv1" style="display:none;" align="right">
 								<div class="col-sm-1"></div>
-								<div class="col-sm-10" style="border-style: solid;border-radius:15px;border-color: skyblue;">
+								<div class="col-sm-10" style="border-style: solid;border-radius:20px;border-color: skyblue;">
 								<center><h4>Add New Category</h4></center>
 									<div class="row">
-										<div class="col-sm-2"></div>
-										<div class="col-sm-4">
+										<div class="col-sm-1"></div>
+										<div class="col-sm-5">
 											<label for="lblName">Category Name</label>
 										</div>
-										<div class="col-sm-4">
-											<input class="u-full-width form-control" type="text" name="txtcate1" id="idtxtcate11" />
+										<div class="col-sm-5">
+											<input class="u-full-width form-control" type="text" name="txtcate1" id="idtxtcate11" placeholder="Name" />
 										</div>
-										<div class="col-sm-2"></div>
+										<div class="col-sm-1"></div>
 									</div><br>
 									<div class="row">
-										<div class="col-sm-2"></div>
-										<div class="col-sm-4">
+										<div class="col-sm-1"></div>
+										<div class="col-sm-5">
 											<label for="lblRemark">Remark</label>
 										</div>
-										<div class="col-sm-4">
-											<input class="u-full-width form-control" type="text" name="txtRemark1" id="idtxtRemark11"/>
+										<div class="col-sm-5">
+											<input class="u-full-width form-control" type="text" name="txtRemark1" id="idtxtRemark11" placeholder="Remark" />
 										</div>
-										<div class="col-sm-2"></div>
+										<div class="col-sm-1"></div>
 									</div><br>
 									<div class="row">
-										<div class="col-sm-2"></div>
-										<div class="col-sm-4">
+										<div class="col-sm-1"></div>
+										<div class="col-sm-5">
 											<button type="button" class="btn btn-primary" onclick="AddNewCategory1()" id="btnAddSubCate">Add Category</button>
 										</div>
 										<script type="text/javascript">
@@ -1077,15 +1075,16 @@
 												else 
 													alert("Enter Category Name!");
 											}
-										</script>
-										<div class="col-sm-4">
+										</script>&nbsp;&nbsp;&nbsp;
+										<div class="col-sm-5">
 											<button class="btn btn-primary" type="button" onclick="hideNewCateDiv1()" id="hideCategory">Cancel</button>
 										</div>
-										<div class="col-sm-2"></div>
+										<div class="col-sm-1"></div>
 									</div><br>
 								</div>
 								<div class="col-sm-1"></div>
 							</div>
+							
 							
 							<!-- end new category -->
 							<!-- add new basic unit -->
@@ -1099,7 +1098,7 @@
 											<label for="lblName">Base Type Name</label>
 										</div>
 										<div class="col-sm-4">
-											<input class="u-full-width form-control" type="text" name="txtBasic" id="idtxtBasic1" />
+											<input class="u-full-width form-control" type="text" name="txtBasic" id="idtxtBasic1" placeholder="Name" />
 										</div>
 										<div class="col-sm-2"></div>
 									</div><br>
@@ -1109,7 +1108,7 @@
 											<label for="lblRemark">Remark</label>
 										</div>
 										<div class="col-sm-4">
-											<input class="u-full-width form-control" type="text" name="txtRemark2" id="idtxtRemark21"/>
+											<input class="u-full-width form-control" type="text" name="txtRemark2" id="idtxtRemark21" placeholder="Remark" />
 										</div>
 										<div class="col-sm-2"></div>
 									</div><br>
@@ -1145,8 +1144,7 @@
 							<div class="col-sm-4">
 								<table>
 									<tr>
-										<td><label for="lblUnitPrice">Enter New Sub
-										Category</label></td>
+										<td><label for="lblUnitPrice">Sub Category</label></td>
 									</tr>
 									<tr>
 										<td><select name="cboSubCategory" id="idcboSubCategory" onchange='sc("edit")'
@@ -1182,7 +1180,7 @@
 									}
 								</script>
 									<tr>
-										<td><label for="lblSubUnit">Enter New Sub Unit</label></td>
+										<td><label for="lblSubUnit">Sub Unit</label></td>
 									</tr>
 									<tr>	
 										<td><select name="cboSubUnit" id="idcboSubUnit" class="u-full-width form-control"
@@ -1219,8 +1217,7 @@
 										<td>&nbsp;</td>
 										</tr>
 										<tr>
-										<td><label for="lblConvertionValue">Enter
-											Convertion Value</label></td></tr>
+										<td><label for="lblConvertionValue">Convertion Value</label></td></tr>
 											<tr>
 										<td><input class="u-full-width form-control" type="text" pattern="[0-9.-]+$"
 											name="txtConvertionValue" id="idtxtCovertionValue" />
@@ -1233,26 +1230,26 @@
 								<!-- add new subcategory -->
 							<div class="row" id="newSubCategoryDiv2" style="display:none">
 								<div class="col-sm-1"></div>
-								<div class="col-sm-10" style="border-style: solid;border-radius:15px;border-color: skyblue;">
+								<div class="col-sm-13" style="border-style: solid;border-radius:40px;border-color: skyblue;">
 								<center><h4>Add SubCategory</h4></center>
 									<div class="row">
-										<div class="col-sm-2"></div>
+										<div class="col-sm-1"></div>
 										<div class="col-sm-4">
 										<input type="hidden" id="idNo" value=" ">
-											<label for="lblName">SubCategory Name</label>
+											<label for="lblName">Sub Category</label>
 										</div>
-										<div class="col-sm-4">
-											<input class="u-full-width form-control" type="text" name="txtsubcate1" id="idtxtsubcate19" />
+										<div class="col-sm-6">
+											<input class="u-full-width form-control" type="text" name="txtsubcate1" id="idtxtsubcate19" placeholder="Name" />
 										</div>
-										<div class="col-sm-2"></div>
+										<div class="col-sm-1"></div>
 									</div><br>
 									
 									<div class="row">
-								<div class="col-sm-2"></div>
+								<div class="col-sm-1"></div>
 								<div class="col-sm-4">
 									<label for="brand">Brand</label>
 								</div>
-								<div class="col-sm-4">
+								<div class="col-sm-6">
 									<div class="col-sm-12 btn btn-default btnDropdown"  data-toggle="dropdown" id="btnDropdown">
 			  					<%IBrandService brand_service1 = (IBrandService) SpringBeanFactory
 			  							.getBean("BrandService");
@@ -1263,7 +1260,7 @@
 			  						<%for(Brand b:bl12){ %>
 			  						<li>&nbsp;&nbsp;<input type="checkbox" name="brand11" value="<%out.print(b.getBrand_id());%>"/><%out.print(b.getName()); %></li>
 			  						<%} %>
-			  						<li onclick="showNewBrandDiv2()" class="addBrandSub" id="subcatebrand1">Add new brand</li>
+			  						<li onclick="showNewBrandDiv2()" class="addBrandSub" id="subcatebrand1">Add New brand</li>
 			  						</ul>
 								</div>
 								<script type="text/javascript">
@@ -1280,21 +1277,21 @@
 										document.getElementById("newSubCategoryDiv2").style.display="block";
 									}
 								</script>
-								<div class="col-sm-2"></div>
+								<div class="col-sm-1"></div>
 							</div><br>
 							
 									<div class="row">
-										<div class="col-sm-2"></div>
+										<div class="col-sm-1"></div>
 										<div class="col-sm-4">
 											<label for="lblRemark">Remark</label>
 										</div>
-										<div class="col-sm-4">
-											<input class="u-full-width form-control" type="text" name="txtRemark4" id="idtxtRemark44"/>
+										<div class="col-sm-6">
+											<input class="u-full-width form-control" type="text" name="txtRemark4" id="idtxtRemark44" placeholder="Remark" />
 										</div>
-										<div class="col-sm-2"></div>
+										<div class="col-sm-1"></div>
 									</div><br>
 									<div class="row">
-										<div class="col-sm-2"></div>
+										<div class="col-sm-1"></div>
 										<div class="col-sm-4">
 											<button type="button" class="btn btn-primary" onclick="AddNewSubCategory2()">Add</button>
 										</div>
@@ -1335,10 +1332,10 @@
 												
 											}
 										</script>
-										<div class="col-sm-4">
+										<div class="col-sm-6">
 											<button class="btn btn-primary" type="button" onclick="hideNewSubCategoryDiv2()" id="hideBrand">Cancel</button>
 										</div>
-										<div class="col-sm-2"></div>
+										<div class="col-sm-1"></div>
 									</div><br>
 								</div>
 								<div class="col-sm-1"></div>
@@ -1355,7 +1352,7 @@
 											<label for="lblName">Brand Name</label>
 										</div>
 										<div class="col-sm-4">
-											<input class="u-full-width form-control" type="text" name="txtbrand1" id="idtxtbrand11" />
+											<input class="u-full-width form-control" type="text" name="txtbrand1" id="idtxtbrand11" placeholder="Name" />
 										</div>
 										<div class="col-sm-2"></div>
 									</div><br>
@@ -1365,7 +1362,7 @@
 											<label for="lblRemark">Remark</label>
 										</div>
 										<div class="col-sm-4">
-											<input class="u-full-width form-control" type="text" name="txtRemark5" id="idtxtRemark15"/>
+											<input class="u-full-width form-control" type="text" name="txtRemark5" id="idtxtRemark15" placeholder="Remark" />
 										</div>
 										<div class="col-sm-2"></div>
 									</div><br>
@@ -1407,10 +1404,10 @@
 									<div class="row">
 										<div class="col-sm-2"></div>
 										<div class="col-sm-4">
-											<label for="lblName">Sub Unit Name</label>
+											<label for="lblName">Sub Unit</label>
 										</div>
 										<div class="col-sm-4">
-											<input class="u-full-width form-control" type="text" name="txtSubUnit" id="idtxtSubUnit1" />
+											<input class="u-full-width form-control" type="text" name="txtSubUnit" id="idtxtSubUnit1" placeholder="Name" />
 										</div>
 										<div class="col-sm-2"></div>
 									</div><br>
@@ -1420,7 +1417,7 @@
 											<label for="lblRemark">Remark</label>
 										</div>
 										<div class="col-sm-4">
-											<input class="u-full-width form-control" type="text" name="txtRemark3" id="idtxtRemarks"/>
+											<input class="u-full-width form-control" type="text" name="txtRemark3" id="idtxtRemarks" placeholder="Remark" />
 										</div>
 										<div class="col-sm-2"></div>
 									</div><br>
@@ -1458,7 +1455,7 @@
 								<table>
 
 									<tr>
-										<td><label for="lblBrand">Enter New Brand</label></td>
+										<td><label for="lblBrand">Brand</label></td>
 									</tr>
 									<tr>	
 										<td><select   name="cboBrand" id="idcboBrand" class="u-full-width form-control"
@@ -1484,8 +1481,7 @@
 										<td>&nbsp;</td>
 									</tr>
 									<tr>
-										<td><label for="lblConvertionUnit">Enter Convertion
-											Unit</label></td>
+										<td><label for="lblConvertionUnit">Convertion Unit</label></td>
 									</tr>
 									<tr>		
 										<td><select name="cboConvertionUnit" class="u-full-width form-control"
@@ -1508,8 +1504,7 @@
 										<td>&nbsp;</td>
 									</tr>
 									<tr>
-										<td><label for="lblConvertionValue">Enter Unit
-											Price</label></td></tr>
+										<td><label for="lblConvertionValue">Unit Price</label></td></tr>
 											<tr>
 										<td><input class="u-full-width form-control" type="text" 
 											name="txtUnitPrice" id="idtxtUnitPrice" />
@@ -1526,7 +1521,7 @@
 										</div>
 										<div class="col-sm-6">
 										<label><input type="radio" name="txtFlag" id="idFlag11"
-											value="1">On</label> <label><input type="radio"
+											value="1">On</label> &nbsp;&nbsp;<label><input type="radio"
 											name="txtFlag" id="idFlag22" value="0">Off</label>
 											</div>
 											</div>
@@ -1545,7 +1540,7 @@
 											<label for="lblName">Brand Name</label>
 										</div>
 										<div class="col-sm-4">
-											<input class="u-full-width form-control" type="text" name="txtbrand2" id="idtxtbrand22" />
+											<input class="u-full-width form-control" type="text" name="txtbrand2" id="idtxtbrand22" placeholder="Name" />
 										</div>
 										<div class="col-sm-2"></div>
 									</div><br>
@@ -1555,7 +1550,7 @@
 											<label for="lblRemark">Remark</label>
 										</div>
 										<div class="col-sm-4">
-											<input class="u-full-width form-control" type="text" name="txtRemark6" id="idtxtRemark16"/>
+											<input class="u-full-width form-control" type="text" name="txtRemark6" id="idtxtRemark16" placeholder="Name" />
 										</div>
 										<div class="col-sm-2"></div>
 									</div><br>

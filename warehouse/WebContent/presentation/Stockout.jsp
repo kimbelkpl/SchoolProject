@@ -528,7 +528,7 @@ function mer(){
 						<div class="row p10">
 							<div class="panel panel-default">
 						  		<div class="panel-heading w3-container w3-light-blue p10">
-						  			<button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew" id="btnAddNew"><span class="glyphicon glyphicon-plus"></span> Add New</button> 		  			
+						  			<button type="button" class="btn w3-container w3-light-blue p-header-btn" data-toggle="modal" data-target="#addNew" id="btnAddNew"><span class="glyphicon glyphicon-plus"></span> Add New Stock Out</button> 		  			
 			  						<span class="dropdown">
 			  							<button type="button" class="btn w3-container w3-light-blue p-header-btn dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Tools <span class="caret"></span></button>
 										  <ul class="dropdown-menu p10">
@@ -568,7 +568,7 @@ function mer(){
 									        <th>Customer</th>
 									        <th>VoucherNO</th>
 									        <th>Remark</th>
-									        <th>Flag</th>
+									       <!--  <th>Flag</th> -->
 									        <th>Option</th>
 									      </tr>
 									    </thead>
@@ -624,11 +624,11 @@ function mer(){
 										User u2 = userservice.selectUser(stockout.getCreateUserId());
 										User u1 = userservice.selectUser(stockout.getModifiedUserId());
 								%>
-								<%if(stockout .getFlag()==1){ %>
+								<%-- <%if(stockout .getFlag()==1){ %>
 								<td> <font color="green">ON</font></td>
 								<%} else { %>
 								<td><font color="red">OFF</font></td>
-								<%} %>
+								<%} %> --%>
 							
 							   <td class="dropdown">
 									        	<button class="btn w3-container w3-white w3-text-blue w3-hover-blue w3-hover-text-white ptb dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span>

@@ -31,7 +31,7 @@
 								<button type="button" id="newForm""
 									class="btn w3-container w3-light-blue p-header-btn"
 									data-toggle="modal" data-target="#addNew">
-									<span class="glyphicon glyphicon-plus"></span> Add New
+									<span class="glyphicon glyphicon-plus"></span> Add New Warehouse
 								</button>
 								<!-- <button type="button"
 										class="btn w3-container w3-light-blue p-header-btn"
@@ -70,9 +70,7 @@
 											<th>Address</th>
 											<th>PhoneNo</th>
 											<th>Remark</th>
-											<!-- <th>Create User ID</th>
-												<th>Modify User ID</th> -->
-											<th>Flag</th>
+											<!-- <th>Flag</th> -->
 											<th>Options</th>
 										</tr>
 									</thead>
@@ -119,7 +117,7 @@
 
 											
 
-											<%
+											<%-- <%
 													if(wh.getWareflag()==1)
 													{
 														%>
@@ -136,7 +134,7 @@
 														
 													}
 													
-													%>
+													%> --%>
 
 
 
@@ -213,7 +211,7 @@
 
 
 										<tr>
-											<td>Enter Name :</td>
+											<td><label>Enter Name :</label></td>
 											<td><input type="text" name="txtName" id="nid"
 												class="u-full-width form-control" placeholder="Name" required
 												 /></td>
@@ -223,7 +221,7 @@
 													<td>&nbsp;&nbsp;</td>
 												</tr>
 										<tr>
-											<td>Enter Address :</td>
+											<td><label>Enter Address :</label></td>
 											<td><input type="text" name="txtAddr" id="aid"
 												class="u-full-width form-control" placeholder="Address" required
 												 /></td>
@@ -233,7 +231,7 @@
 													<td>&nbsp;&nbsp;</td>
 												</tr>
 										<tr>
-											<td>Enter Phone :</td>
+											<td><label>Enter Phone :</label></td>
 											<td><input type="text" name="txtPhone" id="pid"
 												class="u-full-width form-control" title="Enter Only Digit" pattern="\++[0-9\s]+|[0-9\s]+" placeholder="Phone" required
 												 /></td>
@@ -243,7 +241,7 @@
 													<td>&nbsp;&nbsp;</td>
 												</tr>
 										<tr>
-											<td>Remark :</td>
+											<td><label>Remark :</label></td>
 											<td><input type="text" name="txtRemark" id="rid"
 												class="u-full-width form-control"  placeholder="Remark" required
 												 /></td>
@@ -395,11 +393,10 @@
 										<input type="hidden" name="radioflag" value="1" />
 										<input type="hidden" name="eid"/>
 										<tr>
-													<!-- <td>&nbsp;&nbsp;</td> -->
-													<td>&nbsp;&nbsp;</td>
-												</tr>
+											<td>&nbsp;&nbsp;</td>
+										</tr>
 										<tr>
-											<td>Enter Name :</td>
+											<td><label>Name :</label></td>
 											<td><input type="text" name="txtName"
 												class="u-full-width form-control" required></td>
 										</tr>
@@ -409,7 +406,7 @@
 												</tr>
 
 										<tr>
-											<td>Enter Address :</td>
+											<td><label>address :</label></td>
 											<td><input type="text" name="txtAddress"
 												class="u-full-width form-control" required></td>
 										</tr>
@@ -419,7 +416,7 @@
 												</tr>
 
 										<tr>
-											<td>Enter Phone No :</td>
+											<td><label>Phone No :</label></td>
 											<td><input type="text" name="txtPhone"
 												class="u-full-width form-control" pattern="\++[0-9\s]+|[0-9\s]+" title="Enter Only Digit" required></td>
 										</tr>
@@ -429,7 +426,7 @@
 												</tr>
 
 										<tr>
-											<td>Remark:</td>
+											<td><label>Remark:</label></td>
 											<td><input type="text" name="txtRemark"
 												class="u-full-width form-control" required></td>
 										</tr>
@@ -439,7 +436,7 @@
 												</tr>
 
 										<tr>
-											<td>Flag:</td>
+											<td><label>Flag:</label></td>
 											<td><input type="radio" id="radioen" name="disradio"
 												value="1" checked="checked" /><font color="green">&nbsp;ON</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio"
 												id="radiodis" name="disradio" value="0"> <font color="red">&nbsp;OFF</font></td>

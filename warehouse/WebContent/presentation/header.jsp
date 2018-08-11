@@ -10,7 +10,7 @@ session.setAttribute("uid",uid);
 	<div class="container-fluid" style="width:100%;height:98vh;overflow:hidden;">
 		<!-- nav bar -->
 		<div class="row w3-container w3-light-blue" style="border-top-left-radius: 5px;border-top-right-radius: 5px;">
-			<div class="col-sm-8">
+			<div class="col-sm-7">
 				<img src="images/warehouse_logo.png" style="width:auto;height:70px;"/>
 			</div>
 			<div class="col-sm-4 btn-group navbar-right">
@@ -19,7 +19,7 @@ session.setAttribute("uid",uid);
 			if(u99.getUser_level_id()==1){ %>
 			<span class="dropdown">  
 			  			<button type="button" class="btn w3-container w3-light-blue p-header-btn dropdown-toggle" data-toggle="dropdown">
-			  			           <span class="glyphicon glyphicon-send"></span> Report </button>
+			  			           <span class="glyphicon glyphicon-send"></span>Report </button>
 			  			             
 										  <ul class="dropdown-menu p10">
 										    <li class="w3-container w3-text-black w3-hover-blue w3-hover-text-white p10">StockIn Report
@@ -49,10 +49,10 @@ session.setAttribute("uid",uid);
 										 
 			  						</span>	
 			  		<%} %>	
-			  	<button type="button" class="btn w3-container w3-light-blue p-header-btn"><span class="glyphicon glyphicon-cog"></span> Setting</button> 
-			  	<button type="button" class="btn w3-container w3-light-blue p-header-btn"><span class="glyphicon glyphicon-user"></span> <%=uname %></button>
-			  	<button type="button" class="btn w3-container w3-light-blue p-header-btn"> <span class="glyphicon glyphicon-question-sign"></span> Help</button>
-			  	<a href="/warehouse/UserController?page=logout"><button type="button" class="btn w3-container w3-light-blue p-header-btn"><span class="glyphicon glyphicon-log-out"></span> Logout</button></a>
+			  	<button type="button" class="btn w3-container w3-light-blue p-header-btn"><span class="glyphicon glyphicon-cog"></span>Setting</button> 
+			  	<button type="button" class="btn w3-container w3-light-blue p-header-btn"><span class="glyphicon glyphicon-user"></span><%=uname %></button>
+			  	<button type="button" class="btn w3-container w3-light-blue p-header-btn"> <span class="glyphicon glyphicon-question-sign"></span>Help</button>
+			  	<a href="/warehouse/UserController?page=logout"><button type="button" class="btn w3-container w3-light-blue p-header-btn"><span class="glyphicon glyphicon-log-out"></span>Logout</button></a>
                 			  	
 			</div> 
 		</div>
@@ -71,7 +71,7 @@ session.setAttribute("uid",uid);
 					<div class="row">
 						<div class="panel panel-default">
 						 	<div class="panel-body">
-						 		<h3><img src="images/dash board.png"> Profile</h3>
+						 		<h5><img src="images/dash board.png"> Profile</h5>
 						 		<ul class="l-non">
 						 			<li><a href="/warehouse/UserController?page=userProfile"><span class="glyphicon glyphicon-chevron-right"></span> User Profile</a></li>
 						 			<li><a href=""><span class="glyphicon glyphicon-chevron-right"></span> Company Profile</a></li>

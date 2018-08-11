@@ -22,9 +22,9 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/warehouse_dbttt" />
+		<property name="url" value="jdbc:mysql://localhost:3306/warehouse_db" />
 		<property name="username" value="root" />
-		<property name="password" value="wutyitheint" />
+		<property name="password" value="root" />
 		<!-- <property name="url" value="jdbc:mysql://myawsinstance.c58ai3sz3ola.ap-southeast-1.rds.amazonaws.com:3306/jewellarysample" 
 			/> <property name="username" value="pearlyadana" /> <property name="password" 
 			value="pearl#yadana#15#aws" /> -->

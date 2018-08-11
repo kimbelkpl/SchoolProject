@@ -104,7 +104,7 @@ session.setAttribute("uid",uid1);
 										<div class="control-label col-sm-1"></div>
 										<label class="control-label col-sm-5 right" for="currentPassword">Current Password:</label>
 											<div class="col-sm-5">
-												<input type="password" name="txtPassword" class="u-full-width form-control" id="idtxtCurrentPassword" required/>
+												<input type="password" name="txtPassword" placeholder="Current Password" class="u-full-width form-control" id="idtxtCurrentPassword" required/>
 											</div>
 										<div class="control-label col-sm-1"></div>
 									</div><br>
@@ -112,7 +112,7 @@ session.setAttribute("uid",uid1);
 										<div class="control-label col-sm-1"></div>
 										<label class="control-label col-sm-5 right" for="newPassword" >New Password:</label>
 											<div class="col-sm-5">
-												<input onkeyup="passwordStrong(this.value)" class="u-full-width form-control" type="password" name="txtNewPassword" id="idtxtNewPassword" pattern=".{9,}[a-zA-Z0-9._%+-/!@#$%^&*]+" title="Only number, character and ._%+-/!@#$%^&* .Must contain at least 10 characters" required/>
+												<input onkeyup="passwordStrong(this.value)" placeholder="New Password" class="u-full-width form-control" type="password" name="txtNewPassword" id="idtxtNewPassword" pattern=".{9,}[a-zA-Z0-9._%+-/!@#$%^&*]+" title="Only number, character and ._%+-/!@#$%^&* .Must contain at least 10 characters" required/>
 											</div>
 										<div class="control-label col-sm-1"></div>
 									</div><br>
@@ -173,7 +173,7 @@ session.setAttribute("uid",uid1);
 										<div class="control-label col-sm-1"></div>
 										<label class="control-label col-sm-5 right" for="confirmPassword">Confirm Password:</label>
 											<div class="col-sm-5">
-												<input type="password" value="" class="u-full-width form-control" name="txtConfirmPassword" id="idtxtConfirmPassword" required/>
+												<input type="password" value="" class="u-full-width form-control" placeholder="Confirm Password" name="txtConfirmPassword" id="idtxtConfirmPassword" required/>
 											</div>
 										<div class="control-label col-sm-1"></div>
 									</div><br>
