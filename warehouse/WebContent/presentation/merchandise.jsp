@@ -877,7 +877,11 @@
 				<form>
 					<div class="modal-body p10">
 						<!-- <span style="font-size: 2em" id="user"
+<<<<<<< HEAD
 								class="glyphicon glyphicon-user"></span><br>  -->
+=======
+								class="glyphicon glyphicon-user"></span> --><br> 
+>>>>>>> 6cd653d3deef881cbf29280754135f21e5a3de69
 						<div class="row">
 						<div class="col-sm-1"></div>
 						<div class="col-sm-5">

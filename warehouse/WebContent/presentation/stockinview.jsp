@@ -495,6 +495,7 @@ function cat(){
 				
 			
 				var ware=document.getElementById("warehouse").value;
+				
 		       	var warenamearr=[<%=warename%>];
 		       	var wareidarr=[<%=wareid%>];
 		       	var count=0;
@@ -508,11 +509,34 @@ function cat(){
 		       	}
 		       	
 		       	document.getElementById("edware").value=wareidarr[count];
+		       	
+		       	var mername=[<%=mername%>];
+				 var merid=[<%=merid%>];
+				 
+				 
+				 var i;
+					for(i>=1;i=document.forms["edit"]["edMerchandise"].options.length-1;i--){
+						document.forms["edit"]["edMerchandise"].remove(i);	
+					}
+				 
+				 for(var start=0;start<merid.length;start++){
+						var t=document.createElement("option");
+		                t.text=mername[start];
+		                t.value=merid[start];
+		                document.forms["edit"]["edMerchandise"].add(t);
+				 }
+				 
+		       	
+		       
 				
 				document.forms["edit"]["edmerchandise_id"].value=arguments[0];
+				//alert(arguments[0]+" and "+arguments[2]);
+				
+				document.forms["edit"]["edMerchandise"].value=arguments[0];
+				document.forms["edit"]["edMerchandise"].onchange();
 				//document.forms["edit"]["edcboMerchandise"].value=arguments[1];
 				document.forms["edit"]["qty"].value=arguments[1];
-				document.forms["edit"]["edcbosubunit"].text=arguments[2];
+				document.forms["edit"]["edcbosubunit"].selectedindex=1;
 				document.forms["edit"]["Remark"].value=arguments[3]; 
 				document.forms["edit"]["flag"].value=arguments[4];
 				document.forms["edit"]["stock_in_detail_id"].value=arguments[5];
@@ -531,12 +555,12 @@ function cat(){
 				//alert("brand:"+arguments[9]);
 				document.getElementById("edthird").value=arguments[8];
 				
-				brand();
+				//brand();
 				//alert("merchandise:"+arguments[1]);
 				//document.forms["edit"]["edcboMerchandise"].value=arguments[1];
 				meri();
 				//alert("sub: "+arguments[3]);
-				document.forms["edit"]["edcbosubunit"].text=arguments[2]; 
+				document.forms["edit"]["edcbosubunit"].value=arguments[2]; 
 				//alert("sub: "+document.forms["edit"]["edcbosubunit"].value);
 				document.getElementById("himerchandise_id").value=arguments[0];
 				//document.getElementById("himername").value=arguments[1];
@@ -866,7 +890,8 @@ transition:all .25s ease-in-out
 <script>
 function meri(){
 		 var mer=document.getElementById("edidcboMerchandise").value;
-		 var merchannamearr=[<%=mername%>];
+		
+		<%--  var merchannamearr=[<%=mername%>];
 		 var merchanidarr=[<%=merid%>];
 		 var meridarr=[<%=merid%>];
 		 var count=0;
@@ -875,8 +900,12 @@ function meri(){
 				count=i;
 				break;
 				}
-		}  
-		document.getElementById("edidmerchandise_id").value=meridarr[count];
+		}   --%>
+		
+		var merchannamearr=[<%=mername%>];
+		 var merchanidarr=[<%=merid%>];
+		 
+		document.getElementById("edidmerchandise_id").value=mer;
 		
 		//document.getElementById("edidmerchandise_id").value=mer;
 		
@@ -884,6 +913,8 @@ function meri(){
 		  var betmerchandisearr=[<%=betmerchandise%>];
 		  var edunitcbo=document.getElementById("edidcbosubunit");
 		  edunitcbo.selectedIndex=0;
+		  
+		 
 		  
 		   var newidarr=[<%=newid%>];
 		   var newunitnamearr=[<%=newunitname%>]; 
@@ -903,7 +934,7 @@ function meri(){
 
 		   	for(var i=0;i<merchannamearr.length;i++){
 		   		
-		   		  if(mer==merchannamearr[i]){
+		   		  if(mer==merchanidarr[i]){
 		   		 
 		   			 var s=i;
 		   			for(var j=0;j<betmerchandisearr.length;j++){
@@ -937,10 +968,7 @@ function meri(){
 	<td><b>Merchandise Name:</b></td>
 	<td>  <select class="form-control" id="edidcboMerchandise" name="edMerchandise" onchange="meri()">
 	  <option disabled selected>Select Merchandise</option>
-	<%for(Merchandise m:merList) {%>
-      <%-- <option value=<%out.print(m.getMerchandise_id()); %>><%out.print(m.getName());%></option> --%>
-      <option value=<%out.print(m.getMerchandise_id()); %>><%out.println(m.getName());%></option>
-      <%} %>
+	
       </select>
       </td>
 	

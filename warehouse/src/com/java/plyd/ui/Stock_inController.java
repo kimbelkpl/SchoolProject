@@ -75,7 +75,7 @@ public class Stock_inController extends HttpServlet {
 	    String ex="";
 	    Boolean isEqual=false;
 		int j=0;
-		String name="";
+		//String name="";
 		int stock_in_id=0;
 		if(param.equals("load")){
 			String uname = (String) session.getAttribute("uname");
@@ -97,9 +97,9 @@ public class Stock_inController extends HttpServlet {
 			List<SubCategoryAndBrand> sub_cat_brandList=sub_category_brandservice.selectAll();
 		    List<Merchandise_Brand> merchandisebrandList=merchandise_brandservice.selectAll();
 		    List<Subunit_Merchandise> subunit_subcategoryList=subunit_subcategoryservice.selectAll();
-		    for(Merchandise_Brand a:merchandisebrandList){
+		   /* for(Merchandise_Brand a:merchandisebrandList){
 		    	System.out.println("haha"+a.getBrand_id());
-		    }
+		    }*/
 		    System.out.println("jjhkafkadfsjk");
 		    List<Supplier> supplierList1 = supplierService.selectAll();
 		    request.setAttribute("supplierList1", supplierList1);
@@ -129,13 +129,17 @@ public class Stock_inController extends HttpServlet {
 			session.setAttribute("uid", uid);
 			session.setAttribute("uname", uname);
 		
-			System.out.println("Submit is working");
+			System.out.println(param+" Submit is working");
 			Stock_in st = new Stock_in();
 			
+			
 			String vou=request.getParameter("txtVoucherNo");
+			System.out.println("vouncher is "+vou);
 			String rema=request.getParameter("txtRemark");
 			int war=Integer.parseInt(request.getParameter("cbowh"));
-			String type=request.getParameter("ty");
+			
+			System.out.println(war+" wareid  and vouncher is "+vou+" remark is "+rema);
+			//String type=request.getParameter("ty");
 			String dat=request.getParameter("datePickerStockIn");
 
 				st.setConarridate(request.getParameter("datePickerConArn"));	
@@ -153,7 +157,7 @@ public class Stock_inController extends HttpServlet {
 				session.setAttribute("war", war);
 			
 				//refresh
-				List<Stock_in> stockoutlist=stock_inService.selectAll();
+				//List<Stock_in> stockoutlist=stock_inService.selectAll();
 				
 				
 				if(j==1){
@@ -202,6 +206,7 @@ public class Stock_inController extends HttpServlet {
 		    		std.setVoucher_no(zvoucher);
 		    		std.setCreated_user_id(uid);
 		    		std.setModified_user_id(uid);
+		    		System.out.println(uid+" modified id");
 		    		std.setFlag(1);
 		    		stdList.add(std);
 			}
